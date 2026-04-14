@@ -7,6 +7,9 @@ public class TC01 extends BaseClass {
 		browserLauncher("chrome");
 		navigate("https://www.amazon.in/");
 		
+		browserLauncher("edge");
+		navigate("https://www.amazon.in/");
+		
 
 	}
 
