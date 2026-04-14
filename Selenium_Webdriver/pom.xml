@@ -35,6 +35,14 @@
       <scope>test</scope>
     </dependency>
     <!-- Optionally: parameterized tests support -->
+    
+    <!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+	<dependency>
+    	<groupId>org.seleniumhq.selenium</groupId>
+    	<artifactId>selenium-java</artifactId>
+    	<version>4.41.0</version>
+    	<scope>compile</scope>
+	</dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
