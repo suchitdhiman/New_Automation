@@ -24,9 +24,11 @@ public class BaseClass {
 		//base common path
 		String projectRootPath = System.getProperty("user.dir");
 		System.out.println(projectRootPath);
+		
 		//test path
 		String testResourcePath = "\\src\\test\\resources";
 		System.out.println(testResourcePath);
+		
 		//load the data file
 		f = new File(projectRootPath+testResourcePath+"\\data.properties");
 		fis = new FileInputStream(f);
@@ -38,6 +40,8 @@ public class BaseClass {
 		fis = new FileInputStream(f);
 		mainProperties = new Properties();
 		mainProperties.load(fis);
+		
+		
 		String e = mainProperties.getProperty("environment");
 		System.out.println(e);
 		
@@ -55,7 +59,7 @@ public class BaseClass {
 	
 	public static void browserLauncher(String browser) {
 		String browserurl = p.getProperty(browser);
-		if (browser.equals("chrome")) {
+		if (browserurl.equals("chrome")) {
 			webDriver = new ChromeDriver();
 		}else if(browserurl.equals("edge")) {
 			webDriver = new EdgeDriver();
