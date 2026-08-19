@@ -1,0 +1,22 @@
+2026-05-07 22:36:52 [main] INFO  OperationHandler:95 - Init the properties files.....
+2026-05-07 22:36:55 [main] INFO  OperationHandler:98 - Launched the browser::null
+2026-05-07 22:36:57 [main] INFO  OperationHandler:101 - Url selected::https://www.amazon.in
+2026-05-07 22:37:03 [main] INFO  OperationHandler:106 - Selected the option <Books> by locating the locator::searchDropdownBox
+2026-05-07 22:37:03 [main] INFO  OperationHandler:109 - Typed the text <Harry Potter> by locating the locator::field-keywords
+2026-05-07 22:42:28 [main] INFO  OperationHandler:95 - Init the properties files.....
+2026-05-07 22:42:29 [main] INFO  OperationHandler:98 - Launched the browser::null
+2026-05-07 22:42:30 [main] INFO  OperationHandler:101 - Url selected::https://www.amazon.in
+2026-05-07 22:42:34 [main] INFO  OperationHandler:106 - Selected the option <Books> by locating the locator::searchDropdownBox
+2026-05-07 22:42:35 [main] INFO  OperationHandler:109 - Typed the text <Harry Potter> by locating the locator::field-keywords
+2026-05-07 22:45:26 [main] INFO  OperationHandler:95 - Init the properties files.....
+2026-05-07 22:45:27 [main] INFO  OperationHandler:98 - Launched the browser::null
+2026-05-07 22:45:28 [main] INFO  OperationHandler:101 - Url selected::https://www.amazon.in
+2026-05-07 22:45:33 [main] INFO  OperationHandler:106 - Selected the option <Books> by locating the locator::searchDropdownBox
+2026-05-07 22:45:33 [main] INFO  OperationHandler:109 - Typed the text <Harry Potter> by locating the locator::field-keywords
+2026-05-07 22:45:36 [main] INFO  OperationHandler:112 - Clicked on button by locating the locator:://*[@id="nav-search-submit-button"]
+2026-05-24 09:04:35 [main] INFO  OperationHandler:95 - Init the properties files.....
+2026-05-24 09:04:43 [main] INFO  OperationHandler:98 - Launched the browser::null
+2026-05-24 09:04:44 [main] INFO  OperationHandler:101 - Url selected::https://www.amazon.in
+2026-05-24 09:04:47 [main] INFO  OperationHandler:106 - Selected the option <Books> by locating the locator::searchDropdownBox
+2026-05-24 09:04:47 [main] INFO  OperationHandler:109 - Typed the text <Harry Potter> by locating the locator::field-keywords
+2026-05-24 09:04:49 [main] INFO  OperationHandler:112 - Clicked on button by locating the locator:://*[@id="nav-search-submit-button"]
