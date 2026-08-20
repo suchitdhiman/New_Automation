@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  parallel="methods" is safe here only because the driver lives in a ThreadLocal.
+  Raising thread-count against a static WebDriver is what produces the classic
+  "tests pass alone, fail together" symptom.
+-->
+<suite name="Regression Suite" parallel="methods" thread-count="3" verbose="1">
+
+    <parameter name="browser" value="chrome"/>
+
+    <listeners>
+        <listener class-name="com.sk.automation.listeners.TestListener"/>
+        <listener class-name="com.sk.automation.listeners.RetryTransformer"/>
+    </listeners>
+
+    <test name="Frame Handling">
+        <groups>
+            <run>
+                <include name="frames"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.sk.automation.tests.SwitchFramesTest"/>
+        </classes>
+    </test>
+</suite>

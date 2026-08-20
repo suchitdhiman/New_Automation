@@ -1,0 +1,11 @@
+target/
+!target/.gitkeep
+*.class
+*.log
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+bin/
+.DS_Store
