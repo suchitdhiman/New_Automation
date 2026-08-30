@@ -1,4 +1,4 @@
-package com.sk.webdriver;
+package testngpack;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;

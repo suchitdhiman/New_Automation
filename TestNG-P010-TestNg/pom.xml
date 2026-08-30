@@ -16,11 +16,12 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Optionally: parameterized tests support -->
+		<!-- Source:
+		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.31.0</version>
+			<version>4.47.0</version>
 			<scope>compile</scope>
 		</dependency>
 
@@ -31,7 +32,7 @@
 			<version>1.2.17</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Source:
 		https://mvnrepository.com/artifact/com.aventstack/extentreports -->
 		<dependency>

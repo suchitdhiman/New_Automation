@@ -1,4 +1,4 @@
-package com.sk.webdriver;
+package testngpack;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -77,8 +77,8 @@ public class BaseClass {
 		extentReports = ExtentManager.getInstance();
 	}
 	
-	public static void browserLauncher() throws Exception {
-		String brows = browsproperties.getProperty("browser");
+	public static void browserLauncher(String brows) throws Exception {
+		//String brows = browsproperties.getProperty("browser");
 		if(brows.equalsIgnoreCase("chrome")) {
 			webDriver = new ChromeDriver();
 		}else if(brows.equalsIgnoreCase("edge")) {

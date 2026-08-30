@@ -12,7 +12,7 @@
           <include name="afterSuite"/>
           <include name="beforeSuite"/>
           <include name="beforeMethod"/>
-          <include name="f"/>
+          <include name="actualTest"/>
           <include name="beforeClass"/>
         </methods>
       </class> <!-- testngpack.NewTest -->

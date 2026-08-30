@@ -6,16 +6,15 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+
 
 import com.aventstack.extentreports.Status;
-import com.sk.webdriver.BaseClass;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.AfterClass;
+
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.AfterSuite;
@@ -39,15 +38,16 @@ public class NewTest extends BaseClass{
   }
   
   @BeforeMethod
-  public void beforeMethod() throws Exception {
+  @Parameters("browser")
+  public void beforeMethod(String browser) throws Exception {
 	  	init();
 		//logger.info("Init the properties files.....");
 	  	extentTest = extentReports.createTest("OperationHandler");
 	  	extentTest.log(Status.INFO, "Init the properties files....");
 		
-		browserLauncher();
+		browserLauncher(browser);
 		//logger.info("Launched the browser::"+browsProperties.getProperty("chrome"));
-		extentTest.log(Status.INFO,"Launched the browser::"+browsproperties.getProperty("chrome") );
+		extentTest.log(Status.INFO,"Launched the browser::"+browsproperties.getProperty(browser) );
 		
 		selectUrl("amazon");
 		extentTest.log(Status.FAIL, "url selected::"+urlProperties.getProperty("amazon"));
