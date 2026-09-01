@@ -14,6 +14,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
@@ -38,8 +39,8 @@ public class NewTest extends BaseClass{
   }
   
   @BeforeMethod
-  @Parameters("browser")
-  public void beforeMethod(String browser) throws Exception {
+  @Parameters({"browser", "url"})
+  public void beforeMethod(String browser, @Optional("facebook") String url) throws Exception {
 	  	init();
 		//logger.info("Init the properties files.....");
 	  	extentTest = extentReports.createTest("OperationHandler");
@@ -49,7 +50,7 @@ public class NewTest extends BaseClass{
 		//logger.info("Launched the browser::"+browsProperties.getProperty("chrome"));
 		extentTest.log(Status.INFO,"Launched the browser::"+browsproperties.getProperty(browser) );
 		
-		selectUrl("amazon");
+		selectUrl(url);
 		extentTest.log(Status.FAIL, "url selected::"+urlProperties.getProperty("amazon"));
 		
 		webDriver.navigate().refresh();
