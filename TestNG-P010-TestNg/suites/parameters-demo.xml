@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  @Parameters and @Optional, side by side. Runs serially on purpose so the
+  console output is easy to read.
+
+  Resolution order for a @Parameters value:
+    1. <parameter> on the <test>          (most specific, wins)
+    2. <parameter> on the <suite>
+    3. -Dparamname=value on the command line, when the code reads it
+    4. @Optional("default") on the method argument   (last resort)
+-->
+<suite name="ParametersSuite" verbose="2">
+
+  <parameter name="browser" value="chrome"/>
+  <parameter name="url" value="amazon"/>
+
+  <!-- Everything supplied by the xml: @Optional never fires. -->
+  <test name="AllParametersSupplied">
+    <parameter name="category" value="Books"/>
+    <parameter name="searchTerm" value="Harry Potter"/>
+    <parameter name="secondUrl" value="bbc"/>
+    <classes>
+      <class name="testngpack.tests.AmazonSearchTest"/>
+      <class name="testngpack.tests.UrlNavigationTest"/>
+    </classes>
+  </test>
+
+  <!-- category/searchTerm/secondUrl are missing here, so @Optional defaults win.
+       'browser' is still inherited from the suite level above. -->
+  <test name="OptionalDefaultsUsed">
+    <classes>
+      <class name="testngpack.tests.AmazonSearchTest"/>
+      <class name="testngpack.tests.UrlNavigationTest"/>
+    </classes>
+  </test>
+
+  <!-- A <test> level parameter overrides the suite level one. -->
+  <test name="TestLevelOverridesSuiteLevel">
+    <parameter name="url" value="bbc"/>
+    <parameter name="secondUrl" value="facebook"/>
+    <classes>
+      <class name="testngpack.tests.UrlNavigationTest"/>
+    </classes>
+  </test>
+
+</suite>

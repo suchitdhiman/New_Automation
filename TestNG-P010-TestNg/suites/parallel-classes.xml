@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  parallel="classes" - one thread per class; all methods inside a class stay
+  on that single thread and therefore run one after another.
+  Use this when methods of a class share state but classes do not.
+-->
+<suite name="ParallelClassesSuite" parallel="classes" thread-count="3" verbose="1">
+
+  <parameter name="browser" value="chrome"/>
+  <parameter name="url" value="amazon"/>
+
+  <test name="ClassLevelParallel">
+    <parameter name="secondUrl" value="bbc"/>
+    <classes>
+      <class name="testngpack.tests.AmazonSearchTest"/>
+      <class name="testngpack.tests.UrlNavigationTest"/>
+      <class name="testngpack.tests.ParallelMethodsTest"/>
+    </classes>
+  </test>
+
+</suite>

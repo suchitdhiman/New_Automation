@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  parallel="methods" - every @Test method gets its own thread.
+  @BeforeMethod/@AfterMethod run on that same thread, so each method owns a
+  private WebDriver. Expect thread-count browsers open at once.
+-->
+<suite name="ParallelMethodsSuite" parallel="methods" thread-count="4" verbose="1">
+
+  <parameter name="browser" value="chrome"/>
+  <parameter name="url" value="amazon"/>
+  <parameter name="headless" value="false"/>
+
+  <test name="MethodLevelParallel">
+    <classes>
+      <class name="testngpack.tests.ParallelMethodsTest"/>
+    </classes>
+  </test>
+
+</suite>

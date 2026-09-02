@@ -1,30 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
 
-  <test thread-count="5" name="ChromeTest">
-  <parameter name="browser" value="chrome"></parameter>
-  
+<!--
+  MASTER SUITE - parallel="tests"
+  Every <test> block below runs on its own thread, so the same classes are
+  exercised against a different browser at the same time.
+
+  Listeners are attached with @Listeners on BaseClass, so they work here and
+  from a plain "Run as > TestNG Test" in Eclipse. Do not repeat them here.
+
+  Other suites live in suites/ :
+    suites/parallel-methods.xml    parallel="methods"
+    suites/parallel-classes.xml    parallel="classes"
+    suites/parallel-instances.xml  parallel="instances"
+    suites/parallel-dataprovider.xml   data-provider-thread-count
+    suites/parameters-demo.xml     @Parameters + @Optional walkthrough
+-->
+<suite name="CrossBrowserSuite" parallel="tests" thread-count="3" verbose="1">
+
+  <!-- Suite level parameter: inherited by every <test> that does not override it. -->
+  <parameter name="headless" value="false"/>
+
+  <test name="ChromeTest">
+    <parameter name="browser" value="chrome"/>
+    <parameter name="url" value="amazon"/>
+    <parameter name="category" value="Books"/>
+    <parameter name="searchTerm" value="Harry Potter"/>
     <classes>
-      <class name="testngpack.NewTest"/>
+      <class name="testngpack.tests.AmazonSearchTest"/>
     </classes>
   </test>
-  
-  <!--  
-  <test thread-count="5" name="EdgeTest">
-  <parameter name="browser" value="edge"></parameter>
+
+  <test name="EdgeTest">
+    <parameter name="browser" value="edge"/>
+    <parameter name="url" value="amazon"/>
+    <parameter name="category" value="Electronics"/>
+    <parameter name="searchTerm" value="Bluetooth headphones"/>
     <classes>
-      <class name="testngpack.NewTest"/>
+      <class name="testngpack.tests.AmazonSearchTest"/>
     </classes>
-  </test> 
-  
-  
-  <test thread-count="5" name="FirefoxTest">
-  <parameter name="browser" value="firefox"></parameter>
+  </test>
+
+  <!-- Enable once Firefox is installed locally. -->
+  <!--
+  <test name="FirefoxTest">
+    <parameter name="browser" value="firefox"/>
+    <parameter name="url" value="amazon"/>
     <classes>
-      <class name="testngpack.NewTest"/>
+      <class name="testngpack.tests.AmazonSearchTest"/>
     </classes>
-  </test> 
-  
+  </test>
   -->
-</suite> <!-- Suite -->
+
+</suite>
