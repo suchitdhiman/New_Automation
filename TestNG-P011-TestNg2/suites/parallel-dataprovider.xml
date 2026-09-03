@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  Data provider parallelism. Note there is NO parallel="..." attribute here:
+  the concurrency comes from @DataProvider(parallel = true) plus the
+  data-provider-thread-count below. Each data row runs on its own thread with
+  its own browser.
+-->
+<suite name="ParallelDataProviderSuite" data-provider-thread-count="3" verbose="1">
+
+  <parameter name="browser" value="chrome"/>
+  <parameter name="url" value="amazon"/>
+  <parameter name="extraUrl" value="facebook"/>
+
+  <test name="DataProviderParallel">
+    <classes>
+      <class name="testngpack.tests.DataProviderParallelTest"/>
+    </classes>
+  </test>
+
+</suite>

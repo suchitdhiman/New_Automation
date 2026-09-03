@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,8 +38,8 @@
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" panel-name="suite-Suite" class="navigator-link">
-              <span class="suite-name border-failed">Suite</span>
+            <a href="#" panel-name="suite-CrossBrowserSuite" class="navigator-link">
+              <span class="suite-name border-passed">CrossBrowserSuite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -49,37 +49,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" panel-name="test-xml-Suite" class="navigator-link ">
+                  <a href="#" panel-name="test-xml-CrossBrowserSuite" class="navigator-link ">
                     <span>D:\Selenium\TestNG-P010-TestNg\testng.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="testlist-Suite" class="navigator-link ">
-                    <span class="test-stats">1 test</span>
+                  <a href="#" panel-name="testlist-CrossBrowserSuite" class="navigator-link ">
+                    <span class="test-stats">2 tests</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="group-Suite" class="navigator-link ">
+                  <a href="#" panel-name="group-CrossBrowserSuite" class="navigator-link ">
                     <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="times-Suite" class="navigator-link ">
+                  <a href="#" panel-name="times-CrossBrowserSuite" class="navigator-link ">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="reporter-Suite" class="navigator-link ">
+                  <a href="#" panel-name="reporter-CrossBrowserSuite" class="navigator-link ">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="ignored-methods-Suite" class="navigator-link ">
+                  <a href="#" panel-name="ignored-methods-CrossBrowserSuite" class="navigator-link ">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="chronological-Suite" class="navigator-link ">
+                  <a href="#" panel-name="chronological-CrossBrowserSuite" class="navigator-link ">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -92,21 +92,36 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">4 methods,   4 passed</span>
                   </li>
                   <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Suite" class="hide-methods failed suite-Suite"> (hide)</a> <!-- hide-methods failed suite-Suite -->
-                      <a href="#" panel-name="suite-Suite" class="show-methods failed suite-Suite"> (show)</a> <!-- show-methods failed suite-Suite -->
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-CrossBrowserSuite" class="hide-methods passed suite-CrossBrowserSuite"> (hide)</a> <!-- hide-methods passed suite-CrossBrowserSuite -->
+                      <a href="#" panel-name="suite-CrossBrowserSuite" class="show-methods passed suite-CrossBrowserSuite"> (show)</a> <!-- show-methods passed suite-CrossBrowserSuite -->
                     </span>
-                    <div class="method-list-content failed suite-Suite">
+                    <div class="method-list-content passed suite-CrossBrowserSuite">
                       <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="testngpack.NewTest" class="method navigator-link" hash-for-method="actualTest">actualTest</a> <!-- method navigator-link -->
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-CrossBrowserSuite" title="testngpack.tests.AmazonSearchTest" class="method navigator-link" hash-for-method="homePageLoads">homePageLoads</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content failed suite-Suite -->
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-CrossBrowserSuite" title="testngpack.tests.AmazonSearchTest" class="method navigator-link" hash-for-method="homePageLoads">homePageLoads</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-CrossBrowserSuite" title="testngpack.tests.AmazonSearchTest" class="method navigator-link" hash-for-method="searchProduct(Books, Harry Potter)">searchProduct(Books, Harry Potter)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-CrossBrowserSuite" title="testngpack.tests.AmazonSearchTest" class="method navigator-link" hash-for-method="searchProduct(Electronics, Bluetooth headphones)">searchProduct(Electronics, Bluetooth headphones)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-CrossBrowserSuite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -117,50 +132,55 @@
     </div> <!-- navigator-root -->
     <div class="wrapper">
       <div class="main-panel-root">
-        <div panel-name="suite-Suite" class="panel Suite">
-          <div class="suite-Suite-class-failed">
+        <div panel-name="suite-CrossBrowserSuite" class="panel CrossBrowserSuite">
+          <div class="suite-CrossBrowserSuite-class-passed">
             <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">testngpack.NewTest</span>
+              <img src="passed.png"/>
+              <span class="class-name">testngpack.tests.AmazonSearchTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="actualTest">
-                  </a> <!-- actualTest -->
-                  <span class="method-name">actualTest</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#searchDropdownBox&quot;}
-  (Session info: chrome=152.0.7977.65)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
-Build info: version: &apos;4.47.0&apos;, revision: &apos;9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.12&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [755fbbe9c49094ab937349276c4b383a, findElement {using=id, value=searchDropdownBox}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 152.0.7977.65, chrome: {chromedriverVersion: 152.0.7977.64 (506c834eccea..., userDataDir: C:\Users\skdhi\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58709}, goog:processID: 32184, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58709/devtoo..., se:cdpVersion: 152.0.7977.65, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 755fbbe9c49094ab937349276c4b383a
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:169)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:143)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:196)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:217)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:653)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:173)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:417)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:411)
-	at testngpack.BaseClass.getLocatorType(BaseClass.java:145)
-	at testngpack.BaseClass.selectOption(BaseClass.java:103)
-	at testngpack.NewTest.actualTest(NewTest.java:28)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 27 stack frames
-</div> <!-- stack-trace -->
+                  <a name="homePageLoads">
+                  </a> <!-- homePageLoads -->
+                  <span class="method-name">homePageLoads</span>
+                  <em>
+(Home page loads on the browser passed from the suite xml)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="homePageLoads">
+                  </a> <!-- homePageLoads -->
+                  <span class="method-name">homePageLoads</span>
+                  <em>
+(Home page loads on the browser passed from the suite xml)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="searchProduct(Books, Harry Potter)">
+                  </a> <!-- searchProduct(Books, Harry Potter) -->
+                  <span class="method-name">searchProduct</span>
+                  <span class="parameters">(Books,Harry Potter)</span>
+                  <em>
+(Search a product on Amazon using xml-driven parameters)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="searchProduct(Electronics, Bluetooth headphones)">
+                  </a> <!-- searchProduct(Electronics, Bluetooth headphones) -->
+                  <span class="method-name">searchProduct</span>
+                  <span class="parameters">(Electronics,Bluetooth headphones)</span>
+                  <em>
+(Search a product on Amazon using xml-driven parameters)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Suite-class-failed -->
-        </div> <!-- panel Suite -->
-        <div panel-name="test-xml-Suite" class="panel">
+          </div> <!-- suite-CrossBrowserSuite-class-passed -->
+        </div> <!-- panel CrossBrowserSuite -->
+        <div panel-name="test-xml-CrossBrowserSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">D:\Selenium\TestNG-P010-TestNg\testng.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
@@ -168,124 +188,166 @@ Session ID: 755fbbe9c49094ab937349276c4b383a
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite name=&quot;Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;ChromeTest&quot;&gt;
+&lt;suite thread-count=&quot;3&quot; parallel=&quot;tests&quot; name=&quot;CrossBrowserSuite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;parameter name=&quot;headless&quot; value=&quot;false&quot;/&gt;
+  &lt;test thread-count=&quot;3&quot; parallel=&quot;tests&quot; name=&quot;ChromeTest&quot;&gt;
+    &lt;parameter name=&quot;searchTerm&quot; value=&quot;Harry Potter&quot;/&gt;
     &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
+    &lt;parameter name=&quot;category&quot; value=&quot;Books&quot;/&gt;
+    &lt;parameter name=&quot;url&quot; value=&quot;amazon&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;testngpack.NewTest&quot;/&gt;
+      &lt;class name=&quot;testngpack.tests.AmazonSearchTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- ChromeTest --&gt;
-&lt;/suite&gt; &lt;!-- Suite --&gt;
+  &lt;test thread-count=&quot;3&quot; parallel=&quot;tests&quot; name=&quot;EdgeTest&quot;&gt;
+    &lt;parameter name=&quot;searchTerm&quot; value=&quot;Bluetooth headphones&quot;/&gt;
+    &lt;parameter name=&quot;browser&quot; value=&quot;edge&quot;/&gt;
+    &lt;parameter name=&quot;category&quot; value=&quot;Electronics&quot;/&gt;
+    &lt;parameter name=&quot;url&quot; value=&quot;amazon&quot;/&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;testngpack.tests.AmazonSearchTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- EdgeTest --&gt;
+&lt;/suite&gt; &lt;!-- CrossBrowserSuite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="testlist-Suite" class="panel">
+        <div panel-name="testlist-CrossBrowserSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Tests for Suite</span>
+            <span class="header-content">Tests for CrossBrowserSuite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
                 <span class="test-name">ChromeTest (1 class)</span>
               </li>
+              <li>
+                <span class="test-name">EdgeTest (1 class)</span>
+              </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="group-Suite" class="panel">
+        <div panel-name="group-CrossBrowserSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Groups for Suite</span>
+            <span class="header-content">Groups for CrossBrowserSuite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="times-Suite" class="panel">
+        <div panel-name="times-CrossBrowserSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Times for Suite</span>
+            <span class="header-content">Times for CrossBrowserSuite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="times-div">
               <script type="text/javascript">
-suiteTableInitFunctions.push('tableData_Suite');
-function tableData_Suite() {
+suiteTableInitFunctions.push('tableData_CrossBrowserSuite');
+function tableData_CrossBrowserSuite() {
 var data = new google.visualization.DataTable();
 data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(4);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'actualTest')
-data.setCell(0, 2, 'testngpack.NewTest')
-data.setCell(0, 3, 10167);
-window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
+data.setCell(0, 1, 'searchProduct')
+data.setCell(0, 2, 'testngpack.tests.AmazonSearchTest')
+data.setCell(0, 3, 5880);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'searchProduct')
+data.setCell(1, 2, 'testngpack.tests.AmazonSearchTest')
+data.setCell(1, 3, 4854);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'homePageLoads')
+data.setCell(2, 2, 'testngpack.tests.AmazonSearchTest')
+data.setCell(2, 3, 1964);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'homePageLoads')
+data.setCell(3, 2, 'testngpack.tests.AmazonSearchTest')
+data.setCell(3, 3, 1756);
+window.suiteTableData['CrossBrowserSuite']= { tableData: data, tableDiv: 'times-div-CrossBrowserSuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 10 seconds</span>
-              <div id="times-div-Suite">
-              </div> <!-- times-div-Suite -->
+              <span class="suite-total-time">Total running time: 12 seconds</span>
+              <div id="times-div-CrossBrowserSuite">
+              </div> <!-- times-div-CrossBrowserSuite -->
             </div> <!-- times-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="reporter-Suite" class="panel">
+        <div panel-name="reporter-CrossBrowserSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Reporter output for Suite</span>
+            <span class="header-content">Reporter output for CrossBrowserSuite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="ignored-methods-Suite" class="panel">
+        <div panel-name="ignored-methods-CrossBrowserSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="chronological-Suite" class="panel">
+        <div panel-name="chronological-CrossBrowserSuite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">Methods in chronological order</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">testngpack.NewTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">testngpack.tests.AmazonSearchTest</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
-                <span class="method-name">beforeSuite</span>
+                <span class="method-name">loadConfiguration</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
-              <div class="configuration-test before">
-                <span class="method-name">beforeTest</span>
-                <span class="method-start">22 ms</span>
-              </div> <!-- configuration-test before -->
-              <div class="configuration-class before">
-                <span class="method-name">beforeClass</span>
-                <span class="method-start">39 ms</span>
-              </div> <!-- configuration-class before -->
               <div class="configuration-method before">
-                <span class="method-name">beforeMethod(chrome, facebook)</span>
-                <span class="method-start">46 ms</span>
+                <span class="method-name">setUp(chrome, amazon, false, public void testngpack.tests.AmazonSearchTest.homePageLoads())</span>
+                <span class="method-start">111 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp(edge, amazon, false, public void testngpack.tests.AmazonSearchTest.homePageLoads())</span>
+                <span class="method-start">111 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">actualTest</span>
-                <span class="method-start">5194 ms</span>
+                <span class="method-name">homePageLoads</span>
+                <span class="method-start">2335 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">homePageLoads</span>
+                <span class="method-start">2339 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">afterMethod</span>
-                <span class="method-start">15384 ms</span>
+                <span class="method-name">tearDown</span>
+                <span class="method-start">4104 ms</span>
               </div> <!-- configuration-method after -->
-              <div class="configuration-class after">
-                <span class="method-name">afterClass</span>
-                <span class="method-start">16145 ms</span>
-              </div> <!-- configuration-class after -->
-              <div class="configuration-test after">
-                <span class="method-name">afterTest</span>
-                <span class="method-start">16148 ms</span>
-              </div> <!-- configuration-test after -->
-              <div class="configuration-suite after">
-                <span class="method-name">afterSuite</span>
-                <span class="method-start">16198 ms</span>
-              </div> <!-- configuration-suite after -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">4303 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp(edge, amazon, false, public void testngpack.tests.AmazonSearchTest.searchProduct(java.lang.String,ja...)</span>
+                <span class="method-start">4528 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp(chrome, amazon, false, public void testngpack.tests.AmazonSearchTest.searchProduct(java.lang.String,...)</span>
+                <span class="method-start">4542 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">searchProduct(Books, Harry Potter)</span>
+                <span class="method-start">6169 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">searchProduct(Electronics, Bluetooth headphones)</span>
+                <span class="method-start">6221 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">11029 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">12104 ms</span>
+              </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

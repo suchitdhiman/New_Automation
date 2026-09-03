@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-08-30T22:54:34 IST" name="Suite" finished-at="2026-08-30T22:54:50 IST" duration-ms="16139">
+  <suite started-at="2026-09-03T09:21:23 IST" name="CrossBrowserSuite" finished-at="2026-09-03T09:21:35 IST" duration-ms="12245">
     <groups>
     </groups>
-    <test started-at="2026-08-30T22:54:34 IST" name="ChromeTest" finished-at="2026-08-30T22:54:50 IST" duration-ms="16139">
-      <class name="testngpack.NewTest">
-        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:testngpack.NewTest@43bc63a3]" started-at="2026-08-30T22:54:34 IST" name="beforeSuite" finished-at="2026-08-30T22:54:34 IST" duration-ms="9" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeSuite -->
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:testngpack.NewTest@43bc63a3]" started-at="2026-08-30T22:54:34 IST" name="beforeTest" finished-at="2026-08-30T22:54:34 IST" duration-ms="1" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeTest -->
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:testngpack.NewTest@43bc63a3]" started-at="2026-08-30T22:54:34 IST" name="beforeClass" finished-at="2026-08-30T22:54:34 IST" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeClass -->
-        <test-method is-config="true" signature="beforeMethod(java.lang.String,java.lang.String)[pri:0, instance:testngpack.NewTest@43bc63a3]" started-at="2026-08-30T22:54:34 IST" name="beforeMethod" finished-at="2026-08-30T22:54:39 IST" duration-ms="5148" status="PASS">
+    <test started-at="2026-09-03T09:21:23 IST" name="ChromeTest" finished-at="2026-09-03T09:21:34 IST" duration-ms="11273">
+      <class name="testngpack.tests.AmazonSearchTest">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String,java.lang.String,java.lang.reflect.Method)[pri:0, instance:testngpack.tests.AmazonSearchTest@557caf28]" started-at="2026-09-03T09:21:23 IST" name="setUp" finished-at="2026-09-03T09:21:25 IST" duration-ms="2221" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -28,101 +16,166 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[facebook]]>
+                <![CDATA[amazon]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[public void testngpack.tests.AmazonSearchTest.homePageLoads()]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method signature="actualTest()[pri:0, instance:testngpack.NewTest@43bc63a3]" started-at="2026-08-30T22:54:39 IST" name="actualTest" finished-at="2026-08-30T22:54:49 IST" duration-ms="10167" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchElementException">
-            <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"css selector","selector":"#searchDropdownBox"}
-  (Session info: chrome=152.0.7977.65)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
-Build info: version: '4.47.0', revision: '9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [755fbbe9c49094ab937349276c4b383a, findElement {using=id, value=searchDropdownBox}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 152.0.7977.65, chrome: {chromedriverVersion: 152.0.7977.64 (506c834eccea..., userDataDir: C:\Users\skdhi\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58709}, goog:processID: 32184, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58709/devtoo..., se:cdpVersion: 152.0.7977.65, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 755fbbe9c49094ab937349276c4b383a]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#searchDropdownBox"}
-  (Session info: chrome=152.0.7977.65)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
-Build info: version: '4.47.0', revision: '9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [755fbbe9c49094ab937349276c4b383a, findElement {using=id, value=searchDropdownBox}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 152.0.7977.65, chrome: {chromedriverVersion: 152.0.7977.64 (506c834eccea..., userDataDir: C:\Users\skdhi\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58709}, goog:processID: 32184, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58709/devtoo..., se:cdpVersion: 152.0.7977.65, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 755fbbe9c49094ab937349276c4b383a
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:169)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:143)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:196)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:217)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:653)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:173)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:417)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:411)
-at testngpack.BaseClass.getLocatorType(BaseClass.java:145)
-at testngpack.BaseClass.selectOption(BaseClass.java:103)
-at testngpack.NewTest.actualTest(NewTest.java:28)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:739)
-at org.testng.TestRunner.run(TestRunner.java:614)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+        </test-method> <!-- setUp -->
+        <test-method signature="homePageLoads()[pri:0, instance:testngpack.tests.AmazonSearchTest@557caf28]" started-at="2026-09-03T09:21:25 IST" name="homePageLoads" description="Home page loads on the browser passed from the suite xml" finished-at="2026-09-03T09:21:27 IST" duration-ms="1964" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- actualTest -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:testngpack.NewTest@43bc63a3]" started-at="2026-08-30T22:54:49 IST" name="afterMethod" finished-at="2026-08-30T22:54:50 IST" duration-ms="759" status="PASS">
+        </test-method> <!-- homePageLoads -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testngpack.tests.AmazonSearchTest@557caf28]" started-at="2026-09-03T09:21:27 IST" name="tearDown" finished-at="2026-09-03T09:21:28 IST" duration-ms="237" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:testngpack.NewTest@43bc63a3]" started-at="2026-08-30T22:54:50 IST" name="afterClass" finished-at="2026-08-30T22:54:50 IST" duration-ms="1" status="PASS">
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String,java.lang.String,java.lang.reflect.Method)[pri:0, instance:testngpack.tests.AmazonSearchTest@557caf28]" started-at="2026-09-03T09:21:28 IST" name="setUp" finished-at="2026-09-03T09:21:29 IST" duration-ms="1627" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[amazon]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[public void testngpack.tests.AmazonSearchTest.searchProduct(java.lang.String,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- afterClass -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:testngpack.NewTest@43bc63a3]" started-at="2026-08-30T22:54:50 IST" name="afterTest" finished-at="2026-08-30T22:54:50 IST" duration-ms="1" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method signature="searchProduct(java.lang.String,java.lang.String)[pri:0, instance:testngpack.tests.AmazonSearchTest@557caf28]" started-at="2026-09-03T09:21:29 IST" name="searchProduct" description="Search a product on Amazon using xml-driven parameters" finished-at="2026-09-03T09:21:34 IST" duration-ms="4854" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Books]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Harry Potter]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- afterTest -->
-        <test-method is-config="true" signature="afterSuite()[pri:0, instance:testngpack.NewTest@43bc63a3]" started-at="2026-08-30T22:54:50 IST" name="afterSuite" finished-at="2026-08-30T22:54:50 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- searchProduct -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testngpack.tests.AmazonSearchTest@557caf28]" started-at="2026-09-03T09:21:34 IST" name="tearDown" finished-at="2026-09-03T09:21:34 IST" duration-ms="328" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- afterSuite -->
-      </class> <!-- testngpack.NewTest -->
+        </test-method> <!-- tearDown -->
+      </class> <!-- testngpack.tests.AmazonSearchTest -->
     </test> <!-- ChromeTest -->
-  </suite> <!-- Suite -->
+    <test started-at="2026-09-03T09:21:23 IST" name="EdgeTest" finished-at="2026-09-03T09:21:35 IST" duration-ms="12245">
+      <class name="testngpack.tests.AmazonSearchTest">
+        <test-method is-config="true" signature="loadConfiguration()[pri:0, instance:testngpack.tests.AmazonSearchTest@61322f9d]" started-at="2026-09-03T09:21:23 IST" name="loadConfiguration" finished-at="2026-09-03T09:21:23 IST" duration-ms="83" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loadConfiguration -->
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String,java.lang.String,java.lang.reflect.Method)[pri:0, instance:testngpack.tests.AmazonSearchTest@61322f9d]" started-at="2026-09-03T09:21:23 IST" name="setUp" finished-at="2026-09-03T09:21:25 IST" duration-ms="2228" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[edge]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[amazon]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[public void testngpack.tests.AmazonSearchTest.homePageLoads()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="homePageLoads()[pri:0, instance:testngpack.tests.AmazonSearchTest@61322f9d]" started-at="2026-09-03T09:21:25 IST" name="homePageLoads" description="Home page loads on the browser passed from the suite xml" finished-at="2026-09-03T09:21:27 IST" duration-ms="1756" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- homePageLoads -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testngpack.tests.AmazonSearchTest@61322f9d]" started-at="2026-09-03T09:21:27 IST" name="tearDown" finished-at="2026-09-03T09:21:28 IST" duration-ms="421" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String,java.lang.String,java.lang.reflect.Method)[pri:0, instance:testngpack.tests.AmazonSearchTest@61322f9d]" started-at="2026-09-03T09:21:28 IST" name="setUp" finished-at="2026-09-03T09:21:29 IST" duration-ms="1693" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[edge]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[amazon]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[public void testngpack.tests.AmazonSearchTest.searchProduct(java.lang.String,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="searchProduct(java.lang.String,java.lang.String)[pri:0, instance:testngpack.tests.AmazonSearchTest@61322f9d]" started-at="2026-09-03T09:21:29 IST" name="searchProduct" description="Search a product on Amazon using xml-driven parameters" finished-at="2026-09-03T09:21:35 IST" duration-ms="5880" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Electronics]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Bluetooth headphones]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchProduct -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testngpack.tests.AmazonSearchTest@61322f9d]" started-at="2026-09-03T09:21:35 IST" name="tearDown" finished-at="2026-09-03T09:21:35 IST" duration-ms="229" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- testngpack.tests.AmazonSearchTest -->
+    </test> <!-- EdgeTest -->
+  </suite> <!-- CrossBrowserSuite -->
 </testng-results>

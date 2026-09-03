@@ -1,0 +1,545 @@
+2026-09-03 15:12:44 [main] INFO  BaseClass:80 - Log4j configured
+2026-09-03 15:12:44 [main] INFO  BaseClass:84 - Extent Reports initialized
+2026-09-03 15:12:44 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:12:44 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:12:45 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:12:45 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:12:48 [main] INFO  AuthenticationTests:64 - TEST: Valid Login - Starting
+2026-09-03 15:12:48 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:12:48 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:12:49 [main] INFO  BaseClass:124 - Typing text in username_id: student
+2026-09-03 15:12:49 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:12:49 [main] INFO  AuthenticationTests:71 - Username entered
+2026-09-03 15:12:49 [main] INFO  BaseClass:124 - Typing text in password_id: Password123
+2026-09-03 15:12:49 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:12:49 [main] INFO  AuthenticationTests:74 - Password entered
+2026-09-03 15:12:49 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:12:49 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:12:53 [main] INFO  BaseClass:201 - Element found: dashboard_xpath
+2026-09-03 15:12:53 [main] INFO  AuthenticationTests:82 - TEST: Valid Login - PASSED
+2026-09-03 15:12:53 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:12:53 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:12:53 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:12:54 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:12:54 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:12:56 [main] INFO  AuthenticationTests:96 - TEST: Invalid Username - Starting
+2026-09-03 15:12:56 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:12:56 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:12:57 [main] INFO  BaseClass:124 - Typing text in username_id: invaliduser123
+2026-09-03 15:12:57 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:12:57 [main] INFO  BaseClass:124 - Typing text in password_id: Password123
+2026-09-03 15:12:58 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:12:58 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:12:58 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:13:00 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:13:00 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:13:00 [main] INFO  BaseClass:167 - Retrieved text from error_message_xpath: Your username is invalid!
+2026-09-03 15:13:00 [main] INFO  AuthenticationTests:114 - TEST: Invalid Username - PASSED
+2026-09-03 15:13:00 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:13:00 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:13:00 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:13:01 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:13:01 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:13:03 [main] INFO  AuthenticationTests:128 - TEST: Invalid Password - Starting
+2026-09-03 15:13:03 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:13:03 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:13:04 [main] INFO  BaseClass:124 - Typing text in username_id: student
+2026-09-03 15:13:05 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:13:05 [main] INFO  BaseClass:124 - Typing text in password_id: wrongPassword123
+2026-09-03 15:13:05 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:13:05 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:13:05 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:13:07 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:13:07 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:13:07 [main] INFO  BaseClass:167 - Retrieved text from error_message_xpath: Your password is invalid!
+2026-09-03 15:13:07 [main] INFO  AuthenticationTests:146 - TEST: Invalid Password - PASSED
+2026-09-03 15:13:07 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:13:07 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:13:07 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:13:08 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:13:08 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:13:09 [main] INFO  AuthenticationTests:160 - TEST: Empty Username - Starting
+2026-09-03 15:13:09 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:13:10 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:13:12 [main] INFO  BaseClass:124 - Typing text in password_id: Password123
+2026-09-03 15:13:12 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:13:12 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:13:12 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:13:14 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:13:14 [main] INFO  AuthenticationTests:173 - TEST: Empty Username - PASSED
+2026-09-03 15:13:14 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:13:14 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:13:14 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:13:15 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:13:15 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:13:18 [main] INFO  AuthenticationTests:187 - TEST: Empty Password - Starting
+2026-09-03 15:13:18 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:13:18 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:13:19 [main] INFO  BaseClass:124 - Typing text in username_id: student
+2026-09-03 15:13:19 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:13:19 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:13:19 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:13:21 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:13:21 [main] INFO  AuthenticationTests:200 - TEST: Empty Password - PASSED
+2026-09-03 15:13:21 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:13:22 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:13:22 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:13:22 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:13:22 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:13:25 [main] INFO  AuthenticationTests:214 - TEST: SQL Injection Attempt - Starting
+2026-09-03 15:13:25 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:13:25 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:13:26 [main] INFO  BaseClass:124 - Typing text in username_id: ' OR '1'='1
+2026-09-03 15:13:26 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:13:26 [main] INFO  BaseClass:124 - Typing text in password_id: ' OR '1'='1
+2026-09-03 15:13:26 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:13:26 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:13:26 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:13:38 [main] WARN  BaseClass:204 - Element not found: dashboard_xpath
+2026-09-03 15:13:38 [main] INFO  AuthenticationTests:228 - TEST: SQL Injection Attempt - PASSED (Security verified)
+2026-09-03 15:13:38 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:13:38 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:13:38 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:13:39 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:13:39 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:13:42 [main] INFO  AuthenticationTests:242 - TEST: Case Sensitivity - Starting
+2026-09-03 15:13:42 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:13:42 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:13:44 [main] INFO  BaseClass:124 - Typing text in username_id: STUDENT
+2026-09-03 15:13:44 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:13:44 [main] INFO  BaseClass:124 - Typing text in password_id: Password123
+2026-09-03 15:13:44 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:13:44 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:13:44 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:13:56 [main] WARN  BaseClass:204 - Element not found: dashboard_xpath
+2026-09-03 15:13:56 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:13:56 [main] INFO  AuthenticationTests:259 - TEST: Case Sensitivity - PASSED
+2026-09-03 15:13:56 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:13:57 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:13:57 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:13:58 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:13:58 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:14:00 [main] INFO  AuthenticationTests:273 - TEST: Logout - Starting
+2026-09-03 15:14:00 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:14:00 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:14:01 [main] INFO  BaseClass:124 - Typing text in username_id: student
+2026-09-03 15:14:01 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:14:02 [main] INFO  BaseClass:124 - Typing text in password_id: Password123
+2026-09-03 15:14:02 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:14:02 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:14:02 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:14:05 [main] INFO  BaseClass:201 - Element found: dashboard_xpath
+2026-09-03 15:14:05 [main] INFO  BaseClass:153 - Clicking on element: logout_btn_xpath
+2026-09-03 15:14:05 [main] INFO  BaseClass:201 - Element found: logout_btn_xpath
+2026-09-03 15:14:08 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:14:08 [main] INFO  AuthenticationTests:292 - TEST: Logout - PASSED
+2026-09-03 15:14:08 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:14:08 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:14:08 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:14:09 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:14:09 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:14:12 [main] INFO  AuthenticationTests:306 - TEST: Special Characters - Starting
+2026-09-03 15:14:12 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:14:12 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:14:13 [main] INFO  BaseClass:124 - Typing text in username_id: student
+2026-09-03 15:14:13 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:14:13 [main] INFO  BaseClass:124 - Typing text in password_id: !@#$%^&*()
+2026-09-03 15:14:13 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:14:13 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:14:13 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:14:15 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:14:15 [main] INFO  AuthenticationTests:320 - TEST: Special Characters - PASSED
+2026-09-03 15:14:15 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:14:15 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:14:15 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:14:16 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:14:16 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:14:18 [main] INFO  AuthenticationTests:335 - TEST: Data-driven Login with username: student
+2026-09-03 15:14:18 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:14:18 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:14:19 [main] INFO  BaseClass:124 - Typing text in username_id: student
+2026-09-03 15:14:19 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:14:20 [main] INFO  BaseClass:124 - Typing text in password_id: Password123
+2026-09-03 15:14:20 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:14:20 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:14:20 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:14:24 [main] INFO  BaseClass:201 - Element found: dashboard_xpath
+2026-09-03 15:14:24 [main] INFO  AuthenticationTests:350 - TEST: Data-driven Login - PASSED
+2026-09-03 15:14:24 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:14:24 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:14:24 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:14:25 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:14:25 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:14:27 [main] INFO  AuthenticationTests:335 - TEST: Data-driven Login with username: invaliduser
+2026-09-03 15:14:27 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:14:27 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:14:28 [main] INFO  BaseClass:124 - Typing text in username_id: invaliduser
+2026-09-03 15:14:28 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:14:28 [main] INFO  BaseClass:124 - Typing text in password_id: password123
+2026-09-03 15:14:29 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:14:29 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:14:29 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:14:41 [main] WARN  BaseClass:204 - Element not found: dashboard_xpath
+2026-09-03 15:14:41 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:14:41 [main] INFO  AuthenticationTests:355 - TEST: Data-driven Login - PASSED (Expected failure)
+2026-09-03 15:14:41 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:14:41 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:14:41 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:14:42 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:14:42 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:14:44 [main] INFO  AuthenticationTests:335 - TEST: Data-driven Login with username: student
+2026-09-03 15:14:44 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:14:44 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:14:45 [main] INFO  BaseClass:124 - Typing text in username_id: student
+2026-09-03 15:14:45 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:14:46 [main] INFO  BaseClass:124 - Typing text in password_id: wrongpassword
+2026-09-03 15:14:46 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:14:46 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:14:46 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:14:59 [main] WARN  BaseClass:204 - Element not found: dashboard_xpath
+2026-09-03 15:14:59 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:14:59 [main] INFO  AuthenticationTests:355 - TEST: Data-driven Login - PASSED (Expected failure)
+2026-09-03 15:14:59 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:14:59 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:14:59 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:15:00 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:15:00 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:15:02 [main] INFO  AuthenticationTests:335 - TEST: Data-driven Login with username: 
+2026-09-03 15:15:02 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:15:02 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:15:03 [main] INFO  BaseClass:124 - Typing text in username_id: 
+2026-09-03 15:15:03 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:15:04 [main] INFO  BaseClass:124 - Typing text in password_id: Password123
+2026-09-03 15:15:04 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:15:04 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:15:04 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:15:16 [main] WARN  BaseClass:204 - Element not found: dashboard_xpath
+2026-09-03 15:15:16 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:15:16 [main] INFO  AuthenticationTests:355 - TEST: Data-driven Login - PASSED (Expected failure)
+2026-09-03 15:15:16 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:15:17 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:15:17 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:15:18 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:15:18 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:15:20 [main] INFO  AuthenticationTests:335 - TEST: Data-driven Login with username: student
+2026-09-03 15:15:20 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:15:20 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:15:21 [main] INFO  BaseClass:124 - Typing text in username_id: student
+2026-09-03 15:15:21 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:15:21 [main] INFO  BaseClass:124 - Typing text in password_id: 
+2026-09-03 15:15:21 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:15:21 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:15:21 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:15:34 [main] WARN  BaseClass:204 - Element not found: dashboard_xpath
+2026-09-03 15:15:34 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:15:34 [main] INFO  AuthenticationTests:355 - TEST: Data-driven Login - PASSED (Expected failure)
+2026-09-03 15:15:34 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:15:34 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:15:34 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:15:35 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:15:35 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:15:38 [main] INFO  AuthenticationTests:335 - TEST: Data-driven Login with username: admin
+2026-09-03 15:15:38 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:15:38 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:15:39 [main] INFO  BaseClass:124 - Typing text in username_id: admin
+2026-09-03 15:15:39 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:15:39 [main] INFO  BaseClass:124 - Typing text in password_id: admin
+2026-09-03 15:15:39 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:15:39 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:15:39 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:15:52 [main] WARN  BaseClass:204 - Element not found: dashboard_xpath
+2026-09-03 15:15:52 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:15:52 [main] INFO  AuthenticationTests:355 - TEST: Data-driven Login - PASSED (Expected failure)
+2026-09-03 15:15:52 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:15:52 [main] INFO  AuthenticationTests:47 - Launching Browser...
+2026-09-03 15:15:52 [main] INFO  BaseClass:92 - Launching browser: chrome
+2026-09-03 15:15:53 [main] INFO  BaseClass:106 - Browser launched and configured
+2026-09-03 15:15:53 [main] INFO  BaseClass:114 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:15:55 [main] INFO  AuthenticationTests:335 - TEST: Data-driven Login with username: testuser
+2026-09-03 15:15:55 [main] INFO  BaseClass:153 - Clicking on element: login_btn_xpath
+2026-09-03 15:15:55 [main] INFO  BaseClass:201 - Element found: login_btn_xpath
+2026-09-03 15:15:56 [main] INFO  BaseClass:124 - Typing text in username_id: testuser
+2026-09-03 15:15:56 [main] INFO  BaseClass:201 - Element found: username_id
+2026-09-03 15:15:56 [main] INFO  BaseClass:124 - Typing text in password_id: Test@123
+2026-09-03 15:15:56 [main] INFO  BaseClass:201 - Element found: password_id
+2026-09-03 15:15:56 [main] INFO  BaseClass:153 - Clicking on element: signin_btn_id
+2026-09-03 15:15:56 [main] INFO  BaseClass:201 - Element found: signin_btn_id
+2026-09-03 15:16:09 [main] WARN  BaseClass:204 - Element not found: dashboard_xpath
+2026-09-03 15:16:09 [main] INFO  BaseClass:201 - Element found: error_message_xpath
+2026-09-03 15:16:09 [main] INFO  AuthenticationTests:355 - TEST: Data-driven Login - PASSED (Expected failure)
+2026-09-03 15:16:09 [main] INFO  AuthenticationTests:54 - Test execution completed. Closing browser...
+2026-09-03 15:16:09 [main] INFO  AuthenticationTests:36 - ========== Authentication Test Suite Ended ==========
+2026-09-03 15:31:04 [main] INFO  BaseClass:101 - Log4j configured
+2026-09-03 15:31:04 [main] INFO  BaseClass:104 - Extent Reports initialized
+2026-09-03 15:31:04 [TestNG-tests-4] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:04 [TestNG-tests-1] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:04 [TestNG-tests-1] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:04 [TestNG-tests-2] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:04 [TestNG-tests-2] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:04 [TestNG-tests-3] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:04 [TestNG-tests-3] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:04 [TestNG-tests-4] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:07 [TestNG-tests-2] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:07 [TestNG-tests-2] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:07 [TestNG-tests-1] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:07 [TestNG-tests-1] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:07 [TestNG-tests-4] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:07 [TestNG-tests-3] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:07 [TestNG-tests-3] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:07 [TestNG-tests-4] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:10 [TestNG-tests-3] INFO  AuthenticationTests:269 - TEST: Logout - Starting
+2026-09-03 15:31:10 [TestNG-tests-3] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:10 [TestNG-tests-3] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:10 [TestNG-tests-1] INFO  AuthenticationTests:60 - TEST: Valid Login - Starting
+2026-09-03 15:31:10 [TestNG-tests-1] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:10 [TestNG-tests-1] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:10 [TestNG-tests-4] INFO  AuthenticationTests:331 - TEST: Data-driven Login with username: student
+2026-09-03 15:31:10 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:10 [TestNG-tests-4] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:10 [TestNG-tests-2] INFO  AuthenticationTests:210 - TEST: SQL Injection Attempt - Starting
+2026-09-03 15:31:10 [TestNG-tests-2] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:10 [TestNG-tests-2] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:11 [TestNG-tests-3] INFO  BaseClass:151 - Typing text in username_id: student
+2026-09-03 15:31:11 [TestNG-tests-1] INFO  BaseClass:151 - Typing text in username_id: student
+2026-09-03 15:31:11 [TestNG-tests-3] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:31:11 [TestNG-tests-1] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:31:11 [TestNG-tests-2] INFO  BaseClass:151 - Typing text in username_id: ' OR '1'='1
+2026-09-03 15:31:11 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in username_id: student
+2026-09-03 15:31:11 [TestNG-tests-2] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:31:11 [TestNG-tests-4] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:31:11 [TestNG-tests-3] INFO  BaseClass:151 - Typing text in password_id: Password123
+2026-09-03 15:31:11 [TestNG-tests-3] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:31:11 [TestNG-tests-1] INFO  AuthenticationTests:67 - Username entered
+2026-09-03 15:31:11 [TestNG-tests-1] INFO  BaseClass:151 - Typing text in password_id: Password123
+2026-09-03 15:31:11 [TestNG-tests-1] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:31:11 [TestNG-tests-2] INFO  BaseClass:151 - Typing text in password_id: ' OR '1'='1
+2026-09-03 15:31:12 [TestNG-tests-2] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:31:12 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in password_id: Password123
+2026-09-03 15:31:12 [TestNG-tests-4] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:31:12 [TestNG-tests-3] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:12 [TestNG-tests-2] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:12 [TestNG-tests-3] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:12 [TestNG-tests-2] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:12 [TestNG-tests-1] INFO  AuthenticationTests:70 - Password entered
+2026-09-03 15:31:12 [TestNG-tests-1] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:12 [TestNG-tests-1] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:12 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:12 [TestNG-tests-4] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:16 [TestNG-tests-1] INFO  BaseClass:208 - Element found: dashboard_xpath
+2026-09-03 15:31:16 [TestNG-tests-1] INFO  AuthenticationTests:78 - TEST: Valid Login - PASSED
+2026-09-03 15:31:16 [TestNG-tests-1] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:31:16 [TestNG-tests-3] INFO  BaseClass:208 - Element found: dashboard_xpath
+2026-09-03 15:31:16 [TestNG-tests-3] INFO  BaseClass:174 - Clicking on element: logout_btn_xpath
+2026-09-03 15:31:16 [TestNG-tests-4] INFO  BaseClass:208 - Element found: dashboard_xpath
+2026-09-03 15:31:16 [TestNG-tests-4] INFO  AuthenticationTests:346 - TEST: Data-driven Login - PASSED
+2026-09-03 15:31:16 [TestNG-tests-3] INFO  BaseClass:208 - Element found: logout_btn_xpath
+2026-09-03 15:31:16 [TestNG-tests-4] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:31:16 [TestNG-tests-4] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:16 [TestNG-tests-4] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:17 [TestNG-tests-1] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:17 [TestNG-tests-1] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:18 [TestNG-tests-4] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:18 [TestNG-tests-4] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:18 [TestNG-tests-1] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:18 [TestNG-tests-1] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:19 [TestNG-tests-3] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:19 [TestNG-tests-3] INFO  AuthenticationTests:288 - TEST: Logout - PASSED
+2026-09-03 15:31:19 [TestNG-tests-3] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:31:19 [TestNG-tests-3] INFO  AuthenticationTests:32 - ========== Authentication Test Suite Ended (thread: TestNG-tests-3) ==========
+2026-09-03 15:31:20 [TestNG-tests-1] INFO  AuthenticationTests:92 - TEST: Invalid Username - Starting
+2026-09-03 15:31:20 [TestNG-tests-1] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:20 [TestNG-tests-1] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:20 [TestNG-tests-4] INFO  AuthenticationTests:331 - TEST: Data-driven Login with username: invaliduser
+2026-09-03 15:31:20 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:20 [TestNG-tests-4] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:21 [TestNG-tests-1] INFO  BaseClass:151 - Typing text in username_id: invaliduser123
+2026-09-03 15:31:21 [TestNG-tests-1] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:31:21 [TestNG-tests-1] INFO  BaseClass:151 - Typing text in password_id: Password123
+2026-09-03 15:31:21 [TestNG-tests-1] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:31:21 [TestNG-tests-1] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:21 [TestNG-tests-1] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:21 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in username_id: invaliduser
+2026-09-03 15:31:21 [TestNG-tests-4] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:31:21 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in password_id: password123
+2026-09-03 15:31:21 [TestNG-tests-4] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:31:21 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:21 [TestNG-tests-4] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:23 [TestNG-tests-1] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:31:23 [TestNG-tests-1] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:31:23 [TestNG-tests-1] INFO  BaseClass:185 - Retrieved text from error_message_xpath: Your username is invalid!
+2026-09-03 15:31:23 [TestNG-tests-1] INFO  AuthenticationTests:110 - TEST: Invalid Username - PASSED
+2026-09-03 15:31:23 [TestNG-tests-1] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:31:24 [TestNG-tests-1] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:24 [TestNG-tests-1] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:24 [TestNG-tests-2] WARN  BaseClass:211 - Element not found: dashboard_xpath
+2026-09-03 15:31:24 [TestNG-tests-2] INFO  AuthenticationTests:224 - TEST: SQL Injection Attempt - PASSED (Security verified)
+2026-09-03 15:31:24 [TestNG-tests-2] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:31:25 [TestNG-tests-1] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:25 [TestNG-tests-1] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:25 [TestNG-tests-2] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:25 [TestNG-tests-2] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:26 [TestNG-tests-2] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:26 [TestNG-tests-2] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:27 [TestNG-tests-1] INFO  AuthenticationTests:124 - TEST: Invalid Password - Starting
+2026-09-03 15:31:27 [TestNG-tests-1] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:27 [TestNG-tests-1] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:28 [TestNG-tests-1] INFO  BaseClass:151 - Typing text in username_id: student
+2026-09-03 15:31:28 [TestNG-tests-1] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:31:28 [TestNG-tests-1] INFO  BaseClass:151 - Typing text in password_id: wrongPassword123
+2026-09-03 15:31:29 [TestNG-tests-1] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:31:29 [TestNG-tests-1] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:29 [TestNG-tests-1] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:29 [TestNG-tests-2] INFO  AuthenticationTests:238 - TEST: Case Sensitivity - Starting
+2026-09-03 15:31:29 [TestNG-tests-2] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:29 [TestNG-tests-2] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:30 [TestNG-tests-2] INFO  BaseClass:151 - Typing text in username_id: STUDENT
+2026-09-03 15:31:30 [TestNG-tests-2] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:31:30 [TestNG-tests-2] INFO  BaseClass:151 - Typing text in password_id: Password123
+2026-09-03 15:31:30 [TestNG-tests-2] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:31:30 [TestNG-tests-2] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:30 [TestNG-tests-2] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:31 [TestNG-tests-1] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:31:31 [TestNG-tests-1] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:31:31 [TestNG-tests-1] INFO  BaseClass:185 - Retrieved text from error_message_xpath: Your password is invalid!
+2026-09-03 15:31:31 [TestNG-tests-1] INFO  AuthenticationTests:142 - TEST: Invalid Password - PASSED
+2026-09-03 15:31:31 [TestNG-tests-1] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:31:31 [TestNG-tests-1] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:31 [TestNG-tests-1] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:32 [TestNG-tests-1] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:32 [TestNG-tests-1] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:34 [TestNG-tests-4] WARN  BaseClass:211 - Element not found: dashboard_xpath
+2026-09-03 15:31:34 [TestNG-tests-4] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:31:34 [TestNG-tests-4] INFO  AuthenticationTests:351 - TEST: Data-driven Login - PASSED (Expected failure)
+2026-09-03 15:31:34 [TestNG-tests-4] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:31:34 [TestNG-tests-4] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:34 [TestNG-tests-4] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:35 [TestNG-tests-1] INFO  AuthenticationTests:156 - TEST: Empty Username - Starting
+2026-09-03 15:31:35 [TestNG-tests-1] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:35 [TestNG-tests-1] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:35 [TestNG-tests-4] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:35 [TestNG-tests-4] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:36 [TestNG-tests-1] INFO  BaseClass:151 - Typing text in password_id: Password123
+2026-09-03 15:31:36 [TestNG-tests-1] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:31:36 [TestNG-tests-1] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:36 [TestNG-tests-1] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:37 [TestNG-tests-4] INFO  AuthenticationTests:331 - TEST: Data-driven Login with username: student
+2026-09-03 15:31:37 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:38 [TestNG-tests-4] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:39 [TestNG-tests-1] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:31:39 [TestNG-tests-1] INFO  AuthenticationTests:169 - TEST: Empty Username - PASSED
+2026-09-03 15:31:39 [TestNG-tests-1] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:31:39 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in username_id: student
+2026-09-03 15:31:39 [TestNG-tests-4] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:31:39 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in password_id: wrongpassword
+2026-09-03 15:31:39 [TestNG-tests-4] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:31:39 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:39 [TestNG-tests-4] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:39 [TestNG-tests-1] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:39 [TestNG-tests-1] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:40 [TestNG-tests-1] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:40 [TestNG-tests-1] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:42 [TestNG-tests-1] INFO  AuthenticationTests:183 - TEST: Empty Password - Starting
+2026-09-03 15:31:42 [TestNG-tests-1] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:42 [TestNG-tests-1] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:43 [TestNG-tests-2] WARN  BaseClass:211 - Element not found: dashboard_xpath
+2026-09-03 15:31:43 [TestNG-tests-2] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:31:43 [TestNG-tests-2] INFO  AuthenticationTests:255 - TEST: Case Sensitivity - PASSED
+2026-09-03 15:31:43 [TestNG-tests-2] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:31:43 [TestNG-tests-2] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:43 [TestNG-tests-2] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:44 [TestNG-tests-1] INFO  BaseClass:151 - Typing text in username_id: student
+2026-09-03 15:31:44 [TestNG-tests-1] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:31:44 [TestNG-tests-1] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:44 [TestNG-tests-1] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:44 [TestNG-tests-2] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:44 [TestNG-tests-2] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:46 [TestNG-tests-1] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:31:46 [TestNG-tests-1] INFO  AuthenticationTests:196 - TEST: Empty Password - PASSED
+2026-09-03 15:31:46 [TestNG-tests-1] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:31:46 [TestNG-tests-1] INFO  AuthenticationTests:32 - ========== Authentication Test Suite Ended (thread: TestNG-tests-1) ==========
+2026-09-03 15:31:47 [TestNG-tests-2] INFO  AuthenticationTests:302 - TEST: Special Characters - Starting
+2026-09-03 15:31:47 [TestNG-tests-2] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:47 [TestNG-tests-2] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:48 [TestNG-tests-2] INFO  BaseClass:151 - Typing text in username_id: student
+2026-09-03 15:31:48 [TestNG-tests-2] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:31:48 [TestNG-tests-2] INFO  BaseClass:151 - Typing text in password_id: !@#$%^&*()
+2026-09-03 15:31:48 [TestNG-tests-2] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:31:48 [TestNG-tests-2] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:48 [TestNG-tests-2] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:31:50 [TestNG-tests-2] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:31:50 [TestNG-tests-2] INFO  AuthenticationTests:316 - TEST: Special Characters - PASSED
+2026-09-03 15:31:50 [TestNG-tests-2] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:31:51 [TestNG-tests-2] INFO  AuthenticationTests:32 - ========== Authentication Test Suite Ended (thread: TestNG-tests-2) ==========
+2026-09-03 15:31:51 [TestNG-tests-4] WARN  BaseClass:211 - Element not found: dashboard_xpath
+2026-09-03 15:31:51 [TestNG-tests-4] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:31:51 [TestNG-tests-4] INFO  AuthenticationTests:351 - TEST: Data-driven Login - PASSED (Expected failure)
+2026-09-03 15:31:51 [TestNG-tests-4] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:31:52 [TestNG-tests-4] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:31:52 [TestNG-tests-4] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:31:52 [TestNG-tests-4] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:31:52 [TestNG-tests-4] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:31:54 [TestNG-tests-4] INFO  AuthenticationTests:331 - TEST: Data-driven Login with username: 
+2026-09-03 15:31:54 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:31:55 [TestNG-tests-4] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:31:56 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in username_id: 
+2026-09-03 15:31:56 [TestNG-tests-4] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:31:56 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in password_id: Password123
+2026-09-03 15:31:56 [TestNG-tests-4] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:31:56 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:31:56 [TestNG-tests-4] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:32:08 [TestNG-tests-4] WARN  BaseClass:211 - Element not found: dashboard_xpath
+2026-09-03 15:32:08 [TestNG-tests-4] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:32:08 [TestNG-tests-4] INFO  AuthenticationTests:351 - TEST: Data-driven Login - PASSED (Expected failure)
+2026-09-03 15:32:08 [TestNG-tests-4] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:32:09 [TestNG-tests-4] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:32:09 [TestNG-tests-4] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:32:09 [TestNG-tests-4] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:32:09 [TestNG-tests-4] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:32:11 [TestNG-tests-4] INFO  AuthenticationTests:331 - TEST: Data-driven Login with username: student
+2026-09-03 15:32:11 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:32:11 [TestNG-tests-4] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:32:12 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in username_id: student
+2026-09-03 15:32:12 [TestNG-tests-4] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:32:12 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in password_id: 
+2026-09-03 15:32:12 [TestNG-tests-4] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:32:12 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:32:12 [TestNG-tests-4] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:32:25 [TestNG-tests-4] WARN  BaseClass:211 - Element not found: dashboard_xpath
+2026-09-03 15:32:25 [TestNG-tests-4] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:32:25 [TestNG-tests-4] INFO  AuthenticationTests:351 - TEST: Data-driven Login - PASSED (Expected failure)
+2026-09-03 15:32:25 [TestNG-tests-4] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:32:25 [TestNG-tests-4] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:32:25 [TestNG-tests-4] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:32:26 [TestNG-tests-4] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:32:26 [TestNG-tests-4] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:32:27 [TestNG-tests-4] INFO  AuthenticationTests:331 - TEST: Data-driven Login with username: admin
+2026-09-03 15:32:27 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:32:27 [TestNG-tests-4] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:32:29 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in username_id: admin
+2026-09-03 15:32:29 [TestNG-tests-4] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:32:29 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in password_id: admin
+2026-09-03 15:32:29 [TestNG-tests-4] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:32:29 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:32:29 [TestNG-tests-4] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:32:41 [TestNG-tests-4] WARN  BaseClass:211 - Element not found: dashboard_xpath
+2026-09-03 15:32:41 [TestNG-tests-4] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:32:41 [TestNG-tests-4] INFO  AuthenticationTests:351 - TEST: Data-driven Login - PASSED (Expected failure)
+2026-09-03 15:32:41 [TestNG-tests-4] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:32:43 [TestNG-tests-4] INFO  AuthenticationTests:45 - Launching Browser...
+2026-09-03 15:32:43 [TestNG-tests-4] INFO  BaseClass:112 - Launching browser: chrome
+2026-09-03 15:32:44 [TestNG-tests-4] INFO  BaseClass:128 - Browser launched and configured
+2026-09-03 15:32:44 [TestNG-tests-4] INFO  BaseClass:145 - Navigating to URL: https://practicetestautomation.com/practice-test-login/
+2026-09-03 15:32:46 [TestNG-tests-4] INFO  AuthenticationTests:331 - TEST: Data-driven Login with username: testuser
+2026-09-03 15:32:46 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: login_btn_xpath
+2026-09-03 15:32:46 [TestNG-tests-4] INFO  BaseClass:208 - Element found: login_btn_xpath
+2026-09-03 15:32:47 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in username_id: testuser
+2026-09-03 15:32:47 [TestNG-tests-4] INFO  BaseClass:208 - Element found: username_id
+2026-09-03 15:32:47 [TestNG-tests-4] INFO  BaseClass:151 - Typing text in password_id: Test@123
+2026-09-03 15:32:47 [TestNG-tests-4] INFO  BaseClass:208 - Element found: password_id
+2026-09-03 15:32:47 [TestNG-tests-4] INFO  BaseClass:174 - Clicking on element: signin_btn_id
+2026-09-03 15:32:47 [TestNG-tests-4] INFO  BaseClass:208 - Element found: signin_btn_id
+2026-09-03 15:33:00 [TestNG-tests-4] WARN  BaseClass:211 - Element not found: dashboard_xpath
+2026-09-03 15:33:00 [TestNG-tests-4] INFO  BaseClass:208 - Element found: error_message_xpath
+2026-09-03 15:33:00 [TestNG-tests-4] INFO  AuthenticationTests:351 - TEST: Data-driven Login - PASSED (Expected failure)
+2026-09-03 15:33:00 [TestNG-tests-4] INFO  AuthenticationTests:52 - Test execution completed. Closing browser...
+2026-09-03 15:33:00 [TestNG-tests-4] INFO  AuthenticationTests:32 - ========== Authentication Test Suite Ended (thread: TestNG-tests-4) ==========

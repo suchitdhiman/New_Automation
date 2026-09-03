@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  Aggregator suite. Running this launches every suite above one after another.
+  Heads up: it opens a lot of browsers - pass -Dheadless=true for CI.
+-->
+<suite name="RegressionAll" verbose="1">
+  <suite-files>
+    <suite-file path="parameters-demo.xml"/>
+    <suite-file path="parallel-methods.xml"/>
+    <suite-file path="parallel-classes.xml"/>
+    <suite-file path="parallel-instances.xml"/>
+    <suite-file path="parallel-dataprovider.xml"/>
+  </suite-files>
+</suite>
