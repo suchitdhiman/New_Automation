@@ -1,0 +1,1003 @@
+<title>TestNG Framework Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  /* ── Tokens ── */
+  :root {
+    --bg:       #f0f3fa;
+    --surface:  #ffffff;
+    --surface2: #e8edf8;
+    --border:   #d0d9ef;
+    --text:     #1a2035;
+    --muted:    #5b6a8a;
+    --accent:   #2355d4;
+    --accent2:  #1a3da8;
+    --code-bg:  #1e2740;
+    --code-fg:  #c8d4f0;
+
+    --tier-base:  #dbeafe;
+    --tier-setup: #dcfce7;
+    --tier-test:  #fef9c3;
+    --tier-after: #ffe4e6;
+    --tier-rep:   #f3e8ff;
+
+    --tier-base-b:  #3b82f6;
+    --tier-setup-b: #22c55e;
+    --tier-test-b:  #eab308;
+    --tier-after-b: #f43f5e;
+    --tier-rep-b:   #a855f7;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:       #0d1117;
+      --surface:  #161c28;
+      --surface2: #1e2740;
+      --border:   #2a3555;
+      --text:     #d8e4ff;
+      --muted:    #7a90c0;
+      --accent:   #4d84f5;
+      --accent2:  #6fa0ff;
+      --code-bg:  #0a0f1e;
+      --code-fg:  #c8d4f0;
+
+      --tier-base:  #1e3a5f;
+      --tier-setup: #14402a;
+      --tier-test:  #3d3010;
+      --tier-after: #3d1020;
+      --tier-rep:   #2d1555;
+
+      --tier-base-b:  #60a5fa;
+      --tier-setup-b: #4ade80;
+      --tier-test-b:  #facc15;
+      --tier-after-b: #fb7185;
+      --tier-rep-b:   #c084fc;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:       #0d1117;
+    --surface:  #161c28;
+    --surface2: #1e2740;
+    --border:   #2a3555;
+    --text:     #d8e4ff;
+    --muted:    #7a90c0;
+    --accent:   #4d84f5;
+    --accent2:  #6fa0ff;
+    --code-bg:  #0a0f1e;
+    --code-fg:  #c8d4f0;
+
+    --tier-base:  #1e3a5f;
+    --tier-setup: #14402a;
+    --tier-test:  #3d3010;
+    --tier-after: #3d1020;
+    --tier-rep:   #2d1555;
+
+    --tier-base-b:  #60a5fa;
+    --tier-setup-b: #4ade80;
+    --tier-test-b:  #facc15;
+    --tier-after-b: #fb7185;
+    --tier-rep-b:   #c084fc;
+  }
+
+  /* ── Reset & Base ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3 { font-family: 'Syne', sans-serif; text-wrap: balance; }
+  code, pre   { font-family: 'IBM Plex Mono', monospace; }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0;
+    padding: 0 24px;
+    overflow-x: auto;
+  }
+  .nav-brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 14px;
+    color: var(--accent);
+    white-space: nowrap;
+    padding: 14px 20px 14px 0;
+    border-right: 1px solid var(--border);
+    margin-right: 8px;
+  }
+  nav a {
+    font-size: 13px; font-weight: 500;
+    color: var(--muted);
+    padding: 14px 14px;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+  nav a:hover { color: var(--text); text-decoration: none; border-bottom-color: var(--accent); }
+
+  /* ── Layout ── */
+  .page { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  section { margin-bottom: 72px; }
+  section:first-of-type { margin-top: 0; }
+
+  .section-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: 28px; font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    color: var(--muted); font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+    margin-bottom: 72px;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: .1em; text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 38px; font-weight: 800; line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .hero p {
+    color: var(--muted); font-size: 15px;
+    max-width: 520px; line-height: 1.7;
+  }
+  .hero-stats {
+    display: grid; gap: 12px; min-width: 160px;
+  }
+  .stat {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px; font-weight: 800;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px; color: var(--muted);
+    text-transform: uppercase; letter-spacing: .08em;
+    margin-top: 4px;
+  }
+
+  /* ── File Tree ── */
+  .tree {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    border-radius: 12px;
+    padding: 24px 28px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.9;
+    overflow-x: auto;
+  }
+  .tree .dir  { color: #7eb8f7; }
+  .tree .file { color: var(--code-fg); }
+  .tree .hl   { color: #fbbf24; font-weight: 500; }
+  .tree .dim  { color: #4a5880; }
+
+  /* ── Flow Diagram ── */
+  .flow-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 24px;
+    overflow-x: auto;
+  }
+  .flow-wrap figure { margin: 0; }
+  .flow-wrap figcaption {
+    text-align: center;
+    font-size: 13px; color: var(--muted);
+    margin-top: 20px;
+  }
+
+  /* ── File Cards ── */
+  .file-cards { display: grid; gap: 20px; }
+  .file-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .file-card-header {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border);
+  }
+  .file-tier {
+    width: 8px; height: 8px; border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .file-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px; font-weight: 500;
+    color: var(--accent);
+  }
+  .file-role {
+    font-size: 12px; color: var(--muted);
+    margin-left: auto;
+    text-transform: uppercase; letter-spacing: .08em;
+  }
+  .file-card-body { padding: 20px 22px; }
+  .file-analogy {
+    background: var(--surface2);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    font-size: 13px; color: var(--muted);
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .file-card-body p {
+    font-size: 14px; line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .file-card-body p:last-child { margin-bottom: 0; }
+
+  .pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .pill {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  /* code block inside cards */
+  .snippet {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 12px; line-height: 1.7;
+    overflow-x: auto;
+    margin-top: 12px;
+  }
+  .kw  { color: #c792ea; }
+  .ann { color: #82aaff; }
+  .str { color: #c3e88d; }
+  .cmt { color: #4a5880; }
+
+  /* ── Params Visual ── */
+  .param-chain {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .param-step {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    position: relative;
+  }
+  .param-step::after {
+    content: '→';
+    position: absolute;
+    right: -14px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 18px;
+    z-index: 1;
+  }
+  .param-step:last-child::after { display: none; }
+  .param-step-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; text-transform: uppercase;
+    letter-spacing: .1em; color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .param-step-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px; font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .param-step-desc {
+    font-size: 12px; color: var(--muted); line-height: 1.5;
+  }
+
+  .optional-box {
+    background: var(--surface);
+    border: 1px solid var(--tier-test-b);
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+  .optional-box h3 {
+    font-size: 16px; font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .optional-box p {
+    font-size: 14px; color: var(--muted);
+    line-height: 1.7; margin-bottom: 10px;
+  }
+
+  /* ── Parallel Grid ── */
+  .parallel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .parallel-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+  }
+  .parallel-card .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    text-transform: uppercase; letter-spacing: .1em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .parallel-card h3 {
+    font-size: 15px; font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .parallel-card p {
+    font-size: 13px; color: var(--muted);
+    line-height: 1.6; margin-bottom: 10px;
+  }
+  .parallel-card .xml-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; color: var(--code-fg);
+    background: var(--code-bg);
+    padding: 4px 8px; border-radius: 4px;
+    display: inline-block;
+  }
+  .xml-attr { color: #82aaff; }
+  .xml-val  { color: #c3e88d; }
+
+  /* tier colors on cards */
+  .t-blue   { border-left: 4px solid var(--tier-base-b); }
+  .t-green  { border-left: 4px solid var(--tier-setup-b); }
+  .t-yellow { border-left: 4px solid var(--tier-test-b); }
+  .t-red    { border-left: 4px solid var(--tier-after-b); }
+  .t-purple { border-left: 4px solid var(--tier-rep-b); }
+
+  .dot-blue   { background: var(--tier-base-b); }
+  .dot-green  { background: var(--tier-setup-b); }
+  .dot-yellow { background: var(--tier-test-b); }
+  .dot-red    { background: var(--tier-after-b); }
+  .dot-purple { background: var(--tier-rep-b); }
+
+  /* badge colors */
+  .badge-blue   { background: var(--tier-base);  color: var(--tier-base-b); }
+  .badge-green  { background: var(--tier-setup); color: var(--tier-setup-b); }
+  .badge-yellow { background: var(--tier-test);  color: var(--tier-test-b); }
+  .badge-red    { background: var(--tier-after); color: var(--tier-after-b); }
+  .badge-purple { background: var(--tier-rep);   color: var(--tier-rep-b); }
+
+  /* ── Tip boxes ── */
+  .tip {
+    display: flex; gap: 12px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+    margin-top: 16px;
+  }
+  .tip-icon { font-size: 16px; flex-shrink: 0; line-height: 1.5; }
+  .tip p { margin: 0; color: var(--muted); }
+  .tip strong { color: var(--text); }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: repeat(3, 1fr); }
+    .param-chain { grid-template-columns: 1fr; }
+    .param-step::after { display: none; }
+    .hero h1 { font-size: 26px; }
+  }
+</style>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-brand">TestNG Guide</div>
+  <a href="#overview">Overview</a>
+  <a href="#structure">Files</a>
+  <a href="#lifecycle">Lifecycle</a>
+  <a href="#explained">Explained</a>
+  <a href="#parameters">Parameters</a>
+  <a href="#parallel">Parallel</a>
+</nav>
+
+<div class="page">
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div>
+    <div class="hero-tag">Project Guide</div>
+    <h1>TestNG Framework<br>Plain-English Guide</h1>
+    <p>A step-by-step walkthrough of every file, every annotation, and every concept — written so you can understand exactly what runs, when, and why.</p>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">34</div><div class="stat-label">Tests</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Parallel Modes</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Suite XMLs</div></div>
+  </div>
+</div>
+
+<!-- ── SECTION 1: OVERVIEW ── -->
+<section id="overview">
+  <div class="section-eyebrow">01 — Overview</div>
+  <div class="section-title">What is this project?</div>
+  <div class="section-sub">The big picture in one paragraph</div>
+
+  <div class="file-card" style="margin-bottom:20px;">
+    <div class="file-card-body">
+      <p>This is an <strong>automated browser testing project</strong>. It opens Chrome (or Edge), goes to websites like Amazon, Facebook, and BBC, does things like searching for products — then checks that the right things happened. All of this is controlled by <strong>TestNG</strong>, a tool that decides <em>which tests run</em>, <em>in what order</em>, and <em>how many at once</em>.</p>
+      <p>The project is organized into three layers:</p>
+      <div class="tip"><div class="tip-icon">🏗️</div><p><strong>Base layer</strong> (base/ folder) — sets up and tears down browsers, reads config, manages reports.<br><strong>Test layer</strong> (tests/ folder) — the actual things you want to verify on websites.<br><strong>Support layer</strong> (listeners/, utils/) — watches what happens and writes a report automatically.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 2: PROJECT STRUCTURE ── -->
+<section id="structure">
+  <div class="section-eyebrow">02 — Project Structure</div>
+  <div class="section-title">Every file and what it does</div>
+  <div class="section-sub">Think of this like a building — each file is a room with a specific purpose</div>
+
+  <div class="tree">
+<span class="dir">D:\Selenium\TestNG-P010-TestNg\</span>
+<span class="dim">├── </span><span class="hl">pom.xml</span>                          <span class="dim">← tells Maven what libraries to download</span>
+<span class="dim">├── </span><span class="hl">testng.xml</span>                        <span class="dim">← main suite: runs Chrome + Edge in parallel</span>
+<span class="dim">│</span>
+<span class="dim">├── suites/</span>                           <span class="dim">← extra test configurations</span>
+<span class="dim">│   ├── </span><span class="file">parameters-demo.xml</span>           <span class="dim">← shows @Parameter + @Optional</span>
+<span class="dim">│   ├── </span><span class="file">parallel-methods.xml</span>          <span class="dim">← 4 test methods run at same time</span>
+<span class="dim">│   ├── </span><span class="file">parallel-classes.xml</span>          <span class="dim">← 3 test classes run at same time</span>
+<span class="dim">│   ├── </span><span class="file">parallel-instances.xml</span>        <span class="dim">← 3 browser instances run at same time</span>
+<span class="dim">│   ├── </span><span class="file">parallel-dataprovider.xml</span>     <span class="dim">← data rows run at same time</span>
+<span class="dim">│   └── </span><span class="file">regression-all.xml</span>            <span class="dim">← runs all 5 suites together</span>
+<span class="dim">│</span>
+<span class="dim">└── src/test/java/testngpack/</span>
+<span class="dim">    ├── base/</span>
+<span class="dim">    │   ├── </span><span class="hl">BaseClass.java</span>             <span class="dim">← parent of every test; setup + teardown</span>
+<span class="dim">    │   ├── </span><span class="hl">DriverFactory.java</span>         <span class="dim">← creates/destroys browsers (thread-safe)</span>
+<span class="dim">    │   ├── </span><span class="hl">ConfigReader.java</span>          <span class="dim">← reads .properties files (URLs, locators)</span>
+<span class="dim">    │   └── </span><span class="hl">ExtentManager.java</span>         <span class="dim">← manages the HTML test report</span>
+<span class="dim">    │</span>
+<span class="dim">    ├── listeners/</span>
+<span class="dim">    │   ├── </span><span class="file">TestListener.java</span>          <span class="dim">← records PASS/FAIL, takes screenshots</span>
+<span class="dim">    │   └── </span><span class="file">SuiteListener.java</span>         <span class="dim">← saves the report once at the very end</span>
+<span class="dim">    │</span>
+<span class="dim">    ├── tests/</span>
+<span class="dim">    │   ├── </span><span class="file">AmazonSearchTest.java</span>      <span class="dim">← @Parameter demo: search by category</span>
+<span class="dim">    │   ├── </span><span class="file">UrlNavigationTest.java</span>     <span class="dim">← @Parameter demo: navigate to second URL</span>
+<span class="dim">    │   ├── </span><span class="file">ParallelMethodsTest.java</span>   <span class="dim">← 4 methods run in parallel</span>
+<span class="dim">    │   ├── </span><span class="file">ParallelInstancesTest.java</span> <span class="dim">← @Factory: 3 browser instances in parallel</span>
+<span class="dim">    │   └── </span><span class="file">DataProviderParallelTest.java</span> <span class="dim">← same test, 3 data rows in parallel</span>
+<span class="dim">    │</span>
+<span class="dim">    ├── dataproviders/</span>
+<span class="dim">    │   └── </span><span class="file">SearchDataProvider.java</span>    <span class="dim">← supplies data rows to tests</span>
+<span class="dim">    │</span>
+<span class="dim">    └── utils/</span>
+<span class="dim">        └── </span><span class="file">Log.java</span>                   <span class="dim">← writes log lines with thread name</span>
+
+<span class="dim">Resources:</span>
+<span class="dim">    src/test/resources/</span>
+<span class="dim">    ├── </span><span class="file">url.properties</span>               <span class="dim">← amazon=https://... bbc=https://...</span>
+<span class="dim">    └── </span><span class="file">or.properties</span>                <span class="dim">← amazonsearchtextbox_name=field-keywords</span>
+  </div>
+</section>
+
+<!-- ── SECTION 3: LIFECYCLE FLOW ── -->
+<section id="lifecycle">
+  <div class="section-eyebrow">03 — Execution Lifecycle</div>
+  <div class="section-title">What runs, in what order</div>
+  <div class="section-sub">Follow this diagram every time you run a test suite</div>
+
+  <div class="flow-wrap">
+    <figure>
+      <svg viewBox="0 0 860 620" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-label="TestNG execution lifecycle from Suite XML to final HTML report"
+           style="max-width:100%;height:auto;">
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 Z" fill="currentColor" opacity=".5"/>
+          </marker>
+        </defs>
+
+        <!-- Step 1: XML -->
+        <rect x="290" y="10" width="280" height="52" rx="10" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1.5"/>
+        <text x="430" y="30" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#3b82f6" font-weight="500" letter-spacing="1">STEP 1</text>
+        <text x="430" y="50" text-anchor="middle" font-family="IBM Plex Sans" font-size="14" fill="#d8e4ff" font-weight="600">testng.xml (or suite XML)</text>
+
+        <!-- arrow down -->
+        <line x1="430" y1="62" x2="430" y2="88" stroke="currentColor" stroke-width="1.5" marker-end="url(#arr)" opacity=".4"/>
+
+        <!-- Step 2: @BeforeSuite -->
+        <rect x="290" y="90" width="280" height="52" rx="10" fill="#14402a" stroke="#22c55e" stroke-width="1.5"/>
+        <text x="430" y="110" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#4ade80" font-weight="500" letter-spacing="1">STEP 2 — RUNS ONCE</text>
+        <text x="430" y="130" text-anchor="middle" font-family="IBM Plex Sans" font-size="14" fill="#d8e4ff" font-weight="600">@BeforeSuite  loadConfiguration()</text>
+
+        <!-- arrow down -->
+        <line x1="430" y1="142" x2="430" y2="168" stroke="currentColor" stroke-width="1.5" marker-end="url(#arr)" opacity=".4"/>
+
+        <!-- parallel zone label -->
+        <rect x="30" y="170" width="800" height="340" rx="12" fill="none" stroke="#2a3555" stroke-width="1" stroke-dasharray="6,4"/>
+        <text x="46" y="194" font-family="IBM Plex Mono" font-size="10" fill="#4a5880" letter-spacing="1.5">PARALLEL ZONE — each thread runs its own copy of steps 3 → 5</text>
+
+        <!-- Thread A -->
+        <rect x="60" y="208" width="220" height="44" rx="8" fill="#1e2740" stroke="#2a3555"/>
+        <text x="170" y="226" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#7a90c0">Thread A  (Chrome)</text>
+        <text x="170" y="242" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="#d8e4ff" font-weight="600">@BeforeMethod  setUp()</text>
+
+        <!-- Thread B -->
+        <rect x="320" y="208" width="220" height="44" rx="8" fill="#1e2740" stroke="#2a3555"/>
+        <text x="430" y="226" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#7a90c0">Thread B  (Edge)</text>
+        <text x="430" y="242" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="#d8e4ff" font-weight="600">@BeforeMethod  setUp()</text>
+
+        <!-- Thread C -->
+        <rect x="580" y="208" width="220" height="44" rx="8" fill="#1e2740" stroke="#2a3555"/>
+        <text x="690" y="226" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#7a90c0">Thread C  (Firefox)</text>
+        <text x="690" y="242" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="#d8e4ff" font-weight="600">@BeforeMethod  setUp()</text>
+
+        <!-- arrows down to @Test -->
+        <line x1="170" y1="252" x2="170" y2="278" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr)" opacity=".35"/>
+        <line x1="430" y1="252" x2="430" y2="278" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr)" opacity=".35"/>
+        <line x1="690" y1="252" x2="690" y2="278" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr)" opacity=".35"/>
+
+        <!-- @Test boxes -->
+        <rect x="60" y="280" width="220" height="44" rx="8" fill="#3d3010" stroke="#facc15" stroke-width="1.5"/>
+        <text x="170" y="298" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#facc15">@Test method</text>
+        <text x="170" y="314" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="#d8e4ff" font-weight="600">searchProduct()</text>
+
+        <rect x="320" y="280" width="220" height="44" rx="8" fill="#3d3010" stroke="#facc15" stroke-width="1.5"/>
+        <text x="430" y="298" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#facc15">@Test method</text>
+        <text x="430" y="314" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="#d8e4ff" font-weight="600">navigateToSecondUrl()</text>
+
+        <rect x="580" y="280" width="220" height="44" rx="8" fill="#3d3010" stroke="#facc15" stroke-width="1.5"/>
+        <text x="690" y="298" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#facc15">@Test method</text>
+        <text x="690" y="314" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="#d8e4ff" font-weight="600">checkSearchButton()</text>
+
+        <!-- TestListener catches each -->
+        <rect x="60" y="342" width="220" height="36" rx="6" fill="#1e2740" stroke="#2a3555"/>
+        <text x="170" y="365" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="#7a90c0">TestListener catches PASS/FAIL</text>
+        <rect x="320" y="342" width="220" height="36" rx="6" fill="#1e2740" stroke="#2a3555"/>
+        <text x="430" y="365" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="#7a90c0">TestListener catches PASS/FAIL</text>
+        <rect x="580" y="342" width="220" height="36" rx="6" fill="#1e2740" stroke="#2a3555"/>
+        <text x="690" y="365" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="#7a90c0">TestListener catches PASS/FAIL</text>
+
+        <!-- arrows down to @AfterMethod -->
+        <line x1="170" y1="378" x2="170" y2="398" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr)" opacity=".35"/>
+        <line x1="430" y1="378" x2="430" y2="398" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr)" opacity=".35"/>
+        <line x1="690" y1="378" x2="690" y2="398" stroke="currentColor" stroke-width="1.2" marker-end="url(#arr)" opacity=".35"/>
+
+        <!-- @AfterMethod -->
+        <rect x="60" y="400" width="220" height="44" rx="8" fill="#3d1020" stroke="#fb7185" stroke-width="1.5"/>
+        <text x="170" y="418" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#fb7185">@AfterMethod</text>
+        <text x="170" y="434" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="#d8e4ff" font-weight="600">tearDown()  quit browser</text>
+
+        <rect x="320" y="400" width="220" height="44" rx="8" fill="#3d1020" stroke="#fb7185" stroke-width="1.5"/>
+        <text x="430" y="418" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#fb7185">@AfterMethod</text>
+        <text x="430" y="434" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="#d8e4ff" font-weight="600">tearDown()  quit browser</text>
+
+        <rect x="580" y="400" width="220" height="44" rx="8" fill="#3d1020" stroke="#fb7185" stroke-width="1.5"/>
+        <text x="690" y="418" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#fb7185">@AfterMethod</text>
+        <text x="690" y="434" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="#d8e4ff" font-weight="600">tearDown()  quit browser</text>
+
+        <!-- converge arrows -->
+        <line x1="170" y1="490" x2="430" y2="516" stroke="currentColor" stroke-width="1.2" opacity=".3"/>
+        <line x1="430" y1="490" x2="430" y2="516" stroke="currentColor" stroke-width="1.2" opacity=".3"/>
+        <line x1="690" y1="490" x2="430" y2="516" stroke="currentColor" stroke-width="1.2" opacity=".3"/>
+
+        <!-- Step 6: @AfterSuite -->
+        <rect x="290" y="518" width="280" height="44" rx="10" fill="#2d1555" stroke="#c084fc" stroke-width="1.5"/>
+        <text x="430" y="536" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#c084fc" font-weight="500" letter-spacing="1">STEP 6 — RUNS ONCE</text>
+        <text x="430" y="553" text-anchor="middle" font-family="IBM Plex Sans" font-size="13" fill="#d8e4ff" font-weight="600">SuiteListener.onFinish()  →  Report saved</text>
+
+        <!-- arrow down to report -->
+        <line x1="430" y1="562" x2="430" y2="582" stroke="currentColor" stroke-width="1.5" marker-end="url(#arr)" opacity=".4"/>
+
+        <!-- Report -->
+        <rect x="310" y="584" width="240" height="28" rx="6" fill="#1e3a5f" stroke="#3b82f6"/>
+        <text x="430" y="603" text-anchor="middle" font-family="IBM Plex Mono" font-size="12" fill="#60a5fa">Report/htmlReport.html</text>
+      </svg>
+      <figcaption>Each suite XML triggers this lifecycle. The parallel zone repeats for every test method that runs.</figcaption>
+    </figure>
+  </div>
+
+  <div class="tip" style="margin-top:20px;">
+    <div class="tip-icon">💡</div>
+    <p><strong>Key idea:</strong> @BeforeSuite and @AfterSuite run exactly once per suite run. @BeforeMethod and @AfterMethod run once for every single @Test method — so if you have 10 tests, setup and teardown run 10 times total.</p>
+  </div>
+</section>
+
+<!-- ── SECTION 4: FILES EXPLAINED ── -->
+<section id="explained">
+  <div class="section-eyebrow">04 — Files Explained</div>
+  <div class="section-title">Every file, plain and simple</div>
+  <div class="section-sub">Read these in order — each one builds on the previous</div>
+
+  <div class="file-cards">
+
+    <!-- DriverFactory -->
+    <div class="file-card t-blue">
+      <div class="file-card-header">
+        <div class="file-tier dot-blue"></div>
+        <div class="file-name">base/DriverFactory.java</div>
+        <div class="file-role">Browser Manager</div>
+      </div>
+      <div class="file-card-body">
+        <div class="file-analogy">"Think of it as a numbered locker room — each test thread gets its own locker, so browsers never share or mix up."</div>
+        <p><strong>What it does:</strong> When a test needs a browser, this file creates one. When the test is done, it destroys it. The critical trick: it uses <code>ThreadLocal</code> — a Java tool that gives every running thread its own separate copy of an object. Thread A gets its own Chrome. Thread B gets its own Edge. They never cross.</p>
+        <p><strong>Where it starts:</strong> <code>createDriver(browser, headless)</code> — builds the Chrome/Edge/Firefox with specific options then stores it in the ThreadLocal.</p>
+        <p><strong>Where it ends:</strong> <code>quitDriver()</code> — closes the browser and removes it from the ThreadLocal (so memory isn't wasted).</p>
+        <div class="pill-row">
+          <span class="pill">ThreadLocal&lt;WebDriver&gt;</span>
+          <span class="pill">ChromeOptions</span>
+          <span class="pill">EdgeOptions</span>
+          <span class="pill">EAGER PageLoadStrategy</span>
+        </div>
+        <div class="snippet"><span class="cmt">// ONE WebDriver per thread — never shared</span>
+<span class="kw">private static final</span> ThreadLocal&lt;WebDriver&gt; DRIVER = <span class="kw">new</span> ThreadLocal&lt;&gt;();
+
+<span class="cmt">// Creates browser + stores in this thread's slot</span>
+<span class="kw">public static void</span> createDriver(String browser, <span class="kw">boolean</span> headless) { … }
+
+<span class="cmt">// Destroys browser + clears slot</span>
+<span class="kw">public static void</span> quitDriver() {
+    DRIVER.get().quit();
+    DRIVER.remove();
+}</div>
+      </div>
+    </div>
+
+    <!-- BaseClass -->
+    <div class="file-card t-green">
+      <div class="file-card-header">
+        <div class="file-tier dot-green"></div>
+        <div class="file-name">base/BaseClass.java</div>
+        <div class="file-role">Parent of All Tests</div>
+      </div>
+      <div class="file-card-body">
+        <div class="file-analogy">"Think of it as the school principal — every student (test class) must follow these rules (setup/teardown) automatically."</div>
+        <p><strong>What it does:</strong> Every test class <em>extends</em> BaseClass. That means they all automatically get a browser opened before each test and closed after. You never write that code twice. It also reads parameters from the XML (which browser, which URL, headless or not).</p>
+        <p><strong>Where it starts:</strong> <code>@BeforeSuite loadConfiguration()</code> — runs once. Reads all .properties files. Creates the HTML report.</p>
+        <p><strong>@BeforeMethod setUp()</strong> — runs before every test. Reads browser/url/headless parameters. Creates a browser via DriverFactory. Opens the website.</p>
+        <p><strong>Where it ends:</strong> <code>@AfterMethod tearDown()</code> — runs after every test. Closes the browser. Unloads the report node for this thread.</p>
+        <div class="pill-row">
+          <span class="pill">@BeforeSuite</span>
+          <span class="pill">@BeforeMethod</span>
+          <span class="pill">@AfterMethod</span>
+          <span class="pill">@Parameters</span>
+          <span class="pill">@Optional</span>
+          <span class="pill">@Listeners</span>
+        </div>
+        <div class="snippet"><span class="ann">@Parameters</span>({ <span class="str">"browser"</span>, <span class="str">"url"</span>, <span class="str">"headless"</span> })
+<span class="ann">@BeforeMethod</span>(alwaysRun = <span class="kw">true</span>)
+<span class="kw">public void</span> setUp(
+    <span class="ann">@Optional</span>(<span class="str">"chrome"</span>)  String browser,
+    <span class="ann">@Optional</span>(<span class="str">"amazon"</span>)  String urlKey,
+    <span class="ann">@Optional</span>(<span class="str">"false"</span>)   String headless) {
+
+    DriverFactory.createDriver(browser, ...);
+    openUrl(urlKey);  <span class="cmt">// looks up URL from properties</span>
+}</div>
+      </div>
+    </div>
+
+    <!-- ConfigReader -->
+    <div class="file-card t-blue">
+      <div class="file-card-header">
+        <div class="file-tier dot-blue"></div>
+        <div class="file-name">base/ConfigReader.java</div>
+        <div class="file-role">Config Loader</div>
+      </div>
+      <div class="file-card-body">
+        <div class="file-analogy">"Think of it as a phone book — you look up a name (key) and get back a number (value like a URL or locator)."</div>
+        <p><strong>What it does:</strong> Reads <code>url.properties</code> and <code>or.properties</code> files from disk once at startup. After that any part of the code can call <code>ConfigReader.url("amazon")</code> and get <code>https://www.amazon.in</code> back.</p>
+        <p><strong>Where it starts:</strong> Static initializer block — loads files when the class is first referenced.</p>
+        <p><strong>Where it ends:</strong> <code>url(key)</code>, <code>locator(key)</code>, <code>browser(key)</code> methods — simple lookups, nothing complex.</p>
+        <div class="pill-row">
+          <span class="pill">url.properties</span>
+          <span class="pill">or.properties</span>
+          <span class="pill">static init block</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ExtentManager -->
+    <div class="file-card t-purple">
+      <div class="file-card-header">
+        <div class="file-tier dot-purple"></div>
+        <div class="file-name">base/ExtentManager.java</div>
+        <div class="file-role">Report Manager</div>
+      </div>
+      <div class="file-card-body">
+        <div class="file-analogy">"Think of it as a shared test-result notebook — all threads write into it but each gets their own separate page so entries don't mix."</div>
+        <p><strong>What it does:</strong> Creates and manages the Extent HTML report. Because multiple threads are running tests at the same time, it uses ThreadLocal again — each thread has its own "test node" so log entries never appear in the wrong test.</p>
+        <p><strong>Where it starts:</strong> <code>init()</code> — creates the single <code>ExtentReports</code> object. Called from BaseClass @BeforeSuite.</p>
+        <p><strong>Where it ends:</strong> <code>flush()</code> — writes the HTML file to disk. Called by SuiteListener once all threads are done.</p>
+        <div class="pill-row">
+          <span class="pill">ExtentReports</span>
+          <span class="pill">ExtentSparkReporter</span>
+          <span class="pill">ThreadLocal&lt;ExtentTest&gt;</span>
+          <span class="pill">double-checked locking</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TestListener -->
+    <div class="file-card t-purple">
+      <div class="file-card-header">
+        <div class="file-tier dot-purple"></div>
+        <div class="file-name">listeners/TestListener.java</div>
+        <div class="file-role">Auto-Reporter</div>
+      </div>
+      <div class="file-card-body">
+        <div class="file-analogy">"Think of it as a security camera — it watches every test automatically, and takes a screenshot the moment anything fails."</div>
+        <p><strong>What it does:</strong> TestNG calls this automatically at key moments — when a test starts, when it passes, when it fails, when it's skipped. You don't call it yourself. On failure it takes a browser screenshot and embeds it into the HTML report.</p>
+        <p><strong>Key methods:</strong></p>
+        <div class="pill-row">
+          <span class="pill">onTestStart → logs START</span>
+          <span class="pill">onTestSuccess → logs PASS</span>
+          <span class="pill">onTestFailure → screenshot + logs FAIL</span>
+          <span class="pill">onTestSkipped → logs SKIP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SuiteListener -->
+    <div class="file-card t-purple">
+      <div class="file-card-header">
+        <div class="file-tier dot-purple"></div>
+        <div class="file-name">listeners/SuiteListener.java</div>
+        <div class="file-role">Report Finalizer</div>
+      </div>
+      <div class="file-card-body">
+        <div class="file-analogy">"Think of it as the printer button — it waits until every test is done, then prints the report exactly once."</div>
+        <p><strong>What it does:</strong> Has exactly one method: <code>onFinish(ISuite)</code>. TestNG calls it after every thread is done. It calls <code>ExtentManager.flush()</code> to write the final HTML report to <code>Report/htmlReport.html</code>.</p>
+        <p><strong>Why not just use @AfterSuite?</strong> Because @AfterSuite runs on a test thread, and at that point other threads might still be finishing. SuiteListener.onFinish() is guaranteed to run after all threads are completely done.</p>
+      </div>
+    </div>
+
+    <!-- AmazonSearchTest -->
+    <div class="file-card t-yellow">
+      <div class="file-card-header">
+        <div class="file-tier dot-yellow"></div>
+        <div class="file-name">tests/AmazonSearchTest.java</div>
+        <div class="file-role">@Parameter Demo</div>
+      </div>
+      <div class="file-card-body">
+        <div class="file-analogy">"A real test — it tells a browser to go to Amazon, pick a category, search for a product, and confirm results appeared."</div>
+        <p><strong>Where it starts:</strong> The <code>@Test searchProduct()</code> method receives a category and searchTerm from the XML (e.g., "Books" and "Harry Potter") as parameters. It uses these to drive the browser.</p>
+        <p><strong>Where it ends:</strong> After asserting that search results appeared on the page.</p>
+        <div class="snippet"><span class="ann">@Parameters</span>({ <span class="str">"category"</span>, <span class="str">"searchTerm"</span> })
+<span class="ann">@Test</span>
+<span class="kw">public void</span> searchProduct(
+    <span class="ann">@Optional</span>(<span class="str">"Books"</span>)        String category,
+    <span class="ann">@Optional</span>(<span class="str">"Harry Potter"</span>) String searchTerm) {
+
+    <span class="cmt">// select category from dropdown</span>
+    <span class="cmt">// type searchTerm into search box</span>
+    <span class="cmt">// click search button</span>
+    <span class="cmt">// assert results appeared</span>
+}</div>
+      </div>
+    </div>
+
+    <!-- ParallelMethodsTest -->
+    <div class="file-card t-yellow">
+      <div class="file-card-header">
+        <div class="file-tier dot-yellow"></div>
+        <div class="file-name">tests/ParallelMethodsTest.java</div>
+        <div class="file-role">parallel="methods" demo</div>
+      </div>
+      <div class="file-card-body">
+        <div class="file-analogy">"Four people each checking a different thing on the same website at exactly the same time."</div>
+        <p><strong>What it does:</strong> Contains 4 @Test methods: searchBox, categoryDropdown, searchButton, pageTitle. When run with <code>parallel="methods"</code>, TestNG runs all 4 at the same time — each in its own browser.</p>
+        <p><strong>Where it starts/ends:</strong> Each method is independent. They all start within milliseconds of each other.</p>
+      </div>
+    </div>
+
+    <!-- ParallelInstancesTest -->
+    <div class="file-card t-yellow">
+      <div class="file-card-header">
+        <div class="file-tier dot-yellow"></div>
+        <div class="file-name">tests/ParallelInstancesTest.java</div>
+        <div class="file-role">@Factory + parallel="instances"</div>
+      </div>
+      <div class="file-card-body">
+        <div class="file-analogy">"The same test person cloned 3 times — each clone visits a different website simultaneously."</div>
+        <p><strong>What @Factory does:</strong> Returns multiple instances of the test class, each configured differently (amazon, bbc, facebook). TestNG creates 3 separate objects and runs them in parallel.</p>
+        <div class="snippet"><span class="ann">@Factory</span>
+<span class="kw">public static</span> Object[] createInstances() {
+    <span class="kw">return new</span> Object[] {
+        <span class="kw">new</span> ParallelInstancesTest(<span class="str">"amazon"</span>),
+        <span class="kw">new</span> ParallelInstancesTest(<span class="str">"bbc"</span>),
+        <span class="kw">new</span> ParallelInstancesTest(<span class="str">"facebook"</span>),
+    };
+}</div>
+      </div>
+    </div>
+
+    <!-- DataProviderParallelTest -->
+    <div class="file-card t-yellow">
+      <div class="file-card-header">
+        <div class="file-tier dot-yellow"></div>
+        <div class="file-name">tests/DataProviderParallelTest.java</div>
+        <div class="file-role">@DataProvider(parallel=true)</div>
+      </div>
+      <div class="file-card-body">
+        <div class="file-analogy">"One recipe, three ovens — the same test runs 3 times simultaneously with different ingredients (data rows)."</div>
+        <p><strong>What it does:</strong> Uses <code>@DataProvider(parallel=true)</code> — one method, three data rows. TestNG runs all 3 at the same time. A data provider is just a method that returns a 2D array of values; TestNG feeds each row to the test.</p>
+        <div class="pill-row">
+          <span class="pill">{ "Books", "Harry Potter" }</span>
+          <span class="pill">{ "Electronics", "Bluetooth" }</span>
+          <span class="pill">{ "Computers & Accessories", "Keyboard" }</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SearchDataProvider -->
+    <div class="file-card t-blue">
+      <div class="file-card-header">
+        <div class="file-tier dot-blue"></div>
+        <div class="file-name">dataproviders/SearchDataProvider.java</div>
+        <div class="file-role">Data Supplier</div>
+      </div>
+      <div class="file-card-body">
+        <div class="file-analogy">"Think of it as a spreadsheet — it supplies rows of data to the test, which runs once per row."</div>
+        <p><strong>What it does:</strong> Contains three @DataProvider methods. <code>searchTermsParallel()</code> returns 3 rows and is marked <code>parallel=true</code> — so all 3 rows run at the same time. <code>searchTerms()</code> is the serial version.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SECTION 5: PARAMETERS ── -->
+<section id="parameters">
+  <div class="section-eyebrow">05 — @Parameters &amp; @Optional</div>
+  <div class="section-title">How values flow from XML to code</div>
+  <div class="section-sub">Understanding the priority chain</div>
+
+  <div class="param-chain">
+    <div class="param-step">
+      <div class="param-step-label">Source 1 (Highest Priority)</div>
+      <div class="param-step-title">Command Line</div>
+      <div class="param-step-desc">-Dbrowser=firefox overrides everything. Used in CI pipelines.</div>
+    </div>
+    <div class="param-step">
+      <div class="param-step-label">Source 2</div>
+      <div class="param-step-title">XML &lt;parameter&gt;</div>
+      <div class="param-step-desc">Values inside testng.xml or suite files. Normal way to pass data.</div>
+    </div>
+    <div class="param-step">
+      <div class="param-step-label">Source 3 (Lowest Priority)</div>
+      <div class="param-step-title">@Optional("default")</div>
+      <div class="param-step-desc">Fallback value when the XML doesn't supply the parameter at all.</div>
+    </div>
+  </div>
+
+  <div class="optional-box">
+    <h3>@Optional explained</h3>
+    <p>Without <code>@Optional</code>, if the XML doesn't supply a <code>&lt;parameter name="browser"&gt;</code>, TestNG throws an error and the test fails to start.</p>
+    <p>With <code>@Optional("chrome")</code>, if the XML is silent about "browser", the method just gets the string "chrome" instead — no error, test runs normally.</p>
+    <div class="snippet"><span class="cmt">// XML supplies "browser" → uses "edge"</span>
+<span class="cmt">// XML doesn't supply "browser" → uses "chrome" (the @Optional default)</span>
+<span class="kw">public void</span> setUp(<span class="ann">@Optional</span>(<span class="str">"chrome"</span>) String browser) { … }</div>
+
+    <div class="tip" style="margin-top:14px;">
+      <div class="tip-icon">📋</div>
+      <p><strong>Example from parameters-demo.xml:</strong><br>
+      Test "AllParametersSupplied" passes browser=edge in XML → setUp gets "edge".<br>
+      Test "OptionalDefaultsUsed" passes nothing → setUp gets "chrome" (from @Optional).<br>
+      Test "TestLevelOverridesSuiteLevel" passes browser at test-level → overrides the suite-level parameter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 6: PARALLEL MODES ── -->
+<section id="parallel">
+  <div class="section-eyebrow">06 — Parallel Modes</div>
+  <div class="section-title">5 ways to run tests at the same time</div>
+  <div class="section-sub">Each mode answers a different question: "what is the unit that runs in parallel?"</div>
+
+  <div class="parallel-grid">
+
+    <div class="parallel-card t-blue">
+      <span class="badge badge-blue">Mode 1</span>
+      <h3>parallel="tests"</h3>
+      <p>Each <code>&lt;test&gt;</code> block in the XML runs in its own thread. All methods inside one <code>&lt;test&gt;</code> still run one at a time.</p>
+      <p><strong>Used in:</strong> testng.xml (Chrome vs Edge cross-browser)</p>
+      <span class="xml-tag"><span class="xml-attr">parallel</span>=<span class="xml-val">"tests"</span> <span class="xml-attr">thread-count</span>=<span class="xml-val">"3"</span></span>
+    </div>
+
+    <div class="parallel-card t-green">
+      <span class="badge badge-green">Mode 2</span>
+      <h3>parallel="methods"</h3>
+      <p>Every @Test method runs in its own thread. If a class has 4 methods, all 4 browsers open simultaneously.</p>
+      <p><strong>Used in:</strong> parallel-methods.xml (ParallelMethodsTest — 4 methods)</p>
+      <span class="xml-tag"><span class="xml-attr">parallel</span>=<span class="xml-val">"methods"</span> <span class="xml-attr">thread-count</span>=<span class="xml-val">"4"</span></span>
+    </div>
+
+    <div class="parallel-card t-yellow">
+      <span class="badge badge-yellow">Mode 3</span>
+      <h3>parallel="classes"</h3>
+      <p>Each test class runs in its own thread. All methods in one class run sequentially (one at a time), but different classes run together.</p>
+      <p><strong>Used in:</strong> parallel-classes.xml (3 test classes)</p>
+      <span class="xml-tag"><span class="xml-attr">parallel</span>=<span class="xml-val">"classes"</span> <span class="xml-attr">thread-count</span>=<span class="xml-val">"3"</span></span>
+    </div>
+
+    <div class="parallel-card t-red">
+      <span class="badge badge-red">Mode 4</span>
+      <h3>parallel="instances"</h3>
+      <p>Each object instance of a class runs in its own thread. Requires @Factory to create multiple instances.</p>
+      <p><strong>Used in:</strong> parallel-instances.xml (@Factory returns 3 instances: amazon, bbc, facebook)</p>
+      <span class="xml-tag"><span class="xml-attr">parallel</span>=<span class="xml-val">"instances"</span> <span class="xml-attr">thread-count</span>=<span class="xml-val">"3"</span></span>
+    </div>
+
+    <div class="parallel-card t-purple">
+      <span class="badge badge-purple">Mode 5</span>
+      <h3>@DataProvider(parallel=true)</h3>
+      <p>Each data row gets its own thread. No parallel= in XML — the parallelism is declared on the data provider method itself.</p>
+      <p><strong>Used in:</strong> parallel-dataprovider.xml (3 rows × 1 method = 3 simultaneous browsers)</p>
+      <span class="xml-tag"><span class="xml-attr">data-provider-thread-count</span>=<span class="xml-val">"3"</span></span>
+    </div>
+
+  </div>
+
+  <div class="tip" style="margin-top:24px;">
+    <div class="tip-icon">🔒</div>
+    <p><strong>Why ThreadLocal is the key to all of this:</strong> Without it, Thread A might accidentally use Thread B's browser. ThreadLocal gives every thread a private storage slot — like a numbered locker. So when Thread A calls <code>DriverFactory.getDriver()</code>, it always gets its own browser, never Thread B's. This is what makes all 5 parallel modes safe.</p>
+  </div>
+
+  <div class="tip" style="margin-top:12px;">
+    <div class="tip-icon">▶️</div>
+    <p><strong>How to run:</strong> <code>mvn test -DsuiteXmlFile=suites/parallel-methods.xml</code> — change the XML file name to try each mode. Run <code>suites/regression-all.xml</code> to execute all 34 tests at once.</p>
+  </div>
+</section>
+
+</div><!-- /.page -->

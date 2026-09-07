@@ -27,3 +27,322 @@
 2026-09-03 09:21:35 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] PASS   AmazonSearchTest.searchProduct
 2026-09-03 09:21:35 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] <test> 'EdgeTest' finished: 2 passed, 0 failed, 0 skipped
 2026-09-03 09:21:36 [main] INFO  testngpack:18 - [main] ===== Suite 'CrossBrowserSuite' finished. Report: D:\Selenium\TestNG-P010-TestNg/Report/htmlReport.html =====
+2026-09-07 14:22:22 [main] INFO  testngpack:18 - [main] ===== Suite 'CrossBrowserSuite' started, parallel=tests, thread-count=3 =====
+2026-09-07 14:22:22 [main] INFO  testngpack:18 - [main] Configuration + Extent report initialised
+2026-09-07 14:22:30 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] Launched edge
+2026-09-07 14:22:32 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] Opened amazon -> https://www.amazon.in
+2026-09-07 14:22:32 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] START  AmazonSearchTest.homePageLoads on edge
+2026-09-07 14:22:33 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] PASS   AmazonSearchTest.homePageLoads
+2026-09-07 14:22:35 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] Launched chrome
+2026-09-07 14:22:36 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] Opened amazon -> https://www.amazon.in
+2026-09-07 14:22:36 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] START  AmazonSearchTest.homePageLoads on chrome
+2026-09-07 14:22:36 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] Launched edge
+2026-09-07 14:22:37 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] Opened amazon -> https://www.amazon.in
+2026-09-07 14:22:37 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] START  AmazonSearchTest.searchProduct on edge
+2026-09-07 14:22:37 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] Searching 'Bluetooth headphones' under 'Electronics'
+2026-09-07 14:22:38 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] PASS   AmazonSearchTest.homePageLoads
+2026-09-07 14:22:39 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] Selected <Electronics> on amazondropbox_id
+2026-09-07 14:22:39 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] Launched chrome
+2026-09-07 14:22:39 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] Typed <Bluetooth headphones> into amazonsearchtextbox_name
+2026-09-07 14:22:40 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] Opened amazon -> https://www.amazon.in
+2026-09-07 14:22:40 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] START  AmazonSearchTest.searchProduct on chrome
+2026-09-07 14:22:40 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] Searching 'Harry Potter' under 'Books'
+2026-09-07 14:22:41 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] Clicked amazonsearchbutton_xPath
+2026-09-07 14:22:41 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] Selected <Books> on amazondropbox_id
+2026-09-07 14:22:42 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] Typed <Harry Potter> into amazonsearchtextbox_name
+2026-09-07 14:22:43 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] PASS   AmazonSearchTest.searchProduct
+2026-09-07 14:22:43 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] Clicked amazonsearchbutton_xPath
+2026-09-07 14:22:43 [TestNG-tests-2] INFO  testngpack:18 - [TestNG-tests-2] <test> 'EdgeTest' finished: 2 passed, 0 failed, 0 skipped
+2026-09-07 14:22:45 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] PASS   AmazonSearchTest.searchProduct
+2026-09-07 14:22:45 [TestNG-tests-1] INFO  testngpack:18 - [TestNG-tests-1] <test> 'ChromeTest' finished: 2 passed, 0 failed, 0 skipped
+2026-09-07 14:22:45 [main] INFO  testngpack:18 - [main] ===== Suite 'CrossBrowserSuite' finished. Report: D:\Selenium\TestNG-P010-TestNg/Report/htmlReport.html =====
+2026-09-07 15:47:08 [main] INFO  testngpack:18 - [main] ===== Suite 'ParallelMethodsSuite' started, parallel=methods, thread-count=4 =====
+2026-09-07 15:47:09 [main] INFO  testngpack:18 - [main] Configuration + Extent report initialised
+2026-09-07 15:47:14 [TestNG-test-MethodLevelParallel-3] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-3] Launched chrome
+2026-09-07 15:47:14 [TestNG-test-MethodLevelParallel-2] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-2] Launched chrome
+2026-09-07 15:47:14 [TestNG-test-MethodLevelParallel-4] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-4] Launched chrome
+2026-09-07 15:47:15 [TestNG-test-MethodLevelParallel-4] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-4] Opened amazon -> https://www.amazon.in
+2026-09-07 15:47:15 [TestNG-test-MethodLevelParallel-4] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-4] START  ParallelMethodsTest.searchButton_isDisplayed on chrome
+2026-09-07 15:47:15 [TestNG-test-MethodLevelParallel-2] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-2] Opened amazon -> https://www.amazon.in
+2026-09-07 15:47:15 [TestNG-test-MethodLevelParallel-2] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-2] START  ParallelMethodsTest.pageTitle_isNotBlank on chrome
+2026-09-07 15:47:15 [TestNG-test-MethodLevelParallel-3] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-3] Opened amazon -> https://www.amazon.in
+2026-09-07 15:47:15 [TestNG-test-MethodLevelParallel-3] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-3] START  ParallelMethodsTest.searchBox_isDisplayed on chrome
+2026-09-07 15:47:16 [TestNG-test-MethodLevelParallel-1] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-1] Launched chrome
+2026-09-07 15:47:16 [TestNG-test-MethodLevelParallel-1] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-1] Opened amazon -> https://www.amazon.in
+2026-09-07 15:47:16 [TestNG-test-MethodLevelParallel-1] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-1] START  ParallelMethodsTest.categoryDropdown_isDisplayed on chrome
+2026-09-07 15:47:18 [TestNG-test-MethodLevelParallel-1] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-1] categoryDropdown_isDisplayed ran on thread TestNG-test-MethodLevelParallel-1 with a chrome driver
+2026-09-07 15:47:18 [TestNG-test-MethodLevelParallel-1] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-1] PASS   ParallelMethodsTest.categoryDropdown_isDisplayed
+2026-09-07 15:47:18 [TestNG-test-MethodLevelParallel-3] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-3] searchBox_isDisplayed ran on thread TestNG-test-MethodLevelParallel-3 with a chrome driver
+2026-09-07 15:47:18 [TestNG-test-MethodLevelParallel-3] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-3] PASS   ParallelMethodsTest.searchBox_isDisplayed
+2026-09-07 15:47:19 [TestNG-test-MethodLevelParallel-4] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-4] searchButton_isDisplayed ran on thread TestNG-test-MethodLevelParallel-4 with a chrome driver
+2026-09-07 15:47:19 [TestNG-test-MethodLevelParallel-4] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-4] PASS   ParallelMethodsTest.searchButton_isDisplayed
+2026-09-07 15:47:19 [TestNG-test-MethodLevelParallel-2] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-2] pageTitle_isNotBlank ran on thread TestNG-test-MethodLevelParallel-2 with a chrome driver
+2026-09-07 15:47:19 [TestNG-test-MethodLevelParallel-2] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-2] PASS   ParallelMethodsTest.pageTitle_isNotBlank
+2026-09-07 15:47:20 [main] INFO  testngpack:18 - [main] <test> 'MethodLevelParallel' finished: 4 passed, 0 failed, 0 skipped
+2026-09-07 15:47:20 [main] INFO  testngpack:18 - [main] ===== Suite 'ParallelMethodsSuite' finished. Report: D:\Selenium\TestNG-P010-TestNg/Report/htmlReport.html =====
+2026-09-07 15:48:04 [main] INFO  testngpack:18 - [main] ===== Suite 'ParametersSuite' started, parallel=none, thread-count=5 =====
+2026-09-07 15:48:04 [main] INFO  testngpack:18 - [main] Configuration + Extent report initialised
+2026-09-07 15:48:05 [main] INFO  testngpack:18 - [main] Launched chrome
+2026-09-07 15:48:07 [main] INFO  testngpack:18 - [main] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:07 [main] INFO  testngpack:18 - [main] START  AmazonSearchTest.homePageLoads on chrome
+2026-09-07 15:48:08 [main] INFO  testngpack:18 - [main] PASS   AmazonSearchTest.homePageLoads
+2026-09-07 15:48:09 [main] INFO  testngpack:18 - [main] Launched chrome
+2026-09-07 15:48:10 [main] INFO  testngpack:18 - [main] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:10 [main] INFO  testngpack:18 - [main] START  AmazonSearchTest.searchProduct on chrome
+2026-09-07 15:48:10 [main] INFO  testngpack:18 - [main] Searching 'Harry Potter' under 'Books'
+2026-09-07 15:48:12 [main] INFO  testngpack:18 - [main] Selected <Books> on amazondropbox_id
+2026-09-07 15:48:13 [main] INFO  testngpack:18 - [main] Typed <Harry Potter> into amazonsearchtextbox_name
+2026-09-07 15:48:13 [main] INFO  testngpack:18 - [main] Clicked amazonsearchbutton_xPath
+2026-09-07 15:48:15 [main] INFO  testngpack:18 - [main] PASS   AmazonSearchTest.searchProduct
+2026-09-07 15:48:16 [main] INFO  testngpack:18 - [main] Launched chrome
+2026-09-07 15:48:16 [main] INFO  testngpack:18 - [main] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:16 [main] INFO  testngpack:18 - [main] START  UrlNavigationTest.navigateToSecondUrl on chrome
+2026-09-07 15:48:16 [main] INFO  testngpack:18 - [main] Second url key resolved to 'bbc'
+2026-09-07 15:48:17 [main] INFO  testngpack:18 - [main] Opened bbc -> https://www.bbc.com
+2026-09-07 15:48:17 [main] INFO  testngpack:18 - [main] PASS   UrlNavigationTest.navigateToSecondUrl
+2026-09-07 15:48:18 [main] INFO  testngpack:18 - [main] Launched chrome
+2026-09-07 15:48:19 [main] INFO  testngpack:18 - [main] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:19 [main] INFO  testngpack:18 - [main] START  UrlNavigationTest.readParameterFromContext on chrome
+2026-09-07 15:48:19 [main] INFO  testngpack:18 - [main] optionalParam(secondUrl) -> bbc
+2026-09-07 15:48:20 [main] INFO  testngpack:18 - [main] Opened bbc -> https://www.bbc.com
+2026-09-07 15:48:20 [main] INFO  testngpack:18 - [main] PASS   UrlNavigationTest.readParameterFromContext
+2026-09-07 15:48:20 [main] INFO  testngpack:18 - [main] <test> 'AllParametersSupplied' finished: 4 passed, 0 failed, 0 skipped
+2026-09-07 15:48:21 [main] INFO  testngpack:18 - [main] Launched chrome
+2026-09-07 15:48:21 [main] INFO  testngpack:18 - [main] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:21 [main] INFO  testngpack:18 - [main] START  AmazonSearchTest.homePageLoads on chrome
+2026-09-07 15:48:23 [main] INFO  testngpack:18 - [main] PASS   AmazonSearchTest.homePageLoads
+2026-09-07 15:48:24 [main] INFO  testngpack:18 - [main] Launched chrome
+2026-09-07 15:48:25 [main] INFO  testngpack:18 - [main] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:25 [main] INFO  testngpack:18 - [main] START  AmazonSearchTest.searchProduct on chrome
+2026-09-07 15:48:25 [main] INFO  testngpack:18 - [main] Searching 'Harry Potter' under 'Books'
+2026-09-07 15:48:27 [main] INFO  testngpack:18 - [main] Selected <Books> on amazondropbox_id
+2026-09-07 15:48:27 [main] INFO  testngpack:18 - [main] Typed <Harry Potter> into amazonsearchtextbox_name
+2026-09-07 15:48:27 [main] INFO  testngpack:18 - [main] Clicked amazonsearchbutton_xPath
+2026-09-07 15:48:29 [main] INFO  testngpack:18 - [main] PASS   AmazonSearchTest.searchProduct
+2026-09-07 15:48:30 [main] INFO  testngpack:18 - [main] Launched chrome
+2026-09-07 15:48:30 [main] INFO  testngpack:18 - [main] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:30 [main] INFO  testngpack:18 - [main] START  UrlNavigationTest.navigateToSecondUrl on chrome
+2026-09-07 15:48:30 [main] INFO  testngpack:18 - [main] Second url key resolved to 'bbc'
+2026-09-07 15:48:31 [main] INFO  testngpack:18 - [main] Opened bbc -> https://www.bbc.com
+2026-09-07 15:48:31 [main] INFO  testngpack:18 - [main] PASS   UrlNavigationTest.navigateToSecondUrl
+2026-09-07 15:48:32 [main] INFO  testngpack:18 - [main] Launched chrome
+2026-09-07 15:48:33 [main] INFO  testngpack:18 - [main] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:33 [main] INFO  testngpack:18 - [main] START  UrlNavigationTest.readParameterFromContext on chrome
+2026-09-07 15:48:33 [main] INFO  testngpack:18 - [main] optionalParam(secondUrl) -> facebook
+2026-09-07 15:48:34 [main] INFO  testngpack:18 - [main] Opened facebook -> https://www.facebook.com
+2026-09-07 15:48:34 [main] INFO  testngpack:18 - [main] PASS   UrlNavigationTest.readParameterFromContext
+2026-09-07 15:48:34 [main] INFO  testngpack:18 - [main] <test> 'OptionalDefaultsUsed' finished: 4 passed, 0 failed, 0 skipped
+2026-09-07 15:48:35 [main] INFO  testngpack:18 - [main] Launched chrome
+2026-09-07 15:48:35 [main] INFO  testngpack:18 - [main] Opened bbc -> https://www.bbc.com
+2026-09-07 15:48:35 [main] INFO  testngpack:18 - [main] START  UrlNavigationTest.navigateToSecondUrl on chrome
+2026-09-07 15:48:35 [main] INFO  testngpack:18 - [main] Second url key resolved to 'facebook'
+2026-09-07 15:48:36 [main] INFO  testngpack:18 - [main] Opened facebook -> https://www.facebook.com
+2026-09-07 15:48:37 [main] INFO  testngpack:18 - [main] PASS   UrlNavigationTest.navigateToSecondUrl
+2026-09-07 15:48:37 [main] INFO  testngpack:18 - [main] Launched chrome
+2026-09-07 15:48:38 [main] INFO  testngpack:18 - [main] Opened bbc -> https://www.bbc.com
+2026-09-07 15:48:38 [main] INFO  testngpack:18 - [main] START  UrlNavigationTest.readParameterFromContext on chrome
+2026-09-07 15:48:38 [main] INFO  testngpack:18 - [main] optionalParam(secondUrl) -> facebook
+2026-09-07 15:48:39 [main] INFO  testngpack:18 - [main] Opened facebook -> https://www.facebook.com
+2026-09-07 15:48:39 [main] INFO  testngpack:18 - [main] PASS   UrlNavigationTest.readParameterFromContext
+2026-09-07 15:48:39 [main] INFO  testngpack:18 - [main] <test> 'TestLevelOverridesSuiteLevel' finished: 2 passed, 0 failed, 0 skipped
+2026-09-07 15:48:40 [main] INFO  testngpack:18 - [main] ===== Suite 'ParametersSuite' finished. Report: D:\Selenium\TestNG-P010-TestNg/Report/htmlReport.html =====
+2026-09-07 15:48:40 [main] INFO  testngpack:18 - [main] ===== Suite 'ParallelMethodsSuite' started, parallel=methods, thread-count=4 =====
+2026-09-07 15:48:40 [main] INFO  testngpack:18 - [main] Configuration + Extent report initialised
+2026-09-07 15:48:41 [TestNG-test-MethodLevelParallel-1] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-1] Launched chrome
+2026-09-07 15:48:42 [TestNG-test-MethodLevelParallel-4] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-4] Launched chrome
+2026-09-07 15:48:42 [TestNG-test-MethodLevelParallel-2] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-2] Launched chrome
+2026-09-07 15:48:42 [TestNG-test-MethodLevelParallel-3] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-3] Launched chrome
+2026-09-07 15:48:42 [TestNG-test-MethodLevelParallel-2] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-2] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:42 [TestNG-test-MethodLevelParallel-2] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-2] START  ParallelMethodsTest.pageTitle_isNotBlank on chrome
+2026-09-07 15:48:42 [TestNG-test-MethodLevelParallel-3] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-3] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:42 [TestNG-test-MethodLevelParallel-3] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-3] START  ParallelMethodsTest.searchBox_isDisplayed on chrome
+2026-09-07 15:48:42 [TestNG-test-MethodLevelParallel-1] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-1] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:42 [TestNG-test-MethodLevelParallel-1] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-1] START  ParallelMethodsTest.categoryDropdown_isDisplayed on chrome
+2026-09-07 15:48:43 [TestNG-test-MethodLevelParallel-4] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-4] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:43 [TestNG-test-MethodLevelParallel-4] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-4] START  ParallelMethodsTest.searchButton_isDisplayed on chrome
+2026-09-07 15:48:44 [TestNG-test-MethodLevelParallel-4] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-4] searchButton_isDisplayed ran on thread TestNG-test-MethodLevelParallel-4 with a chrome driver
+2026-09-07 15:48:44 [TestNG-test-MethodLevelParallel-4] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-4] PASS   ParallelMethodsTest.searchButton_isDisplayed
+2026-09-07 15:48:45 [TestNG-test-MethodLevelParallel-1] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-1] categoryDropdown_isDisplayed ran on thread TestNG-test-MethodLevelParallel-1 with a chrome driver
+2026-09-07 15:48:45 [TestNG-test-MethodLevelParallel-1] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-1] PASS   ParallelMethodsTest.categoryDropdown_isDisplayed
+2026-09-07 15:48:45 [TestNG-test-MethodLevelParallel-3] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-3] searchBox_isDisplayed ran on thread TestNG-test-MethodLevelParallel-3 with a chrome driver
+2026-09-07 15:48:45 [TestNG-test-MethodLevelParallel-3] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-3] PASS   ParallelMethodsTest.searchBox_isDisplayed
+2026-09-07 15:48:45 [TestNG-test-MethodLevelParallel-2] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-2] pageTitle_isNotBlank ran on thread TestNG-test-MethodLevelParallel-2 with a chrome driver
+2026-09-07 15:48:45 [TestNG-test-MethodLevelParallel-2] INFO  testngpack:18 - [TestNG-test-MethodLevelParallel-2] PASS   ParallelMethodsTest.pageTitle_isNotBlank
+2026-09-07 15:48:46 [main] INFO  testngpack:18 - [main] <test> 'MethodLevelParallel' finished: 4 passed, 0 failed, 0 skipped
+2026-09-07 15:48:46 [main] INFO  testngpack:18 - [main] ===== Suite 'ParallelMethodsSuite' finished. Report: D:\Selenium\TestNG-P010-TestNg/Report/htmlReport.html =====
+2026-09-07 15:48:46 [main] INFO  testngpack:18 - [main] ===== Suite 'ParallelClassesSuite' started, parallel=classes, thread-count=3 =====
+2026-09-07 15:48:46 [main] INFO  testngpack:18 - [main] Configuration + Extent report initialised
+2026-09-07 15:48:49 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Launched chrome
+2026-09-07 15:48:50 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:50 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] START  UrlNavigationTest.navigateToSecondUrl on chrome
+2026-09-07 15:48:50 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Second url key resolved to 'bbc'
+2026-09-07 15:48:50 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Launched chrome
+2026-09-07 15:48:51 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:51 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] START  ParallelMethodsTest.categoryDropdown_isDisplayed on chrome
+2026-09-07 15:48:51 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Opened bbc -> https://www.bbc.com
+2026-09-07 15:48:52 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Launched chrome
+2026-09-07 15:48:52 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] PASS   UrlNavigationTest.navigateToSecondUrl
+2026-09-07 15:48:52 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:52 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] START  AmazonSearchTest.homePageLoads on chrome
+2026-09-07 15:48:53 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Launched chrome
+2026-09-07 15:48:53 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] categoryDropdown_isDisplayed ran on thread TestNG-test-ClassLevelParallel-3 with a chrome driver
+2026-09-07 15:48:53 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] PASS   ParallelMethodsTest.categoryDropdown_isDisplayed
+2026-09-07 15:48:54 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] PASS   AmazonSearchTest.homePageLoads
+2026-09-07 15:48:54 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Launched chrome
+2026-09-07 15:48:55 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:55 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] START  ParallelMethodsTest.pageTitle_isNotBlank on chrome
+2026-09-07 15:48:55 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:55 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] START  UrlNavigationTest.readParameterFromContext on chrome
+2026-09-07 15:48:55 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] optionalParam(secondUrl) -> bbc
+2026-09-07 15:48:55 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Opened bbc -> https://www.bbc.com
+2026-09-07 15:48:55 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Launched chrome
+2026-09-07 15:48:56 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:56 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] START  AmazonSearchTest.searchProduct on chrome
+2026-09-07 15:48:56 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Searching 'Harry Potter' under 'Books'
+2026-09-07 15:48:56 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] PASS   UrlNavigationTest.readParameterFromContext
+2026-09-07 15:48:57 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] pageTitle_isNotBlank ran on thread TestNG-test-ClassLevelParallel-3 with a chrome driver
+2026-09-07 15:48:57 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] PASS   ParallelMethodsTest.pageTitle_isNotBlank
+2026-09-07 15:48:58 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Launched chrome
+2026-09-07 15:48:59 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Opened amazon -> https://www.amazon.in
+2026-09-07 15:48:59 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] START  ParallelMethodsTest.searchBox_isDisplayed on chrome
+2026-09-07 15:49:00 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] searchBox_isDisplayed ran on thread TestNG-test-ClassLevelParallel-3 with a chrome driver
+2026-09-07 15:49:00 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] PASS   ParallelMethodsTest.searchBox_isDisplayed
+2026-09-07 15:49:01 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Selected <Books> on amazondropbox_id
+2026-09-07 15:49:01 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Typed <Harry Potter> into amazonsearchtextbox_name
+2026-09-07 15:49:02 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Launched chrome
+2026-09-07 15:49:02 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Clicked amazonsearchbutton_xPath
+2026-09-07 15:49:02 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:02 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] START  ParallelMethodsTest.searchButton_isDisplayed on chrome
+2026-09-07 15:49:04 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] PASS   AmazonSearchTest.searchProduct
+2026-09-07 15:49:04 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] searchButton_isDisplayed ran on thread TestNG-test-ClassLevelParallel-3 with a chrome driver
+2026-09-07 15:49:04 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] PASS   ParallelMethodsTest.searchButton_isDisplayed
+2026-09-07 15:49:04 [main] INFO  testngpack:18 - [main] <test> 'ClassLevelParallel' finished: 8 passed, 0 failed, 0 skipped
+2026-09-07 15:49:04 [main] INFO  testngpack:18 - [main] ===== Suite 'ParallelClassesSuite' finished. Report: D:\Selenium\TestNG-P010-TestNg/Report/htmlReport.html =====
+2026-09-07 15:49:04 [main] INFO  testngpack:18 - [main] ===== Suite 'ParallelInstancesSuite' started, parallel=instances, thread-count=3 =====
+2026-09-07 15:49:04 [main] INFO  testngpack:18 - [main] Configuration + Extent report initialised
+2026-09-07 15:49:05 [TestNG-test-InstanceLevelParallel-2] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-2] Launched chrome
+2026-09-07 15:49:05 [TestNG-test-InstanceLevelParallel-3] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-3] Launched chrome
+2026-09-07 15:49:06 [TestNG-test-InstanceLevelParallel-2] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-2] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:06 [TestNG-test-InstanceLevelParallel-2] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-2] START  ParallelInstancesTest.siteIsReachable on chrome
+2026-09-07 15:49:06 [TestNG-test-InstanceLevelParallel-3] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-3] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:06 [TestNG-test-InstanceLevelParallel-3] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-3] START  ParallelInstancesTest.siteIsReachable on chrome
+2026-09-07 15:49:06 [TestNG-test-InstanceLevelParallel-1] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-1] Launched chrome
+2026-09-07 15:49:07 [TestNG-test-InstanceLevelParallel-1] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-1] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:07 [TestNG-test-InstanceLevelParallel-1] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-1] START  ParallelInstancesTest.siteIsReachable on chrome
+2026-09-07 15:49:07 [TestNG-test-InstanceLevelParallel-1] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-1] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:07 [TestNG-test-InstanceLevelParallel-1] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-1] instance[amazon] on thread TestNG-test-InstanceLevelParallel-1
+2026-09-07 15:49:07 [TestNG-test-InstanceLevelParallel-1] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-1] PASS   ParallelInstancesTest.siteIsReachable
+2026-09-07 15:49:07 [TestNG-test-InstanceLevelParallel-3] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-3] Opened facebook -> https://www.facebook.com
+2026-09-07 15:49:07 [TestNG-test-InstanceLevelParallel-3] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-3] instance[facebook] on thread TestNG-test-InstanceLevelParallel-3
+2026-09-07 15:49:07 [TestNG-test-InstanceLevelParallel-3] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-3] PASS   ParallelInstancesTest.siteIsReachable
+2026-09-07 15:49:07 [TestNG-test-InstanceLevelParallel-2] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-2] Opened bbc -> https://www.bbc.com
+2026-09-07 15:49:07 [TestNG-test-InstanceLevelParallel-2] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-2] instance[bbc] on thread TestNG-test-InstanceLevelParallel-2
+2026-09-07 15:49:08 [TestNG-test-InstanceLevelParallel-2] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-2] PASS   ParallelInstancesTest.siteIsReachable
+2026-09-07 15:49:09 [TestNG-test-InstanceLevelParallel-1] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-1] Launched chrome
+2026-09-07 15:49:09 [TestNG-test-InstanceLevelParallel-3] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-3] Launched chrome
+2026-09-07 15:49:09 [TestNG-test-InstanceLevelParallel-3] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-3] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:09 [TestNG-test-InstanceLevelParallel-3] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-3] START  ParallelInstancesTest.siteHasTitle on chrome
+2026-09-07 15:49:09 [TestNG-test-InstanceLevelParallel-1] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-1] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:09 [TestNG-test-InstanceLevelParallel-1] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-1] START  ParallelInstancesTest.siteHasTitle on chrome
+2026-09-07 15:49:09 [TestNG-test-InstanceLevelParallel-1] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-1] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:09 [TestNG-test-InstanceLevelParallel-2] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-2] Launched chrome
+2026-09-07 15:49:10 [TestNG-test-InstanceLevelParallel-2] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-2] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:10 [TestNG-test-InstanceLevelParallel-2] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-2] START  ParallelInstancesTest.siteHasTitle on chrome
+2026-09-07 15:49:10 [TestNG-test-InstanceLevelParallel-3] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-3] Opened bbc -> https://www.bbc.com
+2026-09-07 15:49:11 [TestNG-test-InstanceLevelParallel-2] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-2] Opened facebook -> https://www.facebook.com
+2026-09-07 15:49:11 [TestNG-test-InstanceLevelParallel-2] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-2] PASS   ParallelInstancesTest.siteHasTitle
+2026-09-07 15:49:11 [TestNG-test-InstanceLevelParallel-3] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-3] PASS   ParallelInstancesTest.siteHasTitle
+2026-09-07 15:49:12 [TestNG-test-InstanceLevelParallel-1] INFO  testngpack:18 - [TestNG-test-InstanceLevelParallel-1] PASS   ParallelInstancesTest.siteHasTitle
+2026-09-07 15:49:12 [main] INFO  testngpack:18 - [main] <test> 'InstanceLevelParallel' finished: 6 passed, 0 failed, 0 skipped
+2026-09-07 15:49:12 [main] INFO  testngpack:18 - [main] ===== Suite 'ParallelInstancesSuite' finished. Report: D:\Selenium\TestNG-P010-TestNg/Report/htmlReport.html =====
+2026-09-07 15:49:12 [main] INFO  testngpack:18 - [main] ===== Suite 'ParallelDataProviderSuite' started, parallel=none, thread-count=5 =====
+2026-09-07 15:49:12 [main] INFO  testngpack:18 - [main] Configuration + Extent report initialised
+2026-09-07 15:49:13 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] Launched chrome
+2026-09-07 15:49:13 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] Launched chrome
+2026-09-07 15:49:14 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] Launched chrome
+2026-09-07 15:49:14 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:14 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] START  DataProviderParallelTest.openEachUrl on chrome
+2026-09-07 15:49:14 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:14 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] START  DataProviderParallelTest.openEachUrl on chrome
+2026-09-07 15:49:14 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:14 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] START  DataProviderParallelTest.openEachUrl on chrome
+2026-09-07 15:49:15 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:15 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] Opened facebook -> https://www.facebook.com
+2026-09-07 15:49:15 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] PASS   DataProviderParallelTest.openEachUrl
+2026-09-07 15:49:15 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] Opened bbc -> https://www.bbc.com
+2026-09-07 15:49:15 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] PASS   DataProviderParallelTest.openEachUrl
+2026-09-07 15:49:16 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] PASS   DataProviderParallelTest.openEachUrl
+2026-09-07 15:49:17 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] Launched chrome
+2026-09-07 15:49:18 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] Launched chrome
+2026-09-07 15:49:18 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:18 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] START  DataProviderParallelTest.searchEachTerm on chrome
+2026-09-07 15:49:18 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] Row [Electronics / Bluetooth headphones] on thread TestNG-PoolService-2
+2026-09-07 15:49:18 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:18 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] START  DataProviderParallelTest.searchEachTerm on chrome
+2026-09-07 15:49:18 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] Row [Computers & Accessories / Mechanical keyboard] on thread TestNG-PoolService-3
+2026-09-07 15:49:18 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] Launched chrome
+2026-09-07 15:49:19 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] Opened amazon -> https://www.amazon.in
+2026-09-07 15:49:19 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] START  DataProviderParallelTest.searchEachTerm on chrome
+2026-09-07 15:49:19 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] Row [Books / Harry Potter] on thread TestNG-PoolService-1
+2026-09-07 15:49:20 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] Selected <Computers & Accessories> on amazondropbox_id
+2026-09-07 15:49:20 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] Selected <Electronics> on amazondropbox_id
+2026-09-07 15:49:21 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] Typed <Bluetooth headphones> into amazonsearchtextbox_name
+2026-09-07 15:49:22 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] Typed <Mechanical keyboard> into amazonsearchtextbox_name
+2026-09-07 15:49:24 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] Selected <Books> on amazondropbox_id
+2026-09-07 15:49:24 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] Clicked amazonsearchbutton_xPath
+2026-09-07 15:49:24 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] Typed <Harry Potter> into amazonsearchtextbox_name
+2026-09-07 15:49:25 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] Clicked amazonsearchbutton_xPath
+2026-09-07 15:49:25 [TestNG-PoolService-3] INFO  testngpack:18 - [TestNG-PoolService-3] PASS   DataProviderParallelTest.searchEachTerm
+2026-09-07 15:49:25 [TestNG-PoolService-2] INFO  testngpack:18 - [TestNG-PoolService-2] PASS   DataProviderParallelTest.searchEachTerm
+2026-09-07 15:49:26 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] Clicked amazonsearchbutton_xPath
+2026-09-07 15:49:29 [TestNG-PoolService-1] INFO  testngpack:18 - [TestNG-PoolService-1] PASS   DataProviderParallelTest.searchEachTerm
+2026-09-07 15:49:29 [main] INFO  testngpack:18 - [main] <test> 'DataProviderParallel' finished: 6 passed, 0 failed, 0 skipped
+2026-09-07 15:49:29 [main] INFO  testngpack:18 - [main] ===== Suite 'ParallelDataProviderSuite' finished. Report: D:\Selenium\TestNG-P010-TestNg/Report/htmlReport.html =====
+2026-09-07 23:24:14 [main] INFO  testngpack:18 - [main] ===== Suite 'ParallelClassesSuite' started, parallel=classes, thread-count=3 =====
+2026-09-07 23:24:14 [main] INFO  testngpack:18 - [main] Configuration + Extent report initialised
+2026-09-07 23:24:18 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Launched chrome
+2026-09-07 23:24:20 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Launched chrome
+2026-09-07 23:24:20 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Opened amazon -> https://www.amazon.in
+2026-09-07 23:24:20 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] START  UrlNavigationTest.navigateToSecondUrl on chrome
+2026-09-07 23:24:20 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Second url key resolved to 'bbc'
+2026-09-07 23:24:20 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Opened amazon -> https://www.amazon.in
+2026-09-07 23:24:20 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] START  ParallelMethodsTest.categoryDropdown_isDisplayed on chrome
+2026-09-07 23:24:22 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Opened bbc -> https://www.bbc.com
+2026-09-07 23:24:22 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Launched chrome
+2026-09-07 23:24:22 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Opened amazon -> https://www.amazon.in
+2026-09-07 23:24:22 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] START  AmazonSearchTest.homePageLoads on chrome
+2026-09-07 23:24:23 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] PASS   UrlNavigationTest.navigateToSecondUrl
+2026-09-07 23:24:24 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] categoryDropdown_isDisplayed ran on thread TestNG-test-ClassLevelParallel-3 with a chrome driver
+2026-09-07 23:24:24 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] PASS   ParallelMethodsTest.categoryDropdown_isDisplayed
+2026-09-07 23:24:25 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] PASS   AmazonSearchTest.homePageLoads
+2026-09-07 23:24:28 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Launched chrome
+2026-09-07 23:24:28 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Launched chrome
+2026-09-07 23:24:28 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Launched chrome
+2026-09-07 23:24:28 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Opened amazon -> https://www.amazon.in
+2026-09-07 23:24:28 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] START  AmazonSearchTest.searchProduct on chrome
+2026-09-07 23:24:28 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Searching 'Harry Potter' under 'Books'
+2026-09-07 23:24:28 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Opened amazon -> https://www.amazon.in
+2026-09-07 23:24:28 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] START  ParallelMethodsTest.pageTitle_isNotBlank on chrome
+2026-09-07 23:24:29 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Opened amazon -> https://www.amazon.in
+2026-09-07 23:24:29 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] START  UrlNavigationTest.readParameterFromContext on chrome
+2026-09-07 23:24:29 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] optionalParam(secondUrl) -> bbc
+2026-09-07 23:24:30 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] Opened bbc -> https://www.bbc.com
+2026-09-07 23:24:31 [TestNG-test-ClassLevelParallel-2] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-2] PASS   UrlNavigationTest.readParameterFromContext
+2026-09-07 23:24:32 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Selected <Books> on amazondropbox_id
+2026-09-07 23:24:32 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Typed <Harry Potter> into amazonsearchtextbox_name
+2026-09-07 23:24:32 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] pageTitle_isNotBlank ran on thread TestNG-test-ClassLevelParallel-3 with a chrome driver
+2026-09-07 23:24:32 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] PASS   ParallelMethodsTest.pageTitle_isNotBlank
+2026-09-07 23:24:33 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] Clicked amazonsearchbutton_xPath
+2026-09-07 23:24:34 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Launched chrome
+2026-09-07 23:24:34 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Opened amazon -> https://www.amazon.in
+2026-09-07 23:24:34 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] START  ParallelMethodsTest.searchBox_isDisplayed on chrome
+2026-09-07 23:24:35 [TestNG-test-ClassLevelParallel-1] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-1] PASS   AmazonSearchTest.searchProduct
+2026-09-07 23:24:36 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] searchBox_isDisplayed ran on thread TestNG-test-ClassLevelParallel-3 with a chrome driver
+2026-09-07 23:24:36 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] PASS   ParallelMethodsTest.searchBox_isDisplayed
+2026-09-07 23:24:37 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Launched chrome
+2026-09-07 23:24:38 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] Opened amazon -> https://www.amazon.in
+2026-09-07 23:24:38 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] START  ParallelMethodsTest.searchButton_isDisplayed on chrome
+2026-09-07 23:24:39 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] searchButton_isDisplayed ran on thread TestNG-test-ClassLevelParallel-3 with a chrome driver
+2026-09-07 23:24:39 [TestNG-test-ClassLevelParallel-3] INFO  testngpack:18 - [TestNG-test-ClassLevelParallel-3] PASS   ParallelMethodsTest.searchButton_isDisplayed
+2026-09-07 23:24:39 [main] INFO  testngpack:18 - [main] <test> 'ClassLevelParallel' finished: 8 passed, 0 failed, 0 skipped
+2026-09-07 23:24:39 [main] INFO  testngpack:18 - [main] ===== Suite 'ParallelClassesSuite' finished. Report: D:\Selenium\TestNG-P010-TestNg/Report/htmlReport.html =====
