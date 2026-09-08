@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 3b - parallel="classes".
+
+      mvn test -DsuiteXmlFile=suites/03-parallel-classes.xml -Dheadless=true
+
+  One thread per CLASS. The methods inside a class still run one after another
+  on that same thread.
+
+  Choose this when methods within a class legitimately share state - a
+  @BeforeClass login, a record created by test 1 and read by test 2 - but
+  different classes do not. It is also the mode that keeps a dependency chain
+  such as CheckoutDependencyTest working, because that class never leaves its
+  thread.
+
+  Three classes and thread-count="3", so all three run at once.
+-->
+<suite name="P011-03b-Parallel-Classes" verbose="2" parallel="classes" thread-count="3">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="Three Areas, Three Threads">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.parallel.ParallelClassLoginTest" />
+			<class name="com.sk.tests.parallel.ParallelClassCatalogTest" />
+			<class name="com.sk.tests.parallel.ParallelClassCartTest" />
+		</classes>
+	</test>
+
+</suite>

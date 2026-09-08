@@ -1,0 +1,172 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.sk</groupId>
+	<artifactId>TestNG-P011-TestNg3-All-Concepts-Covered</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>TestNG-P011-TestNg3-All-Concepts-Covered</name>
+	<description>TestNG concept reference framework built on a real e-commerce site (Swag Labs).</description>
+
+	<properties>
+		<maven.compiler.release>17</maven.compiler.release>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- Which suite `mvn test` runs by default.
+		     Override on the command line, e.g.
+		     mvn test -DsuiteXmlFile=suites/03-parallel-methods.xml -->
+		<suiteXmlFile>testng.xml</suiteXmlFile>
+
+		<!-- Runtime switches consumed by ConfigManager, forwarded to the forked
+		     JVM by surefire below. Override with -Dkey=value.
+		     The browser default lives in config/config.properties instead - see
+		     the note on <systemPropertyVariables>. -->
+		<headless>false</headless>
+		<env>qa</env>
+
+		<testng.version>7.10.2</testng.version>
+		<selenium.version>4.47.0</selenium.version>
+		<poi.version>5.3.0</poi.version>
+		<log4j.version>2.24.3</log4j.version>
+		<slf4j.version>2.0.16</slf4j.version>
+
+		<compiler.plugin.version>3.13.0</compiler.plugin.version>
+		<surefire.version>3.5.2</surefire.version>
+	</properties>
+
+	<!--
+		Pinning the logging stack. This is not optional housekeeping.
+
+		POI 5.3.0 pulls in log4j-api 2.23.1 and slf4j-api 1.7.36 transitively.
+		Maven resolves conflicts by "nearest definition wins", so those beat the
+		2.24.3 that log4j-core needs and the 2.x that Selenium needs. What you get
+		is not a helpful error, it is:
+
+		  NoSuchFieldError: ... DefaultFlowMessageFactory ... INSTANCE
+		  SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder"
+
+		dependencyManagement beats transitive resolution at any depth, which is
+		why the versions live here rather than in <dependencies>. Whenever a build
+		dies with NoSuchMethodError or NoSuchFieldError inside a library you never
+		called directly, run `mvn dependency:tree` and look for exactly this.
+	-->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-bom</artifactId>
+				<version>${log4j.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Excel driven testing. poi-ooxml pulls poi + the OOXML schemas in. -->
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Routes Selenium's own SLF4J logging into the same log4j2 config. -->
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j2-impl -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j2-impl</artifactId>
+			<version>${log4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler.plugin.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${surefire.version}</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+					</suiteXmlFiles>
+
+					<!-- Parallelism is declared inside the suite XML (parallel=,
+					     thread-count=, data-provider-thread-count=), so surefire's
+					     own <parallel> element is deliberately left unset. Setting
+					     both makes the effective thread count very hard to reason
+					     about. -->
+
+					<!--
+					     NOTE: "browser" is deliberately NOT listed here.
+
+					     For @Parameters injection, TestNG gives a matching SYSTEM
+					     PROPERTY priority over the <parameter> in the suite XML.
+					     Forwarding browser unconditionally therefore made every
+					     <test> block in suites/12-cross-browser.xml start Chrome,
+					     including the one that says value="edge" - silently, with a
+					     green build and a completely wrong result.
+
+					     Leaving it out lets the suite XML win, which is what a
+					     cross-browser suite needs. -Dbrowser=edge on the command
+					     line still reaches the fork and still takes priority, so it
+					     stays available as a deliberate "force everything to Edge"
+					     override.
+
+					     headless and env are safe here: no suite declares a
+					     <parameter> by either name, so there is nothing to collide
+					     with.
+					-->
+					<systemPropertyVariables>
+						<headless>${headless}</headless>
+						<env>${env}</env>
+					</systemPropertyVariables>
+
+					<!-- Some suites contain tests that are *designed* to fail or skip
+					     (that is the lesson). Keep the build green so the custom
+					     summary report is always produced; flip to false on a real
+					     project. -->
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

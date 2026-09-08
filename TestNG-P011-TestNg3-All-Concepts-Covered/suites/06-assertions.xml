@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 6 - hard and soft assertions.
+
+      mvn test -DsuiteXmlFile=suites/06-assertions.xml -Dheadless=true
+
+  Hard assertions throw at the first failure; soft assertions collect and report
+  everything at assertAll(). Both classes here are green - the deliberately
+  failing versions of each live in the demo-status group, which
+  suites/10-skip-and-status-showcase.xml runs so you can see the difference in
+  a report.
+
+  parallel="methods" with a SoftAssert is the case people get wrong. Look at how
+  SoftAssertionTest holds its collector in a ThreadLocal: a plain field would
+  mix failures from every concurrent test together.
+-->
+<suite name="P011-06-Assertions" verbose="2" parallel="methods" thread-count="3">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="Hard And Soft Assertions">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.assertions.HardAssertionTest" />
+			<class name="com.sk.tests.assertions.SoftAssertionTest" />
+		</classes>
+	</test>
+
+</suite>

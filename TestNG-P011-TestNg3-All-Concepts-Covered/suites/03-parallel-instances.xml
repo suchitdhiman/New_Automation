@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 3d - parallel="instances", driven by a @Factory.
+
+      mvn test -DsuiteXmlFile=suites/03-parallel-instances.xml -Dheadless=true
+
+  ParallelInstancesTest has a @Factory constructor fed by a DataProvider, so
+  TestNG builds FOUR instances of it - one per sort option. This mode gives each
+  instance its own thread.
+
+  Use it when the thing you want to fan out is an object with state, rather than
+  a method (parallel="methods") or a class (parallel="classes").
+
+  Four instances, thread-count="4": all four sort options are verified at once.
+-->
+<suite name="P011-03d-Parallel-Instances" verbose="2" parallel="instances" thread-count="4">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="One Instance Per Sort Option">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.parallel.ParallelInstancesTest" />
+		</classes>
+	</test>
+
+</suite>

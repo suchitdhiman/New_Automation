@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  MASTER REGRESSION - everything except the deliberately broken tests.
+
+      mvn test -DsuiteXmlFile=suites/master-regression.xml -Dheadless=true
+
+  Expect this to take a while and to open several browsers at once. Start with
+  -Dheadless=true.
+
+  parallel="tests" at suite level, so the six blocks below run alongside each
+  other, and each block then sets its OWN parallel mode. That nesting is the
+  point: the sequential block stays sequential while the UI blocks fan out.
+
+    1 Framework Concepts   parallel=false     ordering assertions need one thread
+    2 Dependencies         parallel=classes   the checkout chain must stay on its thread
+    3 Catalogue And Cart   parallel=methods   independent methods, fan them out
+    4 Assertions           parallel=methods
+    5 Data Driven          parallel=methods + data-provider-thread-count
+    6 End To End           parallel=methods
+
+  demo-status is excluded everywhere. Those tests are meant to fail and they
+  live in suites/10-skip-and-status-showcase.xml.
+-->
+<suite name="P011-Master-Regression" verbose="1" parallel="tests" thread-count="6"
+	data-provider-thread-count="4">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="1 - Framework Concepts" parallel="false">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.annotations.AnnotationLifecycleTest" />
+			<class name="com.sk.tests.annotations.TestAttributesTest" />
+			<class name="com.sk.tests.listeners.ListenerShowcaseTest" />
+			<class name="com.sk.tests.execution.ThreadCountBoundaryTest" />
+			<class name="com.sk.tests.execution.InvocationAndThreadPoolTest" />
+			<class name="com.sk.tests.skip.SkipScenarioTest" />
+			<class name="com.sk.tests.retry.FlakyRetryTest" />
+		</classes>
+	</test>
+
+	<test name="2 - Dependencies" parallel="classes" thread-count="2">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.dependency.CheckoutDependencyTest" />
+			<class name="com.sk.tests.dependency.GroupDependencyTest" />
+		</classes>
+	</test>
+
+	<test name="3 - Catalogue And Cart" parallel="methods" thread-count="3">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.parallel.ParallelMethodsTest" />
+			<class name="com.sk.tests.groups.GroupedCatalogTest" />
+			<class name="com.sk.tests.parallel.ParallelInstancesTest" />
+		</classes>
+	</test>
+
+	<test name="4 - Assertions" parallel="methods" thread-count="3">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.assertions.HardAssertionTest" />
+			<class name="com.sk.tests.assertions.SoftAssertionTest" />
+		</classes>
+	</test>
+
+	<test name="5 - Data Driven" parallel="methods" thread-count="2">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.dataprovider.LoginDataDrivenTest" />
+			<class name="com.sk.tests.dataprovider.ExcelDrivenLoginTest" />
+			<class name="com.sk.tests.dataprovider.ExcelDrivenCheckoutTest" />
+			<class name="com.sk.tests.retry.SlowUserRetryTest" />
+		</classes>
+	</test>
+
+	<test name="6 - End To End" parallel="methods" thread-count="3">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.e2e.EndToEndPurchaseTest" />
+			<class name="com.sk.tests.parallel.ParallelClassLoginTest" />
+			<class name="com.sk.tests.parallel.ParallelClassCatalogTest" />
+			<class name="com.sk.tests.parallel.ParallelClassCartTest" />
+		</classes>
+	</test>
+
+</suite>

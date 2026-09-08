@@ -1,0 +1,22 @@
+# ---------------------------------------------------------------------------
+# ServiceLoader registration - the cleanest of the three ways to register a
+# TestNG listener.
+#
+#   1. this file        -> applies to EVERY suite, no XML edits, nothing to
+#                          forget when someone adds a new suite. Used for the
+#                          cross-cutting listeners below.
+#   2. <listeners> in a suite XML -> applies to that one suite. See
+#                          suites/04-groups-and-filters.xml (SmokeFirstInterceptor).
+#   3. @Listeners on a class      -> applies to that one class. See
+#                          com.sk.tests.listeners.ListenerShowcaseTest.
+#
+# Order in this file does not decide callback order; TestNG groups listeners by
+# interface and calls each group in its own defined order.
+# ---------------------------------------------------------------------------
+com.sk.listeners.ExecutionLifecycleListener
+com.sk.listeners.SuiteExecutionListener
+com.sk.listeners.TestExecutionListener
+com.sk.listeners.MethodInvocationListener
+com.sk.listeners.ConfigurationLogListener
+com.sk.listeners.RetryTransformer
+com.sk.listeners.ExecutionSummaryReporter

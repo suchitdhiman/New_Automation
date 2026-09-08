@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 2 - suite properties, and applying them to classes from the XML.
+
+      mvn test -DsuiteXmlFile=suites/02-suite-parameters.xml
+
+  The parameter "environment" is declared THREE times below - at <suite>, at
+  <test> and at <class> level - so the override chain is visible in one file.
+
+  Resolution:
+    @Parameters injection   ->  method > CLASS > test > suite   (sees from-class-level)
+    ITestContext lookup     ->  test > suite                    (sees from-test-level)
+
+  Both are asserted in SuiteParameterTest. The DTD (testng-1.0.dtd) allows
+  <parameter> inside <class>; note the element order it enforces inside <test>:
+  method-selectors, then parameter*, then groups, then packages, then classes.
+-->
+<suite name="P011-02-Suite-Parameters" verbose="2" parallel="false">
+
+	<!-- Suite level: inherited by every <test> in this file. -->
+	<parameter name="browser" value="chrome" />
+	<parameter name="environment" value="from-suite-level" />
+	<parameter name="moduleOwner" value="checkout-platform-team" />
+
+	<test name="Parameter Precedence">
+
+		<!-- Test level: overrides the suite value for everything in this block. -->
+		<parameter name="environment" value="from-test-level" />
+
+		<classes>
+			<class name="com.sk.tests.suiteconfig.SuiteParameterTest">
+				<!-- Class level: the most specific declaration, and the one
+				     @Parameters injection will use. -->
+				<parameter name="environment" value="from-class-level" />
+			</class>
+		</classes>
+	</test>
+
+</suite>

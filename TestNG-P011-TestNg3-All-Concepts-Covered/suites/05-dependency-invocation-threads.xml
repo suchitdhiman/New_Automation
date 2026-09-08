@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 5 - method dependency, invocation count, thread pools and timeouts.
+
+      mvn test -DsuiteXmlFile=suites/05-dependency-invocation-threads.xml -Dheadless=true
+
+  parallel="classes", NOT "methods". CheckoutDependencyTest is a six-step
+  purchase journey held together by dependsOnMethods and sharing one browser
+  across its methods; parallel="methods" would scatter those steps over
+  different threads and break the chain. parallel="classes" keeps a class on one
+  thread while still letting the other classes run alongside it.
+
+  What to look for in the log:
+    * the six checkout steps in order, each one skipped if the previous failed;
+    * dependsOnGroups gating a whole set of methods on a preflight group;
+    * invocationCount=6 with threadPoolSize=3 spreading over the pool;
+    * successPercentage=70 letting two of ten invocations fail;
+    * the answer to "can thread-count be negative?" (it cannot - see
+      ThreadCountBoundaryTest).
+-->
+<suite name="P011-05-Dependencies-And-Invocation" verbose="2" parallel="classes" thread-count="3">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="Dependencies, Invocation Counts And Thread Pools">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.dependency.CheckoutDependencyTest" />
+			<class name="com.sk.tests.dependency.GroupDependencyTest" />
+			<class name="com.sk.tests.execution.InvocationAndThreadPoolTest" />
+			<class name="com.sk.tests.execution.ThreadCountBoundaryTest" />
+		</classes>
+	</test>
+
+</suite>

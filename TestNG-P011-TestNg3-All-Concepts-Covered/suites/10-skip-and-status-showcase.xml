@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 10 - SKIPPED, and what PASSED / FAILED / SKIPPED look like end to end.
+
+      mvn test -DsuiteXmlFile=suites/10-skip-and-status-showcase.xml -Dheadless=true
+
+  THIS IS THE ONLY SUITE THAT RUNS THE demo-status GROUP, and it is meant to
+  finish with failures. Everything in that group is designed to fail or skip so
+  the reporting side of the framework has something to show:
+
+    FAILED   ThreadCountBoundaryTest.demoExceedsItsTimeoutOnPurpose  (timeOut breach)
+    FAILED   FlakyRetryTest.demoExhaustsItsRetryBudget               (after its retries)
+    FAILED   SkipScenarioTest.demoRootStepFails                      (deliberate)
+    SKIPPED  SkipScenarioTest.demoDependentIsSkipped                 (dependency failed)
+    PASSED   SkipScenarioTest.demoAlwaysRunSurvivesAFailedDependency (alwaysRun=true)
+    SKIPPED  SkipBySetupTest.*                                       (@BeforeMethod skipped)
+    FAILED   HardAssertionTest.demoHardAssertionStopsAtTheFirstFailure
+    FAILED   SoftAssertionTest.demoSoftAssertionsCollectEveryFailure  (3 failures, 1 report)
+
+  Afterwards, look at:
+    the console EXECUTION SUMMARY block
+    test-output/custom-report/execution-summary.html
+    test-output/excel/SwagLabsTestData-Results.xlsx
+    test-output/screenshots/                        (only the two UI failures)
+
+  The pom sets testFailureIgnore=true so the reports are produced even though
+  the suite is red. On a real project that would be false.
+-->
+<suite name="P011-10-Status-Showcase" verbose="2" parallel="false">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="Deliberate Failures And Skips (no browser)">
+		<groups>
+			<run>
+				<include name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.execution.ThreadCountBoundaryTest" />
+			<class name="com.sk.tests.retry.FlakyRetryTest" />
+			<class name="com.sk.tests.skip.SkipScenarioTest" />
+			<class name="com.sk.tests.skip.SkipBySetupTest" />
+		</classes>
+	</test>
+
+	<test name="Skips With A Reason (no browser)">
+		<groups>
+			<run>
+				<include name="concept" />
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.skip.SkipScenarioTest" />
+		</classes>
+	</test>
+
+	<test name="Assertion Failures With Screenshots">
+		<groups>
+			<run>
+				<include name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.assertions.HardAssertionTest" />
+			<class name="com.sk.tests.assertions.SoftAssertionTest" />
+		</classes>
+	</test>
+
+</suite>

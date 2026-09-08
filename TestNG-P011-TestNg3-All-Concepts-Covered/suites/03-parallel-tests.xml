@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 3c - parallel="tests".
+
+      mvn test -DsuiteXmlFile=suites/03-parallel-tests.xml -Dheadless=true
+
+  One thread per <test> BLOCK. Everything inside a block runs sequentially, but
+  the blocks run alongside each other.
+
+  This is the mode that makes cross-browser runs work: give each <test> its own
+  browser parameter and they execute side by side. Note how the parameter is
+  declared per block below and overrides the suite-level default.
+
+  It is also the safest parallel mode to introduce to an existing suite - group
+  tests that must not interleave into one block and the rest keep running
+  concurrently.
+-->
+<suite name="P011-03c-Parallel-Tests" verbose="2" parallel="tests" thread-count="3">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="Login Area">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.parallel.ParallelClassLoginTest" />
+		</classes>
+	</test>
+
+	<test name="Catalogue Area">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.parallel.ParallelClassCatalogTest" />
+		</classes>
+	</test>
+
+	<test name="Cart Area">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.parallel.ParallelClassCartTest" />
+		</classes>
+	</test>
+
+</suite>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 11 - the Page Object Model.
+
+      mvn test -DsuiteXmlFile=suites/11-pom-end-to-end.xml -Dheadless=true
+
+  Open EndToEndPurchaseTest and read customerCanBuyTwoProductsEndToEnd() top to
+  bottom. There is not one locator, wait or findElement in it - every step reads
+  like the manual test case it replaces, because each page object hands back the
+  page you land on next.
+
+  The page classes live in com.sk.pages:
+      BasePage                  waits, clicks, typing, text extraction
+      LoginPage                 returns ProductsPage on success, itself on failure
+      ProductsPage              catalogue, sorting, add and remove, cart badge
+      CartPage                  line items, remove, checkout
+      CheckoutInformationPage   the shipping form, valid and invalid paths
+      CheckoutOverviewPage      item total, tax and grand total as doubles
+      CheckoutCompletePage      the order confirmation
+-->
+<suite name="P011-11-POM-End-To-End" verbose="2" parallel="methods" thread-count="3">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="Purchase Journeys">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.e2e.EndToEndPurchaseTest" />
+		</classes>
+	</test>
+
+</suite>

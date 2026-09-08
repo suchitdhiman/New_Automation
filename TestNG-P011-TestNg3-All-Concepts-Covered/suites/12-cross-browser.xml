@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CROSS BROWSER - the practical payoff of parallel="tests" plus <parameter>.
+
+      mvn test -DsuiteXmlFile=suites/12-cross-browser.xml -Dheadless=true
+
+  One <test> block per browser, each with its own browser parameter, all running
+  at the same time. BaseWebTest reads that parameter and starts the matching
+  driver.
+
+  Why the XML parameter beats -Dbrowser here: the pom always forwards a browser
+  system property to surefire, so if the system property won, all three blocks
+  below would quietly run Chrome. BaseWebTest resolves the XML value first and
+  only falls back to config/-D when the XML says nothing.
+
+  Edge is present by default on Windows. Firefox needs to be installed - remove
+  that block, or expect it to fail at driver start, if it is not.
+
+  Selenium Manager downloads the matching driver binaries automatically, so
+  there is nothing to install and no WebDriverManager dependency in the pom.
+-->
+<suite name="P011-12-Cross-Browser" verbose="2" parallel="tests" thread-count="3">
+
+	<!-- Fallback for any block that does not declare its own. -->
+	<parameter name="browser" value="chrome" />
+
+	<test name="Chrome">
+		<parameter name="browser" value="chrome" />
+		<groups>
+			<run>
+				<include name="smoke" />
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.e2e.EndToEndPurchaseTest" />
+			<class name="com.sk.tests.parallel.ParallelClassLoginTest" />
+		</classes>
+	</test>
+
+	<test name="Edge">
+		<parameter name="browser" value="edge" />
+		<groups>
+			<run>
+				<include name="smoke" />
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.e2e.EndToEndPurchaseTest" />
+			<class name="com.sk.tests.parallel.ParallelClassLoginTest" />
+		</classes>
+	</test>
+
+	<!--
+	  Firefox is commented out because it is not installed on this machine, and a
+	  suite that fails at driver start out of the box teaches the wrong lesson.
+	  Install Firefox, uncomment this block, and it runs alongside the other two -
+	  Selenium Manager fetches geckodriver on its own.
+	-->
+	<!--
+	<test name="Firefox">
+		<parameter name="browser" value="firefox" />
+		<groups>
+			<run>
+				<include name="smoke" />
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.e2e.EndToEndPurchaseTest" />
+			<class name="com.sk.tests.parallel.ParallelClassLoginTest" />
+		</classes>
+	</test>
+	-->
+
+</suite>

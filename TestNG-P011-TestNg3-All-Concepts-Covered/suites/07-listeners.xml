@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 7 - listeners, all of them.
+
+      mvn test -DsuiteXmlFile=suites/07-listeners.xml
+
+  Run this one with verbose="2" and read the log top to bottom. You should see,
+  in order:
+
+    IExecutionListener.onExecutionStart          (once per JVM)
+    IAnnotationTransformer.transform             (once per @Test, at load time)
+    ISuiteListener.onStart                       (the suite banner)
+    ITestListener.onStart                        (once per <test> block)
+    IInvokedMethodListener.beforeInvocation      (config methods included)
+    ITestListener.onTestStart / Success / Failure / Skipped
+    IConfigurationListener callbacks             (@Before / @After results)
+    ITestListener.onFinish
+    ISuiteListener.onFinish
+    IReporter.generateReport                     (the summary block and HTML)
+    IExecutionListener.onExecutionFinish
+
+  Registration in this project:
+    - META-INF/services/org.testng.ITestNGListener  -> global, every suite
+    - <listeners> in suites/04-groups-and-filters.xml -> that suite only
+    - @Listeners on ListenerShowcaseTest             -> that class only
+
+  Browser free, so it finishes in a couple of seconds.
+-->
+<suite name="P011-07-Listeners" verbose="2" parallel="false">
+
+	<test name="Listener Registration And Firing Order">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.listeners.ListenerShowcaseTest" />
+		</classes>
+	</test>
+
+</suite>

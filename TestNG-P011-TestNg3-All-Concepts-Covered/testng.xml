@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  DEFAULT SUITE - this is what plain `mvn test` runs.
+
+  Kept deliberately short: the framework mechanics (which need no browser) plus
+  a smoke slice of the real application. Every other concept has its own file in
+  suites/, run with:
+
+      mvn test -DsuiteXmlFile=suites/03-parallel-methods.xml
+
+  Handy switches:
+      -Dheadless=true      no visible browser windows (use this in CI)
+      -Dbrowser=edge       overrides config.properties, NOT the browser parameter below
+      -Denv=staging        loads config/staging.properties on top of config.properties
+-->
+<suite name="P011-Default-Smoke" verbose="1" parallel="false">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="Framework Concepts (sequential)">
+		<groups>
+			<run>
+				<!-- Tests that are designed to fail live in demo-status. They belong
+				     in suites/10-skip-and-status-showcase.xml, never in a real run. -->
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.annotations.AnnotationLifecycleTest" />
+			<class name="com.sk.tests.annotations.TestAttributesTest" />
+			<class name="com.sk.tests.listeners.ListenerShowcaseTest" />
+			<class name="com.sk.tests.execution.ThreadCountBoundaryTest" />
+			<class name="com.sk.tests.skip.SkipScenarioTest" />
+		</classes>
+	</test>
+
+	<test name="Application Smoke (parallel methods)" parallel="methods" thread-count="3">
+		<groups>
+			<run>
+				<include name="smoke" />
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.parallel.ParallelMethodsTest" />
+			<class name="com.sk.tests.groups.GroupedCatalogTest" />
+			<class name="com.sk.tests.e2e.EndToEndPurchaseTest" />
+		</classes>
+	</test>
+
+</suite>

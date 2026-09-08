@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 8 - DataProviders and retry analyzers.
+
+      mvn test -DsuiteXmlFile=suites/08-dataproviders-and-retry.xml -Dheadless=true
+
+  TWO INDEPENDENT THREAD POOLS, and this is the thing to take away:
+
+      thread-count                = 3    parallel="methods" uses this pool
+      data-provider-thread-count  = 4    @DataProvider(parallel = true) uses THIS one
+
+  They do not share threads, and raising one does not touch the other. With the
+  numbers below, up to 3 methods run at once and a parallel provider can fan its
+  rows over 4 more - so size the machine for up to 7 browsers, not 3.
+
+  Retry: FlakyRetryTest shows both ways of attaching an analyzer (the explicit
+  retryAnalyzer attribute, and the @Flaky annotation picked up by
+  RetryTransformer). Watch for the "RETRY 1/2" lines in the log, and note that
+  the final summary still counts each test once - discarded attempts are
+  filtered out by TestExecutionListener using ITestResult.wasRetried().
+
+  The retry block is parallel="false" because those tests count their own
+  attempts in static counters.
+-->
+<suite name="P011-08-DataProviders-And-Retry" verbose="2"
+	parallel="methods" thread-count="3" data-provider-thread-count="4">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="DataProvider Shapes">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.dataprovider.LoginDataDrivenTest" />
+		</classes>
+	</test>
+
+	<test name="Retry Analyzers" parallel="false">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.retry.FlakyRetryTest" />
+			<class name="com.sk.tests.retry.SlowUserRetryTest" />
+		</classes>
+	</test>
+
+</suite>

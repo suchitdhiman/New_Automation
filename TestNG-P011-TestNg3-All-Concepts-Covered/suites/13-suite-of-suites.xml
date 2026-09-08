@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  PARALLELISM AT THE OUTERMOST LEVEL - a suite made of other suites.
+
+      mvn test -DsuiteXmlFile=suites/13-suite-of-suites.xml
+
+  <suite-files> pulls whole suite files in as children. Combined with
+  suiteThreadPoolSize, the CHILD SUITES themselves run in parallel - which is
+  the fourth and outermost level of parallelism this project demonstrates:
+
+      suites      suiteThreadPoolSize   this file
+      tests       parallel="tests"      suites/03-parallel-tests.xml
+      classes     parallel="classes"    suites/03-parallel-classes.xml
+      methods     parallel="methods"    suites/03-parallel-methods.xml
+      instances   parallel="instances"  suites/03-parallel-instances.xml
+      data rows   data-provider-thread-count  suites/08-dataproviders-and-retry.xml
+
+  Each child keeps its own parallel settings, so the nesting is real: two suites
+  side by side, each fanning out internally.
+
+  Paths in <suite-file> are resolved relative to THIS file, so the children are
+  named without the suites/ prefix.
+
+  Two browser-free children are used here so it stays quick. Point it at the UI
+  suites when you want a genuinely full run, and mind the browser count: the
+  worst case is suiteThreadPoolSize x each child thread-count.
+
+  One caveat: the child suites keep their own names in the TestNG output, but
+  the ExecutionSummaryReporter in this project aggregates every suite into one
+  summary, because IReporter fires once for the whole run.
+-->
+<suite name="P011-13-Suite-Of-Suites" verbose="1" suiteThreadPoolSize="2">
+
+	<suite-files>
+		<suite-file path="./07-listeners.xml" />
+		<suite-file path="./01-annotations-and-attributes.xml" />
+	</suite-files>
+
+</suite>

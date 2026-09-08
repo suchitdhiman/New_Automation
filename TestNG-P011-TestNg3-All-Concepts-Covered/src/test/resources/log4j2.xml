@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- %t (thread name) is in every pattern on purpose: it is the only way to
+     read a parallel run's log and tell which browser did what. -->
+<Configuration status="WARN">
+
+	<Properties>
+		<Property name="PATTERN">%d{HH:mm:ss.SSS} %-5level [%t] %-38.38c{1} - %msg%n</Property>
+	</Properties>
+
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${PATTERN}" />
+		</Console>
+
+		<RollingFile name="File"
+			fileName="logs/testng-execution.log"
+			filePattern="logs/testng-execution-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout pattern="${PATTERN}" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="5" />
+		</RollingFile>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="com.sk" level="INFO" additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Logger>
+
+		<!-- Selenium is very chatty at INFO once it starts a driver. -->
+		<Logger name="org.openqa.selenium" level="WARN" />
+
+		<Root level="WARN">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Root>
+	</Loggers>
+</Configuration>

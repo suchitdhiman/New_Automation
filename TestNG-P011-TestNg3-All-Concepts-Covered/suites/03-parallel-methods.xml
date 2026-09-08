@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 3a - parallel="methods".
+
+      mvn test -DsuiteXmlFile=suites/03-parallel-methods.xml -Dheadless=true
+
+  Every @Test method is dispatched to the thread pool on its own, so four
+  methods of the SAME class run at the same time in four browsers.
+
+  Requirement this puts on the tests: no shared mutable state and no ordering
+  assumptions. Each method here signs in for itself.
+
+  thread-count is the size of that pool. It is NOT the number of tests - TestNG
+  queues the rest. Sizing it: roughly one thread per free CPU core, and watch
+  memory, because each thread is holding a full browser.
+-->
+<suite name="P011-03a-Parallel-Methods" verbose="2" parallel="methods" thread-count="4">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="Catalogue And Cart In Parallel">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.parallel.ParallelMethodsTest" />
+		</classes>
+	</test>
+
+</suite>

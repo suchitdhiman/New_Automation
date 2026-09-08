@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 1 - annotations, their execution order, and the @Test attributes.
+
+      mvn test -DsuiteXmlFile=suites/01-annotations-and-attributes.xml
+
+  parallel="false" is not laziness: AnnotationLifecycleTest records the order in
+  which TestNG calls each annotation and then asserts on it, which is only
+  meaningful on a single thread.
+
+  Watch the log for the @BeforeSuite / @BeforeTest / @BeforeClass / @BeforeGroups
+  / @BeforeMethod cascade, and note that @BeforeTest fires once for EACH of the
+  two <test> blocks below while @BeforeSuite fires only once for the whole file.
+-->
+<suite name="P011-01-Annotations" verbose="2" parallel="false">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="Lifecycle Order">
+		<classes>
+			<class name="com.sk.tests.annotations.AnnotationLifecycleTest" />
+		</classes>
+	</test>
+
+	<test name="Test Attributes">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.annotations.TestAttributesTest" />
+		</classes>
+	</test>
+
+</suite>

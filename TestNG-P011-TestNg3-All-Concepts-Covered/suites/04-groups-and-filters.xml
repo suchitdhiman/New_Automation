@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 4 - grouping, filtering, and a group of groups.
+
+      mvn test -DsuiteXmlFile=suites/04-groups-and-filters.xml -Dheadless=true
+
+  Four <test> blocks, same classes, four different slices. That is the whole
+  point of groups: one codebase, many pipelines.
+
+  Rules worth remembering:
+    * exclude always beats include.
+    * <define> builds a named group out of other groups (a "group of groups").
+    * A <groups> block must come BEFORE <classes> inside <test> - the DTD says
+      method-selectors, parameter*, groups?, packages?, classes?.
+
+  This file also shows the SECOND way to register a listener: the <listeners>
+  block below applies SmokeFirstInterceptor to this suite only. The listeners in
+  META-INF/services apply everywhere; @Listeners on a class applies to that
+  class. See ListenerShowcaseTest for the full table.
+-->
+<suite name="P011-04-Groups" verbose="2" parallel="classes" thread-count="2">
+
+	<!-- The DTD requires <groups> first when it appears at suite level. -->
+	<groups>
+		<define name="release-gate">
+			<include name="smoke" />
+			<include name="e2e" />
+		</define>
+	</groups>
+
+	<listeners>
+		<listener class-name="com.sk.listeners.SmokeFirstInterceptor" />
+	</listeners>
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="1 - Smoke Only (per commit)">
+		<groups>
+			<run>
+				<include name="smoke" />
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.groups.GroupedCatalogTest" />
+		</classes>
+	</test>
+
+	<test name="2 - Regression Minus Flaky (nightly)">
+		<groups>
+			<run>
+				<include name="regression" />
+				<exclude name="flaky" />
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.groups.GroupedCatalogTest" />
+		</classes>
+	</test>
+
+	<test name="3 - Negative Cases Only">
+		<groups>
+			<run>
+				<include name="negative" />
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.groups.GroupedCatalogTest" />
+		</classes>
+	</test>
+
+	<test name="4 - Cart Area, Any Speed">
+		<groups>
+			<run>
+				<include name="cart" />
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.groups.GroupedCatalogTest" />
+		</classes>
+	</test>
+
+</suite>

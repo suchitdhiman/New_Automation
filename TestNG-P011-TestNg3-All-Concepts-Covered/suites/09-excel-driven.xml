@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+  CONCEPT 9 - Excel driven testing.
+
+      mvn test -DsuiteXmlFile=suites/09-excel-driven.xml -Dheadless=true
+
+  Data source : src/test/resources/testdata/SwagLabsTestData.xlsx
+  Sheets      : LoginData, CheckoutData, ReadMe
+
+  To add a case, add a row and set Execute to Y. No Java changes, no rebuild of
+  the test logic. Set Execute to N to park a row without deleting it.
+
+  Results are written back to test-output/excel/SwagLabsTestData-Results.xlsx by
+  ExecutionSummaryReporter at the end of the run, colour coded by status. That
+  write happens once, on a single thread, on purpose: Apache POI workbooks are
+  not thread safe, so rows are buffered in ExecutionLedger during the run and
+  flushed at the end.
+
+  Note the <methods><include> blocks below - the same class is split across two
+  <test> blocks so the sequential and the parallel provider can be compared side
+  by side.
+-->
+<suite name="P011-09-Excel-Driven" verbose="2"
+	parallel="methods" thread-count="2" data-provider-thread-count="4">
+
+	<parameter name="browser" value="chrome" />
+
+	<test name="Login Cases From The Spreadsheet">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.dataprovider.ExcelDrivenLoginTest">
+				<methods>
+					<include name="loginBehavesAsTheSheetExpects" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Login Cases In Parallel">
+		<classes>
+			<class name="com.sk.tests.dataprovider.ExcelDrivenLoginTest">
+				<methods>
+					<include name="loginBehavesAsTheSheetExpectsInParallel" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Checkout Form Validation From The Spreadsheet">
+		<groups>
+			<run>
+				<exclude name="demo-status" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sk.tests.dataprovider.ExcelDrivenCheckoutTest" />
+		</classes>
+	</test>
+
+</suite>
