@@ -1,0 +1,1562 @@
+<title>TestNG Field Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+	:root {
+		--paper:      #F4F6F9;
+		--surface:    #FFFFFF;
+		--surface-2:  #EDF1F6;
+		--ink:        #10151C;
+		--ink-soft:   #4E5967;
+		--ink-faint:  #7B8797;
+		--line:       #D7DEE8;
+		--line-soft:  #E5EAF1;
+		--accent:     #2E4A8F;
+		--accent-bg:  #E7EDF9;
+		--pass:       #1B7F3B;
+		--fail:       #C0392B;
+		--skip:       #A8700A;
+		--code-bg:    #121821;
+		--code-ink:   #DDE4EE;
+		--code-dim:   #8494A8;
+		--code-line:  #253040;
+
+		--measure: 68ch;
+		--radius: 6px;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root:not([data-theme="light"]) {
+			--paper:      #0D1218;
+			--surface:    #151C25;
+			--surface-2:  #1B2430;
+			--ink:        #E4EAF2;
+			--ink-soft:   #9BA8B9;
+			--ink-faint:  #748497;
+			--line:       #27323F;
+			--line-soft:  #1F2833;
+			--accent:     #89A6E4;
+			--accent-bg:  #1A2233;
+			--pass:       #4FB870;
+			--fail:       #EF6F63;
+			--skip:       #D9A036;
+			--code-bg:    #0A0E14;
+			--code-ink:   #D5DDE9;
+			--code-dim:   #6E7E94;
+			--code-line:  #1E2733;
+		}
+	}
+
+	:root[data-theme="dark"] {
+		--paper:      #0D1218;
+		--surface:    #151C25;
+		--surface-2:  #1B2430;
+		--ink:        #E4EAF2;
+		--ink-soft:   #9BA8B9;
+		--ink-faint:  #748497;
+		--line:       #27323F;
+		--line-soft:  #1F2833;
+		--accent:     #89A6E4;
+		--accent-bg:  #1A2233;
+		--pass:       #4FB870;
+		--fail:       #EF6F63;
+		--skip:       #D9A036;
+		--code-bg:    #0A0E14;
+		--code-ink:   #D5DDE9;
+		--code-dim:   #6E7E94;
+		--code-line:  #1E2733;
+	}
+
+	* { box-sizing: border-box; }
+
+	body {
+		background: var(--paper);
+		color: var(--ink);
+		font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+		font-size: 17px;
+		line-height: 1.62;
+		margin: 0;
+		padding: 0 20px 96px;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.wrap { max-width: 1000px; margin: 0 auto; }
+	.measure { max-width: var(--measure); }
+
+	/* ---------- masthead ---------- */
+
+	.masthead {
+		padding: 56px 0 28px;
+		border-bottom: 2px solid var(--ink);
+		margin-bottom: 8px;
+	}
+	.eyebrow {
+		font-family: "Archivo", system-ui, sans-serif;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: .16em;
+		text-transform: uppercase;
+		color: var(--accent);
+		margin: 0 0 14px;
+	}
+	h1 {
+		font-family: "Archivo", system-ui, sans-serif;
+		font-weight: 700;
+		font-size: clamp(34px, 5.2vw, 52px);
+		line-height: 1.05;
+		letter-spacing: -0.02em;
+		text-wrap: balance;
+		margin: 0 0 16px;
+	}
+	.standfirst {
+		font-size: 20px;
+		line-height: 1.5;
+		color: var(--ink-soft);
+		max-width: 62ch;
+		margin: 0;
+	}
+
+	.runstrip {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0;
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		background: var(--surface);
+		margin: 28px 0 0;
+		overflow: hidden;
+	}
+	.runstrip div {
+		flex: 1 1 130px;
+		padding: 14px 18px;
+		border-right: 1px solid var(--line-soft);
+	}
+	.runstrip div:last-child { border-right: 0; }
+	.runstrip .n {
+		font-family: "Archivo", system-ui, sans-serif;
+		font-size: 26px;
+		font-weight: 700;
+		line-height: 1;
+		font-variant-numeric: tabular-nums;
+	}
+	.runstrip .l {
+		font-family: "Archivo", system-ui, sans-serif;
+		font-size: 10.5px;
+		font-weight: 600;
+		letter-spacing: .1em;
+		text-transform: uppercase;
+		color: var(--ink-faint);
+		margin-top: 6px;
+	}
+	.n.pass { color: var(--pass); }
+	.n.fail { color: var(--fail); }
+	.n.skip { color: var(--skip); }
+
+	/* ---------- contents ---------- */
+
+	nav.toc {
+		margin: 40px 0 0;
+		padding: 22px 0 26px;
+		border-top: 1px solid var(--line);
+		border-bottom: 1px solid var(--line);
+	}
+	nav.toc h2 {
+		font-family: "Archivo", system-ui, sans-serif;
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: .16em;
+		text-transform: uppercase;
+		color: var(--ink-faint);
+		margin: 0 0 14px;
+	}
+	.toclist {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+		gap: 4px 28px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		font-family: "Archivo", system-ui, sans-serif;
+		font-size: 14.5px;
+	}
+	.toclist a { color: var(--ink); text-decoration: none; display: block; padding: 3px 0; }
+	.toclist a:hover { color: var(--accent); }
+	.toclist .num {
+		display: inline-block;
+		width: 26px;
+		color: var(--ink-faint);
+		font-variant-numeric: tabular-nums;
+		font-size: 12.5px;
+	}
+
+	/* ---------- structure ---------- */
+
+	section { padding-top: 56px; scroll-margin-top: 20px; }
+
+	h2 {
+		font-family: "Archivo", system-ui, sans-serif;
+		font-weight: 700;
+		font-size: clamp(24px, 3.2vw, 31px);
+		line-height: 1.15;
+		letter-spacing: -0.015em;
+		text-wrap: balance;
+		margin: 0 0 8px;
+		display: flex;
+		align-items: baseline;
+		gap: 14px;
+	}
+	h2 .sn {
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--accent);
+		font-variant-numeric: tabular-nums;
+		letter-spacing: .04em;
+		flex: none;
+	}
+	h3 {
+		font-family: "Archivo", system-ui, sans-serif;
+		font-weight: 600;
+		font-size: 19px;
+		letter-spacing: -0.005em;
+		margin: 34px 0 8px;
+	}
+	h4 {
+		font-family: "Archivo", system-ui, sans-serif;
+		font-weight: 600;
+		font-size: 13px;
+		letter-spacing: .06em;
+		text-transform: uppercase;
+		color: var(--ink-faint);
+		margin: 26px 0 8px;
+	}
+	p { margin: 0 0 16px; max-width: var(--measure); }
+	ul, ol { max-width: var(--measure); margin: 0 0 16px; padding-left: 22px; }
+	li { margin-bottom: 7px; }
+	strong { font-weight: 600; }
+	a { color: var(--accent); }
+
+	code {
+		font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+		font-size: .86em;
+		background: var(--surface-2);
+		border: 1px solid var(--line-soft);
+		border-radius: 3px;
+		padding: 1px 5px;
+		word-break: break-word;
+	}
+
+	pre {
+		font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+		background: var(--code-bg);
+		color: var(--code-ink);
+		border: 1px solid var(--code-line);
+		border-radius: var(--radius);
+		font-size: 13.5px;
+		line-height: 1.62;
+		padding: 16px 18px;
+		overflow-x: auto;
+		margin: 0 0 18px;
+	}
+	pre code { background: none; border: 0; padding: 0; font-size: inherit; color: inherit; }
+	pre .c { color: var(--code-dim); }
+	pre .ok { color: #6BCB86; }
+	pre .no { color: #F08A7E; }
+	pre .sk { color: #E0B155; }
+
+	/* ---------- figures ---------- */
+
+	figure {
+		margin: 30px 0 34px;
+		padding: 0;
+		color: var(--ink);
+	}
+	.figbox {
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		padding: 18px 20px 14px;
+		overflow-x: auto;
+	}
+	figure svg { display: block; max-width: 100%; height: auto; min-width: 520px; }
+	figcaption {
+		font-family: "Archivo", system-ui, sans-serif;
+		font-size: 13px;
+		line-height: 1.5;
+		color: var(--ink-soft);
+		margin-top: 12px;
+		max-width: 76ch;
+	}
+	figcaption b { color: var(--ink); font-weight: 600; }
+
+	/* ---------- tables ---------- */
+
+	.tablewrap { overflow-x: auto; margin: 0 0 22px; }
+	table {
+		border-collapse: collapse;
+		width: 100%;
+		min-width: 540px;
+		font-family: "Archivo", system-ui, sans-serif;
+		font-size: 14px;
+	}
+	th, td {
+		text-align: left;
+		padding: 9px 14px 9px 0;
+		border-bottom: 1px solid var(--line-soft);
+		vertical-align: top;
+	}
+	th {
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: .09em;
+		text-transform: uppercase;
+		color: var(--ink-faint);
+		border-bottom: 1px solid var(--line);
+		white-space: nowrap;
+	}
+	td code { font-size: 12.5px; white-space: nowrap; }
+
+	/* ---------- callouts ---------- */
+
+	.note {
+		border-left: 3px solid var(--accent);
+		background: var(--accent-bg);
+		padding: 14px 18px;
+		border-radius: 0 var(--radius) var(--radius) 0;
+		margin: 0 0 20px;
+		max-width: var(--measure);
+	}
+	.note p:last-child { margin-bottom: 0; }
+	.note .tag {
+		font-family: "Archivo", system-ui, sans-serif;
+		font-size: 10.5px;
+		font-weight: 600;
+		letter-spacing: .12em;
+		text-transform: uppercase;
+		color: var(--accent);
+		display: block;
+		margin-bottom: 5px;
+	}
+
+	/* ---------- concept blocks ---------- */
+
+	.concept {
+		border-top: 1px solid var(--line);
+		padding-top: 26px;
+		margin-top: 34px;
+	}
+	.concept:first-of-type { border-top: 0; padding-top: 0; margin-top: 24px; }
+	.concept > h3 { margin-top: 0; }
+	.meta {
+		display: grid;
+		grid-template-columns: 88px 1fr;
+		gap: 4px 16px;
+		font-family: "Archivo", system-ui, sans-serif;
+		font-size: 13px;
+		margin: 14px 0 0;
+		padding: 14px 0 0;
+		border-top: 1px dashed var(--line);
+		max-width: var(--measure);
+	}
+	.meta dt {
+		font-size: 10.5px;
+		font-weight: 600;
+		letter-spacing: .1em;
+		text-transform: uppercase;
+		color: var(--ink-faint);
+		padding-top: 3px;
+	}
+	.meta dd { margin: 0; }
+	.meta dd code { white-space: normal; }
+
+	/* ---------- experiments ---------- */
+
+	.try {
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: var(--radius);
+		padding: 20px 22px;
+		margin: 0 0 16px;
+	}
+	.try h3 {
+		margin: 0 0 10px;
+		font-size: 17px;
+		display: flex;
+		gap: 12px;
+		align-items: baseline;
+	}
+	.try h3 .tn {
+		font-family: "IBM Plex Mono", monospace;
+		font-size: 13px;
+		color: var(--accent);
+		flex: none;
+	}
+	.try p { margin-bottom: 12px; }
+	.try pre { margin-bottom: 12px; }
+	.look {
+		font-family: "Archivo", system-ui, sans-serif;
+		font-size: 13.5px;
+		color: var(--ink-soft);
+		border-left: 2px solid var(--line);
+		padding-left: 14px;
+		max-width: var(--measure);
+	}
+	.look b {
+		display: block;
+		font-weight: 600;
+		font-size: 10.5px;
+		letter-spacing: .11em;
+		text-transform: uppercase;
+		color: var(--ink-faint);
+		margin-bottom: 3px;
+	}
+
+	.pill {
+		display: inline-block;
+		font-family: "Archivo", system-ui, sans-serif;
+		font-size: 10.5px;
+		font-weight: 600;
+		letter-spacing: .08em;
+		text-transform: uppercase;
+		padding: 2px 8px;
+		border-radius: 20px;
+		border: 1px solid currentColor;
+		vertical-align: 1px;
+	}
+	.pill.pass { color: var(--pass); }
+	.pill.fail { color: var(--fail); }
+	.pill.skip { color: var(--skip); }
+
+	footer {
+		margin-top: 72px;
+		padding-top: 24px;
+		border-top: 2px solid var(--ink);
+		font-family: "Archivo", system-ui, sans-serif;
+		font-size: 13.5px;
+		color: var(--ink-soft);
+	}
+
+	@media (max-width: 620px) {
+		body { font-size: 16px; padding: 0 16px 64px; }
+		.meta { grid-template-columns: 1fr; gap: 2px; }
+		.meta dt { padding-top: 10px; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		* { animation: none !important; transition: none !important; }
+	}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+	<p class="eyebrow">D:\Selenium \ TestNG-P011-TestNg3-All-Concepts-Covered</p>
+	<h1>TestNG Field Guide</h1>
+	<p class="standfirst">Every TestNG idea you need, demonstrated by code that actually runs against a real
+	shopping website. This page explains what the project is, what happens when a test executes, and what
+	you can go and try right now.</p>
+
+	<div class="runstrip">
+		<div><div class="n">147</div><div class="l">Tests</div></div>
+		<div><div class="n pass">146</div><div class="l">Passed</div></div>
+		<div><div class="n fail">0</div><div class="l">Failed</div></div>
+		<div><div class="n skip">1</div><div class="l">Skipped on purpose</div></div>
+		<div><div class="n">83s</div><div class="l">Wall clock</div></div>
+	</div>
+</header>
+
+<nav class="toc">
+	<h2>Contents</h2>
+	<ul class="toclist">
+		<li><a href="#what"><span class="num">01</span>What this project is</a></li>
+		<li><a href="#site"><span class="num">02</span>The website we drive</a></li>
+		<li><a href="#big"><span class="num">03</span>How it all fits together</a></li>
+		<li><a href="#life"><span class="num">04</span>Life of one test</a></li>
+		<li><a href="#folders"><span class="num">05</span>What each folder does</a></li>
+		<li><a href="#concepts"><span class="num">06</span>The eleven concepts</a></li>
+		<li><a href="#try"><span class="num">07</span>Things to try</a></li>
+		<li><a href="#results"><span class="num">08</span>Reading the results</a></li>
+		<li><a href="#traps"><span class="num">09</span>Four traps we hit</a></li>
+		<li><a href="#cheat"><span class="num">10</span>Command cheat sheet</a></li>
+	</ul>
+</nav>
+
+
+<!-- ============================================================ -->
+<section id="what">
+	<h2><span class="sn">01</span>What this project is</h2>
+
+	<p>Think of it as a <strong>textbook you can run</strong>.</p>
+
+	<p>Most TestNG tutorials show you a snippet, you nod, and a week later you cannot remember whether
+	<code>@BeforeTest</code> runs once per class or once per something else. This project answers those
+	questions by <em>executing</em> them. The lifecycle test does not describe the order TestNG calls your
+	annotations in - it records the order as it happens and then asserts on it. If a future TestNG version
+	changes that order, the test goes red and tells you.</p>
+
+	<p>Underneath the teaching, it is a genuine automation framework: page objects, a thread-safe driver
+	factory, environment config, retries, Excel-driven data, screenshots on failure, and its own reports.
+	Nothing here is a toy that would fall over on a real project.</p>
+
+	<h3>The two halves</h3>
+
+	<p>Roughly half the test classes never open a browser. They are about <em>TestNG mechanics</em> -
+	invocation counts, thread pools, dependency graphs, assertion styles. Starting a Chrome instance for
+	those would add thirty seconds to the run and prove nothing, so they extend <code>BaseTest</code>.</p>
+
+	<p>The other half drive the actual application and extend <code>BaseWebTest</code>, which handles the
+	browser for them. That split is why <code>mvn test</code> finishes in seconds for the concept suites
+	and takes a minute for the full regression.</p>
+</section>
+
+
+<!-- ============================================================ -->
+<section id="site">
+	<h2><span class="sn">02</span>The website we drive</h2>
+
+	<p><strong>Swag Labs</strong> at <code>https://www.saucedemo.com</code> - a small online store selling
+	branded merchandise. Sign in, browse six products, sort them, add to a cart, fill in shipping details,
+	see the totals, place the order. A complete e-commerce journey in about six clicks, which is exactly
+	the right size for teaching.</p>
+
+	<p>It was built for automation practice, so it is stable, it is always up, and nobody minds you
+	hammering it. Better still, it ships four different accounts that <em>behave differently on purpose</em>
+	- which is what gives this project real material for negative tests, retries and timeouts instead of
+	made-up examples.</p>
+
+	<div class="tablewrap">
+	<table>
+		<thead><tr><th>Account</th><th>What it does</th><th>What we use it for</th></tr></thead>
+		<tbody>
+			<tr><td><code>standard_user</code></td><td>Everything works</td><td>The happy path in most tests</td></tr>
+			<tr><td><code>locked_out_user</code></td><td>Always rejected at login</td><td>Negative tests and error-message assertions</td></tr>
+			<tr><td><code>problem_user</code></td><td>Logs in, then renders broken data</td><td>Showing what soft assertions are for</td></tr>
+			<tr><td><code>performance_glitch_user</code></td><td>Logs in successfully but very slowly</td><td>The realistic retry and timeout demo</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<p>The password is <code>secret_sauce</code> for all of them. The site publishes these on its own login
+	page, so there is nothing secret here - but they still live in <code>config.properties</code> rather
+	than being hard-coded, because that is the habit you want when the same framework points at a real
+	environment.</p>
+</section>
+
+
+<!-- ============================================================ -->
+<section id="big">
+	<h2><span class="sn">03</span>How it all fits together</h2>
+
+	<p>Six things happen in a line, and a set of listeners watches all of it from the side. That is the
+	whole architecture.</p>
+
+	<figure>
+	<div class="figbox">
+	<svg viewBox="0 0 960 340" role="img" aria-label="Maven reads a suite XML, TestNG builds a run plan and calls your test method, which drives a page object, which drives a WebDriver, which drives the Swag Labs website. Listeners observe TestNG and the test method and produce the reports.">
+		<defs>
+			<marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+				<path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+			</marker>
+		</defs>
+
+		<!-- pipeline labels -->
+		<g font-family="Archivo, sans-serif" font-size="10" fill="currentColor" opacity="0.55" text-anchor="middle">
+			<text x="128" y="46">reads</text>
+			<text x="280" y="46">builds plan</text>
+			<text x="432" y="46">invokes</text>
+			<text x="596" y="46">calls</text>
+			<text x="760" y="46">commands</text>
+		</g>
+
+		<!-- pipeline boxes -->
+		<g fill="none" stroke="currentColor" stroke-width="1.4">
+			<rect x="8"   y="56" width="100" height="54" rx="5"/>
+			<rect x="148" y="56" width="112" height="54" rx="5"/>
+			<rect x="300" y="56" width="112" height="54" rx="5"/>
+			<rect x="452" y="56" width="124" height="54" rx="5"/>
+			<rect x="616" y="56" width="124" height="54" rx="5"/>
+			<rect x="780" y="56" width="112" height="54" rx="5"/>
+		</g>
+		<g font-family="IBM Plex Mono, monospace" font-size="12" fill="currentColor" text-anchor="middle">
+			<text x="58"  y="88">mvn test</text>
+			<text x="204" y="88">suite XML</text>
+			<text x="356" y="88">TestNG</text>
+			<text x="514" y="82">@Test</text>
+			<text x="514" y="98">method</text>
+			<text x="678" y="82">Page</text>
+			<text x="678" y="98">object</text>
+			<text x="836" y="88">WebDriver</text>
+		</g>
+
+		<!-- pipeline arrows -->
+		<g stroke="currentColor" stroke-width="1.4" marker-end="url(#ar)" fill="none">
+			<line x1="108" y1="83" x2="144" y2="83"/>
+			<line x1="260" y1="83" x2="296" y2="83"/>
+			<line x1="412" y1="83" x2="448" y2="83"/>
+			<line x1="576" y1="83" x2="612" y2="83"/>
+			<line x1="740" y1="83" x2="776" y2="83"/>
+			<line x1="836" y1="110" x2="836" y2="146"/>
+		</g>
+
+		<!-- website -->
+		<rect x="760" y="148" width="152" height="46" rx="5" fill="none" stroke="#2E4A8F" stroke-width="1.8"/>
+		<text x="836" y="171" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="#2E4A8F" text-anchor="middle">saucedemo.com</text>
+		<text x="836" y="186" font-family="Archivo, sans-serif" font-size="9.5" fill="#2E4A8F" text-anchor="middle" opacity="0.85">the real website</text>
+
+		<!-- event arrows down -->
+		<g stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#ar)" fill="none" opacity="0.75">
+			<line x1="356" y1="110" x2="356" y2="228"/>
+			<line x1="514" y1="110" x2="514" y2="228"/>
+		</g>
+		<text x="372" y="176" font-family="Archivo, sans-serif" font-size="10" fill="currentColor" opacity="0.55">events</text>
+
+		<!-- listeners -->
+		<rect x="300" y="232" width="440" height="72" rx="5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="6 4"/>
+		<text x="316" y="254" font-family="Archivo, sans-serif" font-size="12" font-weight="600" fill="currentColor">9 listeners watch every step</text>
+		<text x="316" y="272" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity="0.7">ISuiteListener - ITestListener - IInvokedMethodListener</text>
+		<text x="316" y="288" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity="0.7">IRetryAnalyzer - IReporter - IAnnotationTransformer</text>
+
+		<line x1="740" y1="268" x2="776" y2="268" stroke="currentColor" stroke-width="1.4" marker-end="url(#ar)"/>
+		<rect x="780" y="244" width="152" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+		<text x="856" y="264" font-family="Archivo, sans-serif" font-size="11.5" fill="currentColor" text-anchor="middle" font-weight="600">Reports</text>
+		<text x="856" y="280" font-family="Archivo, sans-serif" font-size="9.5" fill="currentColor" text-anchor="middle" opacity="0.7">console, HTML, Excel, PNG</text>
+	</svg>
+	</div>
+	<figcaption><b>The run is a straight line; the reporting is a side channel.</b> Your test never talks to
+	a report, and a listener never touches the browser. That separation is why you can change how results
+	are reported without opening a single test class.</figcaption>
+	</figure>
+
+	<h3>The one decision everything rests on</h3>
+
+	<p><code>DriverFactory</code> holds the browser in a <strong>ThreadLocal</strong> - a variable where every
+	thread gets its own private copy. When a suite says "run four tests at once", four threads each get
+	their own browser, and no page object has to know that parallelism exists.</p>
+
+	<p>That single decision is what lets any suite in this project switch between parallel modes without
+	touching one line of test code.</p>
+</section>
+
+
+<!-- ============================================================ -->
+<section id="life">
+	<h2><span class="sn">04</span>Life of one test</h2>
+
+	<p>This is the diagram to keep. Everything TestNG does, in the order it does it, for a single test
+	method. The indentation is the point: each <code>@Before</code> has a matching <code>@After</code>, and
+	the inner ones run more often than the outer ones.</p>
+
+	<figure>
+	<div class="figbox">
+	<svg viewBox="0 0 760 552" role="img" aria-label="Nested execution order: BeforeSuite, BeforeTest, BeforeClass, BeforeGroups, BeforeMethod, the test method, listener callbacks, retry check, then AfterMethod, AfterGroups, AfterClass, AfterTest, AfterSuite, and finally the reporter.">
+		<!-- nesting brackets -->
+		<g stroke="currentColor" stroke-width="1.2" opacity="0.3" fill="none">
+			<path d="M 26 34 L 20 34 L 20 476 L 26 476"/>
+			<path d="M 48 68 L 42 68 L 42 442 L 48 442"/>
+			<path d="M 70 102 L 64 102 L 64 408 L 70 408"/>
+			<path d="M 92 136 L 86 136 L 86 374 L 92 374"/>
+			<path d="M 114 170 L 108 170 L 108 340 L 114 340"/>
+			<path d="M 136 204 L 130 204 L 130 306 L 136 306"/>
+		</g>
+
+		<!-- scope labels on the far right of brackets -->
+		<g font-family="Archivo, sans-serif" font-size="9.5" fill="currentColor" opacity="0.5">
+			<text x="620" y="38">once per &lt;suite&gt;</text>
+			<text x="620" y="72">once per &lt;test&gt; tag</text>
+			<text x="620" y="106">once per class</text>
+			<text x="620" y="140">once per group</text>
+			<text x="620" y="174">before EVERY test</text>
+			<text x="620" y="208">the test itself</text>
+		</g>
+
+		<g font-family="IBM Plex Mono, monospace" font-size="12.5" fill="currentColor">
+			<text x="30"  y="38">@BeforeSuite</text>
+			<text x="52"  y="72">@BeforeTest</text>
+			<text x="74"  y="106">@BeforeClass</text>
+			<text x="96"  y="140">@BeforeGroups</text>
+			<text x="118" y="174">@BeforeMethod</text>
+		</g>
+
+		<!-- the hot rows -->
+		<rect x="130" y="190" width="330" height="24" rx="3" fill="#2E4A8F" opacity="0.12"/>
+		<rect x="130" y="224" width="330" height="24" rx="3" fill="#2E4A8F" opacity="0.12"/>
+		<g font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#2E4A8F" font-weight="500">
+			<text x="140" y="208">@Test  &lt;- your code runs here</text>
+			<text x="140" y="242">afterInvocation  &lt;- screenshot</text>
+		</g>
+
+		<g font-family="IBM Plex Mono, monospace" font-size="12.5" fill="currentColor">
+			<text x="140" y="276">onTestSuccess / Failure / Skipped</text>
+			<text x="140" y="310">IRetryAnalyzer.retry</text>
+			<text x="118" y="344">@AfterMethod</text>
+			<text x="96"  y="378">@AfterGroups</text>
+			<text x="74"  y="412">@AfterClass</text>
+			<text x="52"  y="446">@AfterTest</text>
+			<text x="30"  y="480">@AfterSuite</text>
+		</g>
+
+		<g font-family="Archivo, sans-serif" font-size="9.5" fill="currentColor" opacity="0.5">
+			<text x="620" y="242">browser still open</text>
+			<text x="620" y="276">status goes to the ledger</text>
+			<text x="620" y="310">only after a failure</text>
+			<text x="620" y="344">browser closes here</text>
+		</g>
+
+		<line x1="20" y1="500" x2="740" y2="500" stroke="currentColor" stroke-width="1" opacity="0.25"/>
+		<text x="20" y="524" font-family="IBM Plex Mono, monospace" font-size="12.5" fill="currentColor">IReporter.generateReport</text>
+		<text x="620" y="524" font-family="Archivo, sans-serif" font-size="9.5" fill="currentColor" opacity="0.5">once, at the very end</text>
+	</svg>
+	</div>
+	<figcaption><b>Two rows are highlighted because they are where this framework does its work.</b> The
+	failure screenshot is taken in <code>afterInvocation</code>, not in <code>onTestFailure</code> - TestNG
+	guarantees it runs while the test method has only just returned and the browser is still open. Taking
+	it later is the classic way to end up with an empty screenshots folder.</figcaption>
+	</figure>
+
+	<div class="note">
+		<span class="tag">The one people get wrong</span>
+		<p><code>@BeforeTest</code> has nothing to do with a test method. It is about the
+		<code>&lt;test&gt;</code> <strong>tag</strong> in your suite XML. If your XML has three
+		<code>&lt;test&gt;</code> blocks, it runs three times. <code>@BeforeMethod</code> is the one that
+		runs before every test method.</p>
+	</div>
+</section>
+
+
+<!-- ============================================================ -->
+<section id="folders">
+	<h2><span class="sn">05</span>What each folder does</h2>
+
+	<p>One line each. Everything lives under <code>src/test/java/com/sk/</code> unless stated.</p>
+
+	<div class="tablewrap">
+	<table>
+		<thead><tr><th>Folder</th><th>What lives there</th><th>Open this first</th></tr></thead>
+		<tbody>
+			<tr><td><code>core/</code></td><td>Config, the driver factory, the two base classes, group name constants</td><td><code>DriverFactory</code></td></tr>
+			<tr><td><code>pages/</code></td><td>Seven page objects. All the locators and waits in the project are in here</td><td><code>BasePage</code></td></tr>
+			<tr><td><code>model/</code></td><td>Small typed things: accounts, sort options, a spreadsheet row</td><td><code>TestUser</code></td></tr>
+			<tr><td><code>listeners/</code></td><td>Nine listeners, the retry analyzer, and the ledger every report reads from</td><td><code>TestExecutionListener</code></td></tr>
+			<tr><td><code>dataproviders/</code></td><td>Hard-coded rows and Excel-backed rows</td><td><code>ExcelDataProvider</code></td></tr>
+			<tr><td><code>utils/</code></td><td>Excel read and write, screenshots, thread auditing</td><td><code>ExcelReader</code></td></tr>
+			<tr><td><code>annotations/</code></td><td>Our own <code>@Flaky</code> annotation</td><td><code>Flaky</code></td></tr>
+			<tr><td><code>tests/</code></td><td>One package per concept. This is where you read</td><td><code>tests/e2e/</code></td></tr>
+			<tr><td><code>suites/</code> <span style="opacity:.6">(root)</span></td><td>One heavily commented XML per concept</td><td><code>04-groups-and-filters.xml</code></td></tr>
+			<tr><td><code>resources/config/</code></td><td><code>config.properties</code> plus qa and staging overlays</td><td><code>config.properties</code></td></tr>
+			<tr><td><code>resources/testdata/</code></td><td><code>SwagLabsTestData.xlsx</code> - three sheets</td><td>the <code>ReadMe</code> sheet</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h3>The two base classes</h3>
+	<p><code>BaseTest</code> gives you a logger and class-level logging. That is all. Extend it when your test
+	does not need a browser.</p>
+	<p><code>BaseWebTest extends BaseTest</code> adds the browser: it starts a fresh driver before every test
+	method and quits it afterwards, and hands you <code>loginPage()</code> to begin a journey. Extend it when
+	your test drives the application.</p>
+</section>
+
+
+<!-- ============================================================ -->
+<section id="concepts">
+	<h2><span class="sn">06</span>The eleven concepts</h2>
+
+	<p>Numbered to match the suite files, so concept 3 is <code>suites/03-*.xml</code>. Each one is a
+	sentence about what it is, a sentence about why you would reach for it, and the exact command to watch
+	it run.</p>
+
+
+	<div class="concept">
+		<h3>1 &nbsp; Annotations, and the order they fire in</h3>
+		<p><strong>What it is.</strong> The ten <code>@Before</code> and <code>@After</code> hooks that wrap
+		your tests, plus the attributes you can put on <code>@Test</code> itself - <code>priority</code>,
+		<code>enabled</code>, <code>timeOut</code>, <code>expectedExceptions</code>, <code>description</code>.</p>
+		<p><strong>Why you care.</strong> Put setup at the wrong level and you either repeat expensive work
+		on every test, or you share state between tests that should be independent. Knowing which hook runs
+		how often is the difference.</p>
+		<p>One attribute worth singling out: <code>enabled = false</code> does not report a skip - the test
+		vanishes from the report entirely, and six months later nobody remembers it existed. Prefer a
+		<code>SkipException</code> with a reason.</p>
+		<dl class="meta">
+			<dt>Code</dt><dd><code>tests/annotations/AnnotationLifecycleTest</code>, <code>TestAttributesTest</code></dd>
+			<dt>Run</dt><dd><code>mvn test -DsuiteXmlFile=suites/01-annotations-and-attributes.xml</code></dd>
+		</dl>
+	</div>
+
+
+	<div class="concept">
+		<h3>2 &nbsp; Suite properties, applied to classes from the XML</h3>
+		<p><strong>What it is.</strong> <code>&lt;parameter&gt;</code> declared in the suite XML and injected
+		into your code with <code>@Parameters</code>. It can be declared at suite level, at
+		<code>&lt;test&gt;</code> level, and at <code>&lt;class&gt;</code> level - and the most specific one
+		wins.</p>
+		<p><strong>Why you care.</strong> It is how one test class runs against three browsers or four
+		environments without an <code>if</code> statement anywhere in it.</p>
+		<p>This suite declares the same parameter at all three levels at once so you can see the override
+		chain in a single file. It also proves a distinction that catches people out:
+		<code>@Parameters</code> injection can see a class-level parameter, but
+		<code>ITestContext.getCurrentXmlTest().getParameter()</code> cannot - a test context covers a whole
+		<code>&lt;test&gt;</code> block, and a class-level value is not defined at that scope.</p>
+		<dl class="meta">
+			<dt>Code</dt><dd><code>tests/suiteconfig/SuiteParameterTest</code></dd>
+			<dt>Run</dt><dd><code>mvn test -DsuiteXmlFile=suites/02-suite-parameters.xml</code></dd>
+		</dl>
+	</div>
+
+
+	<div class="concept">
+		<h3>3 &nbsp; Parallel execution, at five different levels</h3>
+		<p><strong>What it is.</strong> TestNG can hand out threads by method, by class, by
+		<code>&lt;test&gt;</code> block, by factory instance, or by whole suite. They are not
+		interchangeable - each one decides <em>what unit of work gets its own thread</em>.</p>
+
+		<figure>
+		<div class="figbox">
+		<svg viewBox="0 0 900 430" role="img" aria-label="Four parallel modes compared. parallel=methods spreads the methods of one class across threads. parallel=classes puts each whole class on one thread. parallel=tests puts each test block on one thread. parallel=instances puts each factory instance on one thread.">
+			<g fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.45">
+				<rect x="6"   y="30"  width="434" height="180" rx="6"/>
+				<rect x="458" y="30"  width="434" height="180" rx="6"/>
+				<rect x="6"   y="234" width="434" height="180" rx="6"/>
+				<rect x="458" y="234" width="434" height="180" rx="6"/>
+			</g>
+
+			<g font-family="IBM Plex Mono, monospace" font-size="12.5" fill="#2E4A8F" font-weight="500">
+				<text x="22"  y="56">parallel="methods"</text>
+				<text x="474" y="56">parallel="classes"</text>
+				<text x="22"  y="260">parallel="tests"</text>
+				<text x="474" y="260">parallel="instances"</text>
+			</g>
+			<g font-family="Archivo, sans-serif" font-size="10" fill="currentColor" opacity="0.6">
+				<text x="22"  y="72">one class, methods fanned out</text>
+				<text x="474" y="72">whole class stays on its thread</text>
+				<text x="22"  y="276">one thread per &lt;test&gt; block</text>
+				<text x="474" y="276">one thread per @Factory instance</text>
+			</g>
+
+			<!-- lane rows helper: labels -->
+			<g font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity="0.6">
+				<text x="22" y="98">T1</text><text x="22" y="128">T2</text><text x="22" y="158">T3</text>
+				<text x="474" y="98">T1</text><text x="474" y="128">T2</text><text x="474" y="158">T3</text>
+				<text x="22" y="302">T1</text><text x="22" y="332">T2</text><text x="22" y="362">T3</text>
+				<text x="474" y="302">T1</text><text x="474" y="332">T2</text><text x="474" y="362">T3</text>
+			</g>
+
+			<!-- lanes -->
+			<g fill="none" stroke="currentColor" stroke-width="1" opacity="0.22">
+				<rect x="48"  y="86"  width="376" height="22" rx="3"/>
+				<rect x="48"  y="116" width="376" height="22" rx="3"/>
+				<rect x="48"  y="146" width="376" height="22" rx="3"/>
+				<rect x="500" y="86"  width="376" height="22" rx="3"/>
+				<rect x="500" y="116" width="376" height="22" rx="3"/>
+				<rect x="500" y="146" width="376" height="22" rx="3"/>
+				<rect x="48"  y="290" width="376" height="22" rx="3"/>
+				<rect x="48"  y="320" width="376" height="22" rx="3"/>
+				<rect x="48"  y="350" width="376" height="22" rx="3"/>
+				<rect x="500" y="290" width="376" height="22" rx="3"/>
+				<rect x="500" y="320" width="376" height="22" rx="3"/>
+				<rect x="500" y="350" width="376" height="22" rx="3"/>
+			</g>
+
+			<!-- methods mode: 4 methods of one class over 3 lanes -->
+			<g fill="#2E4A8F" opacity="0.16">
+				<rect x="54" y="89" width="86" height="16" rx="3"/>
+				<rect x="148" y="89" width="86" height="16" rx="3"/>
+				<rect x="54" y="119" width="86" height="16" rx="3"/>
+				<rect x="54" y="149" width="86" height="16" rx="3"/>
+			</g>
+			<g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#2E4A8F">
+				<text x="60" y="101">C1.method1</text>
+				<text x="154" y="101">C1.method4</text>
+				<text x="60" y="131">C1.method2</text>
+				<text x="60" y="161">C1.method3</text>
+			</g>
+			<text x="48" y="188" font-family="Archivo, sans-serif" font-size="10" fill="currentColor" opacity="0.65">Methods must be independent - no shared state, no ordering.</text>
+
+			<!-- classes mode -->
+			<g fill="#2E4A8F" opacity="0.16">
+				<rect x="506" y="89" width="180" height="16" rx="3"/>
+				<rect x="506" y="119" width="180" height="16" rx="3"/>
+				<rect x="506" y="149" width="180" height="16" rx="3"/>
+			</g>
+			<g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#2E4A8F">
+				<text x="512" y="101">C1.m1 -&gt; C1.m2</text>
+				<text x="512" y="131">C2.m1 -&gt; C2.m2</text>
+				<text x="512" y="161">C3.m1 -&gt; C3.m2</text>
+			</g>
+			<text x="500" y="188" font-family="Archivo, sans-serif" font-size="10" fill="currentColor" opacity="0.65">Methods in a class may share state. Dependency chains survive.</text>
+
+			<!-- tests mode -->
+			<g fill="#2E4A8F" opacity="0.16">
+				<rect x="54" y="293" width="230" height="16" rx="3"/>
+				<rect x="54" y="323" width="230" height="16" rx="3"/>
+			</g>
+			<g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#2E4A8F">
+				<text x="60" y="305">&lt;test name="Chrome"&gt; all classes</text>
+				<text x="60" y="335">&lt;test name="Edge"&gt; all classes</text>
+			</g>
+			<text x="48" y="392" font-family="Archivo, sans-serif" font-size="10" fill="currentColor" opacity="0.65">This is how cross-browser runs work. Safest mode to retrofit.</text>
+
+			<!-- instances mode -->
+			<g fill="#2E4A8F" opacity="0.16">
+				<rect x="506" y="293" width="150" height="16" rx="3"/>
+				<rect x="506" y="323" width="150" height="16" rx="3"/>
+				<rect x="506" y="353" width="150" height="16" rx="3"/>
+			</g>
+			<g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#2E4A8F">
+				<text x="512" y="305">instance sort=az</text>
+				<text x="512" y="335">instance sort=za</text>
+				<text x="512" y="365">instance sort=lohi</text>
+			</g>
+			<text x="500" y="392" font-family="Archivo, sans-serif" font-size="10" fill="currentColor" opacity="0.65">One @Factory object per thread. Fan out data-carrying objects.</text>
+		</svg>
+		</div>
+		<figcaption><b>The difference is what occupies a lane.</b> A fifth level sits above all of these:
+		<code>suiteThreadPoolSize</code> runs whole suite files side by side. And a sixth pool, entirely
+		separate from <code>thread-count</code>, belongs to parallel data providers.</figcaption>
+		</figure>
+
+		<p><strong>Why you care.</strong> A one-hour regression becomes ten minutes. The cost is that your
+		tests have to be genuinely independent - which is a discipline worth having anyway.</p>
+		<dl class="meta">
+			<dt>Code</dt><dd><code>tests/parallel/</code> - five classes</dd>
+			<dt>Run</dt><dd><code>suites/03-parallel-methods.xml</code>, <code>-classes</code>, <code>-tests</code>, <code>-instances</code>, and <code>suites/13-suite-of-suites.xml</code></dd>
+		</dl>
+	</div>
+
+
+	<div class="concept">
+		<h3>4 &nbsp; Groups, and filtering on them</h3>
+		<p><strong>What it is.</strong> Tag a test with <code>groups = {"smoke", "cart"}</code>, then have the
+		suite XML include or exclude those tags.</p>
+		<p><strong>Why you care.</strong> One codebase, many pipelines. Per-commit runs
+		<code>smoke</code>. Nightly runs <code>regression</code> minus <code>flaky</code>. A release gate runs
+		a <code>&lt;define&gt;</code>d group made of other groups.</p>
+		<p>Two rules that settle arguments: <strong>exclude always beats include</strong>, and a method can
+		be in several groups at once. Tag by speed (<code>smoke</code>, <code>regression</code>) <em>and</em>
+		by area (<code>cart</code>, <code>checkout</code>) and you can slice either way.</p>
+		<dl class="meta">
+			<dt>Code</dt><dd><code>tests/groups/GroupedCatalogTest</code></dd>
+			<dt>Run</dt><dd><code>mvn test -DsuiteXmlFile=suites/04-groups-and-filters.xml -Dheadless=true</code></dd>
+		</dl>
+	</div>
+
+
+	<div class="concept">
+		<h3>5 &nbsp; Dependencies, invocation counts and thread pools</h3>
+		<p><strong>What it is.</strong> <code>dependsOnMethods</code> and <code>dependsOnGroups</code> say
+		"do not bother running me if that failed". <code>invocationCount</code> runs the same method N
+		times, <code>threadPoolSize</code> spreads those runs over threads, and
+		<code>successPercentage</code> lets some of them fail.</p>
+
+		<figure>
+		<div class="figbox">
+		<svg viewBox="0 0 880 230" role="img" aria-label="A six step checkout chain. When step one fails, the five dependent steps are reported as skipped rather than failed, while a step marked alwaysRun still passes.">
+			<defs>
+				<marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+					<path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+				</marker>
+			</defs>
+
+			<rect x="14" y="52" width="124" height="46" rx="5" fill="none" stroke="#C0392B" stroke-width="2"/>
+			<text x="76" y="72" font-family="IBM Plex Mono, monospace" font-size="11" fill="#C0392B" text-anchor="middle">signIn</text>
+			<text x="76" y="88" font-family="Archivo, sans-serif" font-size="9.5" font-weight="600" fill="#C0392B" text-anchor="middle">FAILED</text>
+
+			<g fill="none" stroke="#A8700A" stroke-width="1.6" stroke-dasharray="5 3">
+				<rect x="156" y="52" width="124" height="46" rx="5"/>
+				<rect x="298" y="52" width="124" height="46" rx="5"/>
+				<rect x="440" y="52" width="124" height="46" rx="5"/>
+				<rect x="582" y="52" width="124" height="46" rx="5"/>
+				<rect x="724" y="52" width="124" height="46" rx="5"/>
+			</g>
+			<g font-family="IBM Plex Mono, monospace" font-size="11" fill="#A8700A" text-anchor="middle">
+				<text x="218" y="72">addToCart</text>
+				<text x="360" y="72">openCart</text>
+				<text x="502" y="72">shipping</text>
+				<text x="644" y="72">totals</text>
+				<text x="786" y="72">finish</text>
+			</g>
+			<g font-family="Archivo, sans-serif" font-size="9.5" font-weight="600" fill="#A8700A" text-anchor="middle">
+				<text x="218" y="88">SKIPPED</text>
+				<text x="360" y="88">SKIPPED</text>
+				<text x="502" y="88">SKIPPED</text>
+				<text x="644" y="88">SKIPPED</text>
+				<text x="786" y="88">SKIPPED</text>
+			</g>
+
+			<g stroke="currentColor" stroke-width="1.3" marker-end="url(#ar2)" fill="none" opacity="0.65">
+				<line x1="138" y1="75" x2="152" y2="75"/>
+				<line x1="280" y1="75" x2="294" y2="75"/>
+				<line x1="422" y1="75" x2="436" y2="75"/>
+				<line x1="564" y1="75" x2="578" y2="75"/>
+				<line x1="706" y1="75" x2="720" y2="75"/>
+			</g>
+			<text x="440" y="34" font-family="Archivo, sans-serif" font-size="10.5" fill="currentColor" opacity="0.6" text-anchor="middle">each step declares dependsOnMethods = the one before it</text>
+
+			<!-- alwaysRun -->
+			<line x1="786" y1="98" x2="786" y2="146" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ar2)" opacity="0.6"/>
+			<rect x="640" y="148" width="208" height="46" rx="5" fill="none" stroke="#1B7F3B" stroke-width="2"/>
+			<text x="744" y="168" font-family="IBM Plex Mono, monospace" font-size="11" fill="#1B7F3B" text-anchor="middle">alwaysRun = true</text>
+			<text x="744" y="184" font-family="Archivo, sans-serif" font-size="9.5" font-weight="600" fill="#1B7F3B" text-anchor="middle">PASSED</text>
+			<text x="620" y="176" font-family="Archivo, sans-serif" font-size="10" fill="currentColor" opacity="0.6" text-anchor="end">cleanup and reporting still run</text>
+		</svg>
+		</div>
+		<figcaption><b>One red line, five honest skips.</b> Without the dependency you would get six
+		identical failures and no clue which one was the cause. <code>alwaysRun = true</code> is the escape
+		hatch for anything that must happen regardless - teardown, an alert, a report upload.</figcaption>
+		</figure>
+
+		<p><strong>And the question everyone eventually asks:</strong> <em>can thread-count be negative?</em>
+		No. The XML model will happily store <code>-4</code>, because <code>XmlSuite</code> is a plain bean
+		that does not validate. But TestNG builds a fixed thread pool from that number, and a fixed pool
+		rejects anything below 1. So a negative <code>thread-count</code> is a configuration bug that
+		surfaces at run time, not a clever way of saying "unlimited".
+		<code>ThreadCountBoundaryTest</code> asserts both halves of that.</p>
+		<dl class="meta">
+			<dt>Code</dt><dd><code>tests/dependency/</code>, <code>tests/execution/</code></dd>
+			<dt>Run</dt><dd><code>mvn test -DsuiteXmlFile=suites/05-dependency-invocation-threads.xml -Dheadless=true</code></dd>
+		</dl>
+	</div>
+
+
+	<div class="concept">
+		<h3>6 &nbsp; Hard and soft assertions</h3>
+		<p><strong>What it is.</strong> A hard assertion (<code>Assert.assertEquals</code>) throws the moment
+		it fails, so nothing after it runs. A soft assertion (<code>SoftAssert</code>) records the failure
+		and carries on, reporting everything at <code>assertAll()</code>.</p>
+		<p><strong>Why you care.</strong> Use hard when everything downstream depends on the check - there is
+		no sense verifying cart totals if login did not work. Use soft for independent observations about
+		one screen, so one run tells you all four things that are wrong instead of the first one, four
+		times, over four afternoons.</p>
+		<p>Two traps, both handled in the code. <strong>Forgetting <code>assertAll()</code></strong> makes
+		the test pass silently - the single most common way a suite ends up green and worthless. And
+		<strong>sharing one <code>SoftAssert</code> across threads</strong> mixes failures from every
+		parallel test together, which is why ours lives in a <code>ThreadLocal</code>.</p>
+		<dl class="meta">
+			<dt>Code</dt><dd><code>tests/assertions/HardAssertionTest</code>, <code>SoftAssertionTest</code></dd>
+			<dt>Run</dt><dd><code>mvn test -DsuiteXmlFile=suites/06-assertions.xml -Dheadless=true</code></dd>
+		</dl>
+	</div>
+
+
+	<div class="concept">
+		<h3>7 &nbsp; Listeners, all nine of them</h3>
+		<p><strong>What it is.</strong> Hooks that let you observe or change the run without touching a test.
+		This project implements every listener interface TestNG offers.</p>
+
+		<div class="tablewrap">
+		<table>
+			<thead><tr><th>Interface</th><th>Fires</th><th>What ours does</th></tr></thead>
+			<tbody>
+				<tr><td><code>IExecutionListener</code></td><td>Once per JVM run</td><td>Creates output folders, resets counters</td></tr>
+				<tr><td><code>IAnnotationTransformer</code></td><td>Per <code>@Test</code>, at load time</td><td>Attaches retries to <code>@Flaky</code> methods</td></tr>
+				<tr><td><code>ISuiteListener</code></td><td>Around each suite</td><td>Prints the parallel mode and thread count banner</td></tr>
+				<tr><td><code>ITestListener</code></td><td>Per test result</td><td>Decides pass / fail / skip, writes the ledger</td></tr>
+				<tr><td><code>IInvokedMethodListener</code></td><td>Around <em>every</em> method</td><td>Takes the failure screenshot</td></tr>
+				<tr><td><code>IConfigurationListener</code></td><td><code>@Before</code>/<code>@After</code> results</td><td>Names the setup method that broke</td></tr>
+				<tr><td><code>IMethodInterceptor</code></td><td>Once, before anything runs</td><td>Pulls smoke tests to the front</td></tr>
+				<tr><td><code>IRetryAnalyzer</code></td><td>After a failure</td><td>Decides whether to re-run</td></tr>
+				<tr><td><code>IReporter</code></td><td>Once, at the end</td><td>Console block, HTML, Excel</td></tr>
+			</tbody>
+		</table>
+		</div>
+
+		<p>There are three ways to register one, and the project uses all three so you can compare:
+		<strong>the service loader file</strong> (<code>META-INF/services/org.testng.ITestNGListener</code>)
+		applies to every suite; <strong><code>&lt;listeners&gt;</code> in a suite XML</strong> applies to that
+		one suite; <strong><code>@Listeners</code> on a class</strong> applies to the whole
+		<code>&lt;test&gt;</code> block containing that class.</p>
+
+		<div class="note">
+			<span class="tag">Measured, not assumed</span>
+			<p><code>@Listeners</code> does <strong>not</strong> scope to the annotated class, which is what
+			almost everyone expects. Running <code>testng.xml</code>, the listener declared on one class
+			observed all five classes in its <code>&lt;test&gt;</code> block and none in the other block. If
+			you want per-class behaviour, the listener has to filter for itself.</p>
+		</div>
+		<dl class="meta">
+			<dt>Code</dt><dd><code>listeners/</code> - and <code>tests/listeners/ListenerShowcaseTest</code></dd>
+			<dt>Run</dt><dd><code>mvn test -DsuiteXmlFile=suites/07-listeners.xml</code> (no browser, ~2s)</dd>
+		</dl>
+	</div>
+
+
+	<div class="concept">
+		<h3>8 &nbsp; Data providers and retries</h3>
+		<p><strong>What it is.</strong> A <code>@DataProvider</code> feeds the same test method many rows of
+		data; each row becomes its own result. A retry analyzer re-runs a failed test a bounded number of
+		times.</p>
+		<p>The project shows four provider shapes: a plain <code>Object[][]</code>; a lazy
+		<code>Iterator</code>; one that inspects the <code>Method</code> it is feeding and changes what it
+		returns; and one that reads the <code>ITestContext</code> so a smoke run gets fewer rows than a
+		regression run.</p>
+
+		<figure>
+		<div class="figbox">
+		<svg viewBox="0 0 860 250" role="img" aria-label="Retry flow. An attempt fails, the analyzer checks the remaining budget, discards the attempt and re-runs. TestNG marks discarded attempts as skipped, and the ledger filters them out so the summary counts each test once.">
+			<defs>
+				<marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+					<path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+				</marker>
+			</defs>
+
+			<rect x="14" y="60" width="120" height="46" rx="5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+			<text x="74" y="88" font-family="IBM Plex Mono, monospace" font-size="11.5" fill="currentColor" text-anchor="middle">attempt</text>
+
+			<line x1="134" y1="83" x2="176" y2="83" stroke="currentColor" stroke-width="1.4" marker-end="url(#ar3)"/>
+			<text x="155" y="74" font-family="Archivo, sans-serif" font-size="9.5" fill="#C0392B" text-anchor="middle">fails</text>
+
+			<polygon points="256,50 336,83 256,116 176,83" fill="none" stroke="currentColor" stroke-width="1.4"/>
+			<text x="256" y="80" font-family="Archivo, sans-serif" font-size="10.5" fill="currentColor" text-anchor="middle">budget</text>
+			<text x="256" y="94" font-family="Archivo, sans-serif" font-size="10.5" fill="currentColor" text-anchor="middle">left?</text>
+
+			<!-- yes path -->
+			<line x1="336" y1="83" x2="388" y2="83" stroke="currentColor" stroke-width="1.4" marker-end="url(#ar3)"/>
+			<text x="362" y="74" font-family="Archivo, sans-serif" font-size="9.5" fill="#1B7F3B" text-anchor="middle">yes</text>
+			<rect x="388" y="60" width="176" height="46" rx="5" fill="none" stroke="#A8700A" stroke-width="1.6" stroke-dasharray="5 3"/>
+			<text x="476" y="79" font-family="Archivo, sans-serif" font-size="10.5" fill="#A8700A" text-anchor="middle">attempt discarded</text>
+			<text x="476" y="94" font-family="Archivo, sans-serif" font-size="9.5" fill="#A8700A" text-anchor="middle">TestNG calls this SKIPPED</text>
+
+			<!-- loop back -->
+			<path d="M 476 106 L 476 148 L 74 148 L 74 106" fill="none" stroke="currentColor" stroke-width="1.3" marker-end="url(#ar3)" opacity="0.7"/>
+			<text x="275" y="164" font-family="Archivo, sans-serif" font-size="10" fill="currentColor" text-anchor="middle" opacity="0.65">run it again</text>
+
+			<!-- no path -->
+			<line x1="256" y1="116" x2="256" y2="196" stroke="currentColor" stroke-width="1.4" marker-end="url(#ar3)"/>
+			<text x="266" y="160" font-family="Archivo, sans-serif" font-size="9.5" fill="#C0392B">no</text>
+			<rect x="150" y="196" width="212" height="40" rx="5" fill="none" stroke="#C0392B" stroke-width="1.8"/>
+			<text x="256" y="221" font-family="Archivo, sans-serif" font-size="11" font-weight="600" fill="#C0392B" text-anchor="middle">exactly one FAILED row</text>
+
+			<!-- eventual pass -->
+			<line x1="564" y1="83" x2="616" y2="83" stroke="currentColor" stroke-width="1.4" marker-end="url(#ar3)" opacity="0.7"/>
+			<rect x="616" y="60" width="228" height="46" rx="5" fill="none" stroke="#1B7F3B" stroke-width="1.8"/>
+			<text x="730" y="79" font-family="Archivo, sans-serif" font-size="11" font-weight="600" fill="#1B7F3B" text-anchor="middle">passes -&gt; one PASSED row</text>
+			<text x="730" y="94" font-family="Archivo, sans-serif" font-size="9.5" fill="#1B7F3B" text-anchor="middle">discarded attempts filtered out</text>
+
+			<text x="616" y="200" font-family="Archivo, sans-serif" font-size="10" fill="currentColor" opacity="0.65">ExecutionLedger checks</text>
+			<text x="616" y="214" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity="0.65">ITestResult.wasRetried()</text>
+			<text x="616" y="230" font-family="Archivo, sans-serif" font-size="10" fill="currentColor" opacity="0.65">so the totals add up</text>
+		</svg>
+		</div>
+		<figcaption><b>Retry quietly breaks your numbers unless you handle it.</b> TestNG marks a discarded
+		attempt as SKIPPED, so a test that failed twice then passed reports as "1 passed, 2 skipped". Our
+		listener checks <code>wasRetried()</code> and drops those rows - which is why the custom summary and
+		surefire's numbers sometimes disagree, and why ours is the right one.</figcaption>
+		</figure>
+
+		<p><strong>The rule on retries.</strong> They are for genuine environmental noise, not for making a
+		broken test green. That is why ours only attaches to methods marked <code>@Flaky</code>, and why
+		that annotation asks for a reason and a ticket number.</p>
+		<dl class="meta">
+			<dt>Code</dt><dd><code>dataproviders/</code>, <code>tests/retry/</code>, <code>listeners/RetryAnalyzer</code></dd>
+			<dt>Run</dt><dd><code>mvn test -DsuiteXmlFile=suites/08-dataproviders-and-retry.xml -Dheadless=true</code></dd>
+		</dl>
+	</div>
+
+
+	<div class="concept">
+		<h3>9 &nbsp; Excel-driven testing</h3>
+		<p><strong>What it is.</strong> The test data lives in
+		<code>src/test/resources/testdata/SwagLabsTestData.xlsx</code>. Add a row, set <strong>Execute</strong>
+		to <code>Y</code>, and it runs on the next build. No Java changes.</p>
+
+		<figure>
+		<div class="figbox">
+		<svg viewBox="0 0 920 190" role="img" aria-label="Excel flow: the workbook is read by header name, rows marked Execute equals Y are kept, each becomes a typed record, each record becomes one test invocation, and results are written back to a colour coded results workbook.">
+			<defs>
+				<marker id="ar4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+					<path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+				</marker>
+			</defs>
+			<g fill="none" stroke="currentColor" stroke-width="1.4">
+				<rect x="8"   y="52" width="140" height="54" rx="5"/>
+				<rect x="188" y="52" width="140" height="54" rx="5"/>
+				<rect x="368" y="52" width="140" height="54" rx="5"/>
+				<rect x="548" y="52" width="140" height="54" rx="5"/>
+			</g>
+			<rect x="728" y="52" width="180" height="54" rx="5" fill="none" stroke="#2E4A8F" stroke-width="1.8"/>
+
+			<g font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" text-anchor="middle">
+				<text x="78"  y="76">SwagLabsTestData</text>
+				<text x="258" y="76">ExcelReader</text>
+				<text x="438" y="76">LoginScenario</text>
+				<text x="618" y="76">@Test x N</text>
+			</g>
+			<g font-family="Archivo, sans-serif" font-size="9.5" fill="currentColor" text-anchor="middle" opacity="0.65">
+				<text x="78"  y="92">3 sheets, 16 rows</text>
+				<text x="258" y="92">maps by header name</text>
+				<text x="438" y="92">a typed record per row</text>
+				<text x="618" y="92">one result each</text>
+			</g>
+			<text x="818" y="76" font-family="IBM Plex Mono, monospace" font-size="11" fill="#2E4A8F" text-anchor="middle">Results.xlsx</text>
+			<text x="818" y="92" font-family="Archivo, sans-serif" font-size="9.5" fill="#2E4A8F" text-anchor="middle">green / red / amber rows</text>
+
+			<g stroke="currentColor" stroke-width="1.4" marker-end="url(#ar4)" fill="none">
+				<line x1="148" y1="79" x2="184" y2="79"/>
+				<line x1="328" y1="79" x2="364" y2="79"/>
+				<line x1="508" y1="79" x2="544" y2="79"/>
+				<line x1="688" y1="79" x2="724" y2="79"/>
+			</g>
+			<g font-family="Archivo, sans-serif" font-size="9.5" fill="currentColor" opacity="0.55" text-anchor="middle">
+				<text x="166" y="42">read</text>
+				<text x="346" y="42">keep Execute=Y</text>
+				<text x="526" y="42">one row, one run</text>
+				<text x="706" y="42">write back</text>
+			</g>
+
+			<text x="258" y="140" font-family="Archivo, sans-serif" font-size="10.5" fill="currentColor" opacity="0.7" text-anchor="middle">columns matched by NAME, not position</text>
+			<text x="258" y="156" font-family="Archivo, sans-serif" font-size="10.5" fill="currentColor" opacity="0.7" text-anchor="middle">so inserting a column breaks nothing</text>
+			<text x="700" y="140" font-family="Archivo, sans-serif" font-size="10.5" fill="currentColor" opacity="0.7" text-anchor="middle">written once, single threaded, at the end</text>
+			<text x="700" y="156" font-family="Archivo, sans-serif" font-size="10.5" fill="currentColor" opacity="0.7" text-anchor="middle">POI workbooks are not thread safe</text>
+		</svg>
+		</div>
+		<figcaption><b>Matching columns by header name is the detail that makes this survive.</b> Match by
+		index instead and the day someone inserts a column, thirty tests start comparing a postcode against
+		a surname - silently.</figcaption>
+		</figure>
+		<dl class="meta">
+			<dt>Code</dt><dd><code>utils/ExcelReader</code>, <code>utils/ExcelWriter</code>, <code>tests/dataprovider/ExcelDriven*</code></dd>
+			<dt>Run</dt><dd><code>mvn test -DsuiteXmlFile=suites/09-excel-driven.xml -Dheadless=true</code></dd>
+		</dl>
+	</div>
+
+
+	<div class="concept">
+		<h3>10 &nbsp; Skipped - and what it really means</h3>
+		<p><strong>What it is.</strong> A skip means <em>we did not check this</em>. A pass means <em>we
+		checked it and it was fine</em>. Confusing the two is how a suite stops being worth running.</p>
+
+		<div class="tablewrap">
+		<table>
+			<thead><tr><th>How you get there</th><th>In the report?</th><th>Use it when</th></tr></thead>
+			<tbody>
+				<tr><td><code>throw new SkipException(...)</code></td><td><span class="pill skip">Skipped</span> with your message</td><td>A precondition is not met - feature flag off, data missing</td></tr>
+				<tr><td>A <code>dependsOn</code> target failed</td><td><span class="pill skip">Skipped</span></td><td>Automatic. This is the point of dependencies</td></tr>
+				<tr><td>A <code>@BeforeMethod</code> threw</td><td><span class="pill skip">Skipped</span></td><td>Automatic. Skips every test in the class</td></tr>
+				<tr><td><code>@Test(enabled = false)</code></td><td><b>No - it vanishes</b></td><td>Almost never</td></tr>
+			</tbody>
+		</table>
+		</div>
+
+		<p>This is also the suite that shows all three statuses at once. It is the only one that runs the
+		<code>demo-status</code> group, and it is <em>meant</em> to finish red - every test in that group is
+		designed to fail or skip so the reporting has something to show.</p>
+		<dl class="meta">
+			<dt>Code</dt><dd><code>tests/skip/SkipScenarioTest</code>, <code>SkipBySetupTest</code></dd>
+			<dt>Run</dt><dd><code>mvn test -DsuiteXmlFile=suites/10-skip-and-status-showcase.xml -Dheadless=true</code></dd>
+		</dl>
+	</div>
+
+
+	<div class="concept">
+		<h3>11 &nbsp; The Page Object Model</h3>
+		<p><strong>What it is.</strong> Every locator, wait and click lives in a page class. Tests only
+		describe intent.</p>
+
+		<pre><code><span class="c">// The whole purchase journey. No locator, no wait, no findElement.</span>
+CheckoutOverviewPage overview = loginPage().loginAs(TestUser.STANDARD)
+        .sortBy(SortOption.PRICE_LOW_TO_HIGH)
+        .addToCart(BACKPACK)
+        .addToCart(BOLT_TSHIRT)
+        .openCart()
+        .checkout()
+        .enterShippingDetails(<span class="ok">"Ayush"</span>, <span class="ok">"Dhiman"</span>, <span class="ok">"560037"</span>)
+        .continueToOverview();</code></pre>
+
+		<p><strong>Why it works.</strong> Four rules, followed everywhere in <code>com.sk.pages</code>:</p>
+		<ul>
+			<li><strong>A page action returns the page you land on.</strong> <code>cart.checkout()</code> gives
+			you a <code>CheckoutInformationPage</code>, so the compiler stops you calling a checkout method
+			while you are still on the cart.</li>
+			<li><strong>Page objects assert nothing.</strong> They expose state; the test decides what is
+			correct. A page that asserts cannot be reused by a test with different expectations.</li>
+			<li><strong>Page objects return real types.</strong> <code>double</code> for a price, not the
+			string <code>"Total: $32.39"</code>. Parsing is the page object's job.</li>
+			<li><strong>No <code>Thread.sleep</code> anywhere.</strong> Every wait is an explicit condition
+			in <code>BasePage</code>.</li>
+		</ul>
+		<dl class="meta">
+			<dt>Code</dt><dd><code>pages/</code> - seven classes. <code>tests/e2e/EndToEndPurchaseTest</code></dd>
+			<dt>Run</dt><dd><code>mvn test -DsuiteXmlFile=suites/11-pom-end-to-end.xml -Dheadless=true</code></dd>
+		</dl>
+	</div>
+</section>
+
+
+<!-- ============================================================ -->
+<section id="try">
+	<h2><span class="sn">07</span>Things to try</h2>
+
+	<p>In rough order of how much they teach. Run them from the project root. In Eclipse, right-click any
+	suite XML and choose <strong>Run As &rarr; TestNG Suite</strong> instead.</p>
+
+	<div class="try">
+		<h3><span class="tn">01</span>See all three statuses in one run</h3>
+		<p>The fastest way to understand the reporting. This suite is designed to end red.</p>
+		<pre><code>mvn test -DsuiteXmlFile=suites/10-skip-and-status-showcase.xml -Dheadless=true</code></pre>
+		<div class="look"><b>What to look for</b>
+		The summary block at the end of the output, then open
+		<code>test-output/custom-report/execution-summary.html</code> and
+		<code>test-output/screenshots/</code>. Exactly two screenshots, because only two of the failures
+		involved a browser.</div>
+	</div>
+
+	<div class="try">
+		<h3><span class="tn">02</span>Watch four browsers work at once</h3>
+		<p>Drop <code>-Dheadless</code> and the browsers become visible. Four windows, four tests, one class.</p>
+		<pre><code>mvn test -DsuiteXmlFile=suites/03-parallel-methods.xml</code></pre>
+		<div class="look"><b>What to look for</b>
+		In the log, the <code>[TestNG-methods-1]</code> column. The method names interleave - that is
+		parallelism, not four tests taking turns.</div>
+	</div>
+
+	<div class="try">
+		<h3><span class="tn">03</span>Prove parallelism is actually saving you time</h3>
+		<p>Run the same suite twice, once sequentially. Edit <code>thread-count</code> in
+		<code>suites/03-parallel-methods.xml</code> from <code>4</code> to <code>1</code> and compare
+		<code>Time elapsed</code>.</p>
+		<pre><code>mvn test -DsuiteXmlFile=suites/03-parallel-methods.xml -Dheadless=true</code></pre>
+		<div class="look"><b>What to look for</b>
+		Roughly four times the wall clock at <code>thread-count="1"</code>, while
+		<code>Total runtime ... of test-method time</code> in the summary stays about the same. That gap is
+		the whole point.</div>
+	</div>
+
+	<div class="try">
+		<h3><span class="tn">04</span>Break a test on purpose</h3>
+		<p>In <code>tests/parallel/ParallelMethodsTest</code>, change the expected product count from
+		<code>6</code> to <code>5</code> and run it.</p>
+		<pre><code>mvn test -DsuiteXmlFile=suites/03-parallel-methods.xml -Dheadless=true</code></pre>
+		<div class="look"><b>What to look for</b>
+		A PNG appears in <code>test-output/screenshots/</code> named after the method, the failure row turns
+		red in the HTML report, and the console summary lists it under <b>Not-passed detail</b>. That is the
+		listener chain doing its job. Change it back afterwards.</div>
+	</div>
+
+	<div class="try">
+		<h3><span class="tn">05</span>Add a test case without writing Java</h3>
+		<p>Open <code>src/test/resources/testdata/SwagLabsTestData.xlsx</code>, go to the
+		<strong>LoginData</strong> sheet, and add a row: <code>TC-E10</code>, username
+		<code>problem_user</code>, password <code>wrong</code>, ShouldLogin <code>N</code>, ExpectedMessage
+		<code>Epic sadface: Username and password do not match any user in this service</code>, Execute
+		<code>Y</code>. Save.</p>
+		<pre><code>mvn test -DsuiteXmlFile=suites/09-excel-driven.xml -Dheadless=true</code></pre>
+		<div class="look"><b>What to look for</b>
+		One more row in the results, labelled <code>TC-E10</code>. Then set Execute to <code>N</code> and
+		watch it disappear. Also try renaming a column header to see the loud, helpful failure.</div>
+	</div>
+
+	<div class="try">
+		<h3><span class="tn">06</span>Slice the same tests four different ways</h3>
+		<p>One class, four <code>&lt;test&gt;</code> blocks, four different group filters. Nothing in the
+		Java changes.</p>
+		<pre><code>mvn test -DsuiteXmlFile=suites/04-groups-and-filters.xml -Dheadless=true</code></pre>
+		<div class="look"><b>What to look for</b>
+		Each block reports a different count. Then open the XML and add
+		<code>&lt;exclude name="cart"/&gt;</code> to the smoke block and watch one test drop out.</div>
+	</div>
+
+	<div class="try">
+		<h3><span class="tn">07</span>Watch a retry happen</h3>
+		<p><code>FlakyRetryTest</code> fails deliberately on its first attempts and passes on a later one.</p>
+		<pre><code>mvn test -DsuiteXmlFile=suites/08-dataproviders-and-retry.xml -Dheadless=true</code></pre>
+		<div class="look"><b>What to look for</b>
+		<code>RETRY 1/2</code> and <code>RETRY 2/3</code> lines in the log, followed by
+		<code>ATTEMPT DISCARDED</code>. Then compare surefire's <code>Skipped: 3</code> against our summary's
+		<code>SKIPPED: 0</code> - both are describing the same run, and ours is counting the way a human
+		would.</div>
+	</div>
+
+	<div class="try">
+		<h3><span class="tn">08</span>Run Chrome and Edge side by side</h3>
+		<p>Two <code>&lt;test&gt;</code> blocks, two browser parameters, one thread each.</p>
+		<pre><code>mvn test -DsuiteXmlFile=suites/12-cross-browser.xml -Dheadless=true</code></pre>
+		<div class="look"><b>What to look for</b>
+		<code>Started CHROME</code> and <code>Started EDGE</code> in the log. Now run it again with
+		<code>-Dbrowser=chrome</code> added and watch <b>both</b> blocks start Chrome - a system property
+		beats the XML parameter, which is trap 1 below.</div>
+	</div>
+
+	<div class="try">
+		<h3><span class="tn">09</span>Switch environment</h3>
+		<p><code>config/staging.properties</code> layers on top of <code>config.properties</code> - longer
+		waits, an extra retry, headless on by default.</p>
+		<pre><code>mvn test -DsuiteXmlFile=suites/07-listeners.xml -Denv=staging</code></pre>
+		<div class="look"><b>What to look for</b>
+		The suite banner at the top of the log now says <code>Environment : staging</code>, and the
+		configured wait has changed from 15s to 25s.</div>
+	</div>
+
+	<div class="try">
+		<h3><span class="tn">10</span>Run everything</h3>
+		<p>Six blocks, four parallel modes, the full 147 tests.</p>
+		<pre><code>mvn test -DsuiteXmlFile=suites/master-regression.xml -Dheadless=true</code></pre>
+		<div class="look"><b>What to look for</b>
+		About 83 seconds of wall clock against roughly 215 seconds of test-method time. One deliberate skip.
+		Zero failures.</div>
+	</div>
+</section>
+
+
+<!-- ============================================================ -->
+<section id="results">
+	<h2><span class="sn">08</span>Reading the results</h2>
+
+	<p>Every run produces five things. You will mostly look at the first.</p>
+
+	<pre><code>+--------------------------------------------------------------------------+
+| EXECUTION SUMMARY                                                        |
++--------------------------------------------------------------------------+
+| Environment   : qa  (https://www.saucedemo.com)                          |
+| Total tests   : 12                                                       |
+<span class="ok">| PASSED        : 3  (25.0%)                                               |</span>
+<span class="no">| FAILED        : 5  (41.7%)                                               |</span>
+<span class="sk">| SKIPPED       : 4  (33.3%)                                               |</span>
++--------------------------------------------------------------------------+
+
+  Not-passed detail:
+<span class="no">   [FAILED] ThreadCountBoundaryTest.demoExceedsItsTimeoutOnPurpose
+             -&gt; ThreadTimeoutException: didn't finish within the time-out 500</span>
+<span class="sk">   [SKIPPED] SkipScenarioTest.demoDependentIsSkipped
+             -&gt; depends on not successfully finished methods</span></code></pre>
+
+	<div class="tablewrap">
+	<table>
+		<thead><tr><th>Artefact</th><th>Where</th><th>Good for</th></tr></thead>
+		<tbody>
+			<tr><td>Console summary</td><td>End of the Maven output</td><td>The number you actually want</td></tr>
+			<tr><td>Custom HTML report</td><td><code>test-output/custom-report/execution-summary.html</code></td><td>Sharing, attaching to a build</td></tr>
+			<tr><td>Excel results</td><td><code>test-output/excel/SwagLabsTestData-Results.xlsx</code></td><td>The one a non-technical stakeholder will open</td></tr>
+			<tr><td>Screenshots</td><td><code>test-output/screenshots/</code></td><td>Seeing what the page looked like when it broke</td></tr>
+			<tr><td>Log with thread names</td><td><code>logs/testng-execution.log</code></td><td>Untangling a parallel run</td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<div class="note">
+		<span class="tag">Why two numbers disagree</span>
+		<p>Surefire and the custom summary sometimes report different totals, and the custom one is right.
+		TestNG marks an attempt discarded by a retry analyzer as <strong>skipped</strong>, so a test that
+		failed twice and passed on the third go shows up in surefire as "1 passed, 2 skipped". Our listener
+		filters those out.</p>
+	</div>
+</section>
+
+
+<!-- ============================================================ -->
+<section id="traps">
+	<h2><span class="sn">09</span>Four traps we hit</h2>
+
+	<p>These were not found by reading documentation. They were found by running the suites and watching
+	them fail in confusing ways. Each is fixed and commented in the code where it was fixed - and each one
+	is the kind of thing that costs an afternoon on a real project.</p>
+
+	<h3>1. A command-line flag silently beat the cross-browser suite</h3>
+	<p><strong>Symptom:</strong> green build, and the <code>&lt;test name="Edge"&gt;</code> block was running
+	Chrome.</p>
+	<p><strong>Cause:</strong> for <code>@Parameters</code> injection, TestNG gives a matching
+	<strong>system property priority over the XML</strong>. The pom was forwarding <code>browser</code> in
+	surefire's <code>&lt;systemPropertyVariables&gt;</code>, so every block got Chrome regardless of what the
+	XML said. Nothing failed. The coverage was simply not there.</p>
+	<p><strong>Fix:</strong> stop forwarding it. <code>-Dbrowser=edge</code> still works as a deliberate
+	override.</p>
+
+	<h3>2. A page object in a field is shared between threads</h3>
+	<p><strong>Symptom:</strong> <code>NoSuchSessionException: Session ID is null</code>,
+	<code>RejectedExecutionException ... [Shutting down]</code>, random
+	<code>StaleElementReferenceException</code>. None of them point at the cause.</p>
+	<p><strong>Cause:</strong> TestNG creates <strong>one instance of a test class</strong> and runs every
+	method on it. Under <code>parallel="methods"</code> - and far more aggressively with a parallel data
+	provider - several threads share that instance. A <code>loginPage</code> field assigned in
+	<code>@BeforeMethod</code> was being overwritten by one thread while another was using it, and then that
+	thread quit the browser.</p>
+	<p><strong>Fix:</strong> <code>loginPage()</code> is a method, not a field. It builds a page object from
+	the ThreadLocal driver every time it is called. The rule that falls out of this:
+	<strong>in a parallel suite, a test class must hold no mutable instance state.</strong></p>
+
+	<h3>3. React drops keystrokes under parallel load</h3>
+	<p><strong>Symptom:</strong> intermittent "username and password do not match", on
+	<code>standard_user</code>, with correct credentials. Different tests each run. Impossible to reproduce
+	by hand.</p>
+	<p><strong>Cause:</strong> Swag Labs uses React controlled inputs. With three headless Chromes competing
+	for CPU, the onChange handler falls behind and characters get dropped -
+	<code>sendKeys("standard_user")</code> leaves <code>standard_use</code> in the field. It looks exactly
+	like a product bug.</p>
+	<p><strong>Fix:</strong> <code>BasePage.type()</code> reads the value back with
+	<code>getDomProperty("value")</code> and retypes if it does not match. Fixing it in one place means no
+	test and no page object has to know about it.</p>
+
+	<h3>4. Two libraries disagreed about logging</h3>
+	<p><strong>Symptom:</strong> <code>NoSuchFieldError: DefaultFlowMessageFactory ... INSTANCE</code> before
+	a single test ran.</p>
+	<p><strong>Cause:</strong> Apache POI pulls in older <code>log4j-api</code> and <code>slf4j-api</code>
+	versions than Selenium and log4j-core need. Maven resolves conflicts by "nearest definition wins", so
+	the older ones won.</p>
+	<p><strong>Fix:</strong> a <code>&lt;dependencyManagement&gt;</code> block, which beats transitive
+	resolution at any depth. Whenever a build dies with <code>NoSuchMethodError</code> or
+	<code>NoSuchFieldError</code> inside a library you never called directly, run
+	<code>mvn dependency:tree</code> and look for exactly this.</p>
+</section>
+
+
+<!-- ============================================================ -->
+<section id="cheat">
+	<h2><span class="sn">10</span>Command cheat sheet</h2>
+
+	<h4>Switches</h4>
+	<div class="tablewrap">
+	<table>
+		<thead><tr><th>Switch</th><th>Effect</th></tr></thead>
+		<tbody>
+			<tr><td><code>-Dheadless=true</code></td><td>No visible browser windows. Use for CI and parallel suites</td></tr>
+			<tr><td><code>-Denv=staging</code></td><td>Layers <code>config/staging.properties</code> on top</td></tr>
+			<tr><td><code>-Dbrowser=edge</code></td><td>Forces every test onto Edge. Overrides the suite XML</td></tr>
+			<tr><td><code>-DsuiteXmlFile=...</code></td><td>Which suite to run. Default is <code>testng.xml</code></td></tr>
+		</tbody>
+	</table>
+	</div>
+
+	<h4>Suites</h4>
+	<pre><code><span class="c"># default - concepts plus a smoke slice</span>
+mvn test
+
+<span class="c"># one concept at a time</span>
+mvn test -DsuiteXmlFile=suites/01-annotations-and-attributes.xml
+mvn test -DsuiteXmlFile=suites/02-suite-parameters.xml
+mvn test -DsuiteXmlFile=suites/03-parallel-methods.xml     -Dheadless=true
+mvn test -DsuiteXmlFile=suites/03-parallel-classes.xml     -Dheadless=true
+mvn test -DsuiteXmlFile=suites/03-parallel-tests.xml       -Dheadless=true
+mvn test -DsuiteXmlFile=suites/03-parallel-instances.xml   -Dheadless=true
+mvn test -DsuiteXmlFile=suites/04-groups-and-filters.xml   -Dheadless=true
+mvn test -DsuiteXmlFile=suites/05-dependency-invocation-threads.xml -Dheadless=true
+mvn test -DsuiteXmlFile=suites/06-assertions.xml           -Dheadless=true
+mvn test -DsuiteXmlFile=suites/07-listeners.xml            <span class="c"># no browser, ~2s</span>
+mvn test -DsuiteXmlFile=suites/08-dataproviders-and-retry.xml -Dheadless=true
+mvn test -DsuiteXmlFile=suites/09-excel-driven.xml         -Dheadless=true
+mvn test -DsuiteXmlFile=suites/10-skip-and-status-showcase.xml -Dheadless=true
+mvn test -DsuiteXmlFile=suites/11-pom-end-to-end.xml       -Dheadless=true
+mvn test -DsuiteXmlFile=suites/12-cross-browser.xml        -Dheadless=true
+mvn test -DsuiteXmlFile=suites/13-suite-of-suites.xml
+
+<span class="c"># everything</span>
+mvn test -DsuiteXmlFile=suites/master-regression.xml       -Dheadless=true</code></pre>
+
+	<h4>In Eclipse</h4>
+	<p>Right-click any suite XML &rarr; <strong>Run As &rarr; TestNG Suite</strong>. To pass a switch, add it
+	under <strong>Run Configurations &rarr; Arguments &rarr; VM arguments</strong> as
+	<code>-Dheadless=true</code>.</p>
+
+	<h4>Nothing to install</h4>
+	<p>Selenium 4.6 and later ship <strong>Selenium Manager</strong>, which downloads the matching driver
+	binary by itself. There is no WebDriverManager dependency and no <code>chromedriver.exe</code> to keep
+	in step with your browser version.</p>
+</section>
+
+
+<footer>
+	<p><strong>TestNG-P011-TestNg3-All-Concepts-Covered</strong> &nbsp;&middot;&nbsp; Java 17 &middot; TestNG
+	7.10.2 &middot; Selenium 4.47.0 &middot; Apache POI 5.3.0 &nbsp;&middot;&nbsp; 59 Java files, 18 suite
+	XMLs, 147 tests.</p>
+	<p>The terse version of this document is <code>README.md</code> in the project root. Every class carries
+	its own explanation in the Javadoc above it - the code is meant to be read, not just run.</p>
+</footer>
+
+</div>
