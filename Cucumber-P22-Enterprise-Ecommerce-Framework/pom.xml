@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.sk</groupId>
+	<artifactId>Cucumber-P22-Enterprise-Ecommerce-Framework</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+
+	<name>Enterprise BDD Test Automation Framework</name>
+	<description>
+		Cucumber + TestNG + Selenium 4 + Page Object Model hybrid framework
+		covering an e-commerce / warehouse style application end to end.
+	</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.release>17</maven.compiler.release>
+
+		<!-- ==== library versions ==== -->
+		<selenium.version>4.47.0</selenium.version>
+		<cucumber.version>7.33.0</cucumber.version>
+		<testng.version>7.10.2</testng.version>
+		<extent.version>5.1.2</extent.version>
+		<log4j.version>2.24.3</log4j.version>
+		<jackson.version>2.19.2</jackson.version>
+		<poi.version>5.3.0</poi.version>
+		<restassured.version>5.5.1</restassured.version>
+		<datafaker.version>2.4.2</datafaker.version>
+		<assertj.version>3.27.7</assertj.version>
+		<commons.lang3.version>3.18.0</commons.lang3.version>
+		<commons.io.version>2.20.0</commons.io.version>
+
+		<!-- ==== plugin versions ==== -->
+		<compiler.plugin.version>3.13.0</compiler.plugin.version>
+		<surefire.plugin.version>3.5.2</surefire.plugin.version>
+		<resources.plugin.version>3.3.1</resources.plugin.version>
+		<clean.plugin.version>3.4.0</clean.plugin.version>
+
+		<!-- ==== runtime switches: override with -Dkey=value ==== -->
+		<suite.file>src/test/resources/suites/testng-regression.xml</suite.file>
+		<env>qa</env>
+		<browser>chrome</browser>
+		<target>local</target>
+		<headless>true</headless>
+		<thread.count>3</thread.count>
+		<cucumber.tags>not @wip and not @db</cucumber.tags>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.cucumber</groupId>
+				<artifactId>cucumber-bom</artifactId>
+				<version>${cucumber.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- ================= Browser automation ================= -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+		<!-- ================= BDD ================= -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+		</dependency>
+		<!-- Dependency injection: shares state between step definition classes -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+		</dependency>
+
+		<!-- ================= Test runner ================= -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>${assertj.version}</version>
+		</dependency>
+
+		<!-- ================= Reporting ================= -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>${extent.version}</version>
+		</dependency>
+
+		<!-- ================= Logging ================= -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+
+		<!-- ================= Test data ================= -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.datafaker</groupId>
+			<artifactId>datafaker</artifactId>
+			<version>${datafaker.version}</version>
+		</dependency>
+
+		<!-- ================= API layer ================= -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${restassured.version}</version>
+		</dependency>
+
+		<!-- ================= Misc ================= -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang3.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.io.version}</version>
+		</dependency>
+
+		<!--
+			Database layer uses plain JDBC. Drop your vendor driver in here to
+			enable the @db tagged scenarios, e.g.
+			<dependency>
+				<groupId>com.mysql</groupId>
+				<artifactId>mysql-connector-j</artifactId>
+				<version>9.1.0</version>
+			</dependency>
+		-->
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>${clean.plugin.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${resources.plugin.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler.plugin.version}</version>
+				<configuration>
+					<release>${maven.compiler.release}</release>
+					<encoding>UTF-8</encoding>
+					<compilerArgs>
+						<arg>-parameters</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${surefire.plugin.version}</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>${suite.file}</suiteXmlFile>
+					</suiteXmlFiles>
+					<properties>
+						<property>
+							<name>dataproviderthreadcount</name>
+							<value>${thread.count}</value>
+						</property>
+					</properties>
+					<systemPropertyVariables>
+						<env>${env}</env>
+						<browser>${browser}</browser>
+						<target>${target}</target>
+						<headless>${headless}</headless>
+						<cucumber.filter.tags>${cucumber.tags}</cucumber.filter.tags>
+					</systemPropertyVariables>
+					<!-- keep the build green so the report is always produced;
+					     flip to false when wiring into a release gate -->
+					<testFailureIgnore>false</testFailureIgnore>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<!-- mvn test -Psmoke -->
+		<profile>
+			<id>smoke</id>
+			<properties>
+				<suite.file>src/test/resources/suites/testng-smoke.xml</suite.file>
+				<cucumber.tags>@smoke</cucumber.tags>
+				<thread.count>3</thread.count>
+			</properties>
+		</profile>
+
+		<!-- mvn test -Pregression -->
+		<profile>
+			<id>regression</id>
+			<properties>
+				<suite.file>src/test/resources/suites/testng-regression.xml</suite.file>
+				<cucumber.tags>@regression and not @wip</cucumber.tags>
+				<thread.count>4</thread.count>
+			</properties>
+		</profile>
+
+		<!-- mvn test -Pe2e -->
+		<profile>
+			<id>e2e</id>
+			<properties>
+				<suite.file>src/test/resources/suites/testng-regression.xml</suite.file>
+				<cucumber.tags>@e2e</cucumber.tags>
+				<thread.count>1</thread.count>
+			</properties>
+		</profile>
+
+		<!-- mvn test -Papi -->
+		<profile>
+			<id>api</id>
+			<properties>
+				<suite.file>src/test/resources/suites/testng-api.xml</suite.file>
+				<cucumber.tags>@api</cucumber.tags>
+				<thread.count>3</thread.count>
+			</properties>
+		</profile>
+
+		<!-- mvn test -Pfailed : reruns only what failed in the previous run -->
+		<profile>
+			<id>failed</id>
+			<properties>
+				<suite.file>src/test/resources/suites/testng-failed.xml</suite.file>
+				<cucumber.tags>not @wip</cucumber.tags>
+				<thread.count>1</thread.count>
+			</properties>
+		</profile>
+
+		<!-- mvn test -Pgrid -Dgrid.url=http://localhost:4444 -->
+		<profile>
+			<id>grid</id>
+			<properties>
+				<target>remote</target>
+				<headless>false</headless>
+				<thread.count>5</thread.count>
+			</properties>
+		</profile>
+	</profiles>
+</project>
